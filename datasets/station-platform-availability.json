@@ -1,0 +1,3202 @@
+[
+  {
+    "month": "2018-01-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1090451",
+    "availability": "0.939525607",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-01-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3256055",
+    "minutes_platforms_in_service": "3134672",
+    "availability": "0.962720839",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-01-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6733810",
+    "minutes_platforms_in_service": "6350002",
+    "availability": "0.943002847",
+    "platform_count": "151"
+  },
+  {
+    "month": "2018-01-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2096173",
+    "availability": "0.92073099",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-01-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13427145",
+    "minutes_platforms_in_service": "12671298",
+    "availability": "0.943707542",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-02-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1048320",
+    "minutes_platforms_in_service": "1009340",
+    "availability": "0.962816697",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-02-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "2943360",
+    "minutes_platforms_in_service": "2827526",
+    "availability": "0.960645657",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-02-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6087080",
+    "minutes_platforms_in_service": "5753538",
+    "availability": "0.945204926",
+    "platform_count": "151"
+  },
+  {
+    "month": "2018-02-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2056320",
+    "minutes_platforms_in_service": "1966738",
+    "availability": "0.956435769",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-02-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "12135080",
+    "minutes_platforms_in_service": "11557142",
+    "availability": "0.952374603",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-03-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160335",
+    "minutes_platforms_in_service": "1103877",
+    "availability": "0.951343362",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-03-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3258720",
+    "minutes_platforms_in_service": "3131642",
+    "availability": "0.961003707",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-03-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6738235",
+    "minutes_platforms_in_service": "6347015",
+    "availability": "0.941940286",
+    "platform_count": "151"
+  },
+  {
+    "month": "2018-03-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2193780",
+    "availability": "0.963604259",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-03-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13433930",
+    "minutes_platforms_in_service": "12776314",
+    "availability": "0.95104813",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-04-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1123135",
+    "minutes_platforms_in_service": "1079562",
+    "availability": "0.96120413",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-04-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3153530",
+    "minutes_platforms_in_service": "3036616",
+    "availability": "0.962925991",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-04-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6503975",
+    "minutes_platforms_in_service": "6143793",
+    "availability": "0.944621251",
+    "platform_count": "151"
+  },
+  {
+    "month": "2018-04-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2203200",
+    "minutes_platforms_in_service": "2102825",
+    "availability": "0.954441267",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-04-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "12983840",
+    "minutes_platforms_in_service": "12362796",
+    "availability": "0.952167926",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-05-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160635",
+    "minutes_platforms_in_service": "1114207",
+    "availability": "0.95999776",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-05-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3258050",
+    "minutes_platforms_in_service": "3125481",
+    "availability": "0.959310324",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-05-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6696000",
+    "minutes_platforms_in_service": "6370798",
+    "availability": "0.951433393",
+    "platform_count": "150"
+  },
+  {
+    "month": "2018-05-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2178474",
+    "availability": "0.956881193",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-05-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13391325",
+    "minutes_platforms_in_service": "12788960",
+    "availability": "0.955018267",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-06-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1121900",
+    "minutes_platforms_in_service": "1054766",
+    "availability": "0.940160442",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-06-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3153600",
+    "minutes_platforms_in_service": "3015287",
+    "availability": "0.956141235",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-06-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6517355",
+    "minutes_platforms_in_service": "6121598",
+    "availability": "0.93927644",
+    "platform_count": "151"
+  },
+  {
+    "month": "2018-06-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2203200",
+    "minutes_platforms_in_service": "2096210",
+    "availability": "0.951438816",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-06-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "12996055",
+    "minutes_platforms_in_service": "12287861",
+    "availability": "0.945507002",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-07-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1079791",
+    "availability": "0.930341019",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-07-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3258720",
+    "minutes_platforms_in_service": "3134855",
+    "availability": "0.961989677",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-07-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6717600",
+    "minutes_platforms_in_service": "6347515",
+    "availability": "0.944908152",
+    "platform_count": "151"
+  },
+  {
+    "month": "2018-07-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2190214",
+    "availability": "0.962037916",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-07-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13413600",
+    "minutes_platforms_in_service": "12752375",
+    "availability": "0.950704882",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-08-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1112920",
+    "availability": "0.958884753",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-08-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3258720",
+    "minutes_platforms_in_service": "3130616",
+    "availability": "0.960688859",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-08-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6696000",
+    "minutes_platforms_in_service": "6362551",
+    "availability": "0.950201762",
+    "platform_count": "150"
+  },
+  {
+    "month": "2018-08-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2275570",
+    "minutes_platforms_in_service": "2164111",
+    "availability": "0.951019305",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-08-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13390930",
+    "minutes_platforms_in_service": "12770198",
+    "availability": "0.953645341",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-09-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1123200",
+    "minutes_platforms_in_service": "1078981",
+    "availability": "0.960631232",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-09-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3153400",
+    "minutes_platforms_in_service": "3046516",
+    "availability": "0.966105156",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-09-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6537320",
+    "minutes_platforms_in_service": "6299694",
+    "availability": "0.963650854",
+    "platform_count": "152"
+  },
+  {
+    "month": "2018-09-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2201445",
+    "minutes_platforms_in_service": "2099100",
+    "availability": "0.953510081",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-09-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13015365",
+    "minutes_platforms_in_service": "12524291",
+    "availability": "0.962269671",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-10-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1050877",
+    "availability": "0.905428901",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-10-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3258720",
+    "minutes_platforms_in_service": "3143202",
+    "availability": "0.964551112",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-10-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6781120",
+    "minutes_platforms_in_service": "6503215",
+    "availability": "0.959017832",
+    "platform_count": "152"
+  },
+  {
+    "month": "2018-10-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2273210",
+    "minutes_platforms_in_service": "2094126",
+    "availability": "0.921219773",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-10-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13473690",
+    "minutes_platforms_in_service": "12791420",
+    "availability": "0.949362795",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-11-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1123200",
+    "minutes_platforms_in_service": "1050149",
+    "availability": "0.934961717",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-11-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3150690",
+    "minutes_platforms_in_service": "3046559",
+    "availability": "0.966949779",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-11-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6566400",
+    "minutes_platforms_in_service": "6177006",
+    "availability": "0.940699013",
+    "platform_count": "152"
+  },
+  {
+    "month": "2018-11-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2201590",
+    "minutes_platforms_in_service": "2082045",
+    "availability": "0.945700607",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-11-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13041880",
+    "minutes_platforms_in_service": "12355759",
+    "availability": "0.947390944",
+    "platform_count": "4"
+  },
+  {
+    "month": "2018-12-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1122930",
+    "availability": "0.967509305",
+    "platform_count": "26"
+  },
+  {
+    "month": "2018-12-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3253790",
+    "minutes_platforms_in_service": "3145084",
+    "availability": "0.96659096",
+    "platform_count": "73"
+  },
+  {
+    "month": "2018-12-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6785150",
+    "minutes_platforms_in_service": "6430773",
+    "availability": "0.947771678",
+    "platform_count": "152"
+  },
+  {
+    "month": "2018-12-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276280",
+    "minutes_platforms_in_service": "2128963",
+    "availability": "0.935281688",
+    "platform_count": "51"
+  },
+  {
+    "month": "2018-12-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13475860",
+    "minutes_platforms_in_service": "12827750",
+    "availability": "0.951905852",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-01-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1105392",
+    "availability": "0.952398677",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-01-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3254570",
+    "minutes_platforms_in_service": "3119953",
+    "availability": "0.958637547",
+    "platform_count": "73"
+  },
+  {
+    "month": "2019-01-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6784880",
+    "minutes_platforms_in_service": "6301557",
+    "availability": "0.928764694",
+    "platform_count": "153"
+  },
+  {
+    "month": "2019-01-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2113260",
+    "availability": "0.928236348",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-01-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13476730",
+    "minutes_platforms_in_service": "12640162",
+    "availability": "0.937925001",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-02-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1048320",
+    "minutes_platforms_in_service": "997300",
+    "availability": "0.951331654",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-02-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "2943360",
+    "minutes_platforms_in_service": "2815789",
+    "availability": "0.956658037",
+    "platform_count": "73"
+  },
+  {
+    "month": "2019-02-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6126655",
+    "minutes_platforms_in_service": "5898736",
+    "availability": "0.962798787",
+    "platform_count": "153"
+  },
+  {
+    "month": "2019-02-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2056320",
+    "minutes_platforms_in_service": "1941633",
+    "availability": "0.944227066",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-02-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "12174655",
+    "minutes_platforms_in_service": "11653458",
+    "availability": "0.957189998",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-03-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1108842",
+    "availability": "0.955371175",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-03-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3258720",
+    "minutes_platforms_in_service": "3191561",
+    "availability": "0.979390988",
+    "platform_count": "73"
+  },
+  {
+    "month": "2019-03-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6827785",
+    "minutes_platforms_in_service": "6520064",
+    "availability": "0.954931065",
+    "platform_count": "153"
+  },
+  {
+    "month": "2019-03-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2195098",
+    "availability": "0.964183182",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-03-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13523785",
+    "minutes_platforms_in_service": "13015565",
+    "availability": "0.962420284",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-04-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1123200",
+    "minutes_platforms_in_service": "1074143",
+    "availability": "0.956323896",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-04-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3153600",
+    "minutes_platforms_in_service": "3089116",
+    "availability": "0.979552258",
+    "platform_count": "73"
+  },
+  {
+    "month": "2019-04-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6609600",
+    "minutes_platforms_in_service": "6151442",
+    "availability": "0.930682946",
+    "platform_count": "153"
+  },
+  {
+    "month": "2019-04-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2203200",
+    "minutes_platforms_in_service": "2110091",
+    "availability": "0.957739198",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-04-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13089600",
+    "minutes_platforms_in_service": "12424792",
+    "availability": "0.949210977",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-05-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1093718",
+    "availability": "0.942340433",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-05-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3258720",
+    "minutes_platforms_in_service": "3181577",
+    "availability": "0.976327208",
+    "platform_count": "73"
+  },
+  {
+    "month": "2019-05-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6829920",
+    "minutes_platforms_in_service": "6526638",
+    "availability": "0.955595087",
+    "platform_count": "153"
+  },
+  {
+    "month": "2019-05-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2195143",
+    "availability": "0.964202948",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-05-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13525920",
+    "minutes_platforms_in_service": "12997076",
+    "availability": "0.96090144",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-06-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1118730",
+    "minutes_platforms_in_service": "1031599",
+    "availability": "0.92211615",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-06-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3153600",
+    "minutes_platforms_in_service": "3029950",
+    "availability": "0.960790842",
+    "platform_count": "73"
+  },
+  {
+    "month": "2019-06-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6615960",
+    "minutes_platforms_in_service": "6361538",
+    "availability": "0.961544205",
+    "platform_count": "154"
+  },
+  {
+    "month": "2019-06-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2203200",
+    "minutes_platforms_in_service": "2121061",
+    "availability": "0.962718319",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-06-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13091490",
+    "minutes_platforms_in_service": "12544148",
+    "availability": "0.958191008",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-07-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1106043",
+    "availability": "0.952959574",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-07-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3333600",
+    "minutes_platforms_in_service": "3174384",
+    "availability": "0.952239021",
+    "platform_count": "77"
+  },
+  {
+    "month": "2019-07-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6857375",
+    "minutes_platforms_in_service": "6538038",
+    "availability": "0.953431597",
+    "platform_count": "154"
+  },
+  {
+    "month": "2019-07-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2166299",
+    "availability": "0.9515334",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-07-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13628255",
+    "minutes_platforms_in_service": "12984764",
+    "availability": "0.952782583",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-08-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1077588",
+    "availability": "0.928442928",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-08-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3423260",
+    "minutes_platforms_in_service": "3241642",
+    "availability": "0.946945894",
+    "platform_count": "77"
+  },
+  {
+    "month": "2019-08-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6802430",
+    "minutes_platforms_in_service": "6199138",
+    "availability": "0.911312281",
+    "platform_count": "154"
+  },
+  {
+    "month": "2019-08-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2220080",
+    "minutes_platforms_in_service": "2053409",
+    "availability": "0.924925678",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-08-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13606410",
+    "minutes_platforms_in_service": "12571777",
+    "availability": "0.923959884",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-09-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1122130",
+    "minutes_platforms_in_service": "1047038",
+    "availability": "0.933080837",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-09-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3326400",
+    "minutes_platforms_in_service": "3165203",
+    "availability": "0.951540103",
+    "platform_count": "77"
+  },
+  {
+    "month": "2019-09-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6652800",
+    "minutes_platforms_in_service": "6294448",
+    "availability": "0.946135161",
+    "platform_count": "154"
+  },
+  {
+    "month": "2019-09-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2154330",
+    "minutes_platforms_in_service": "2039358",
+    "availability": "0.946632132",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-09-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13255660",
+    "minutes_platforms_in_service": "12546047",
+    "availability": "0.946467169",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-10-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1070104",
+    "availability": "0.921994762",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-10-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3437280",
+    "minutes_platforms_in_service": "3306105",
+    "availability": "0.961837558",
+    "platform_count": "77"
+  },
+  {
+    "month": "2019-10-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6873370",
+    "minutes_platforms_in_service": "6512858",
+    "availability": "0.947549455",
+    "platform_count": "154"
+  },
+  {
+    "month": "2019-10-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2275100",
+    "minutes_platforms_in_service": "2158335",
+    "availability": "0.948676981",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-10-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13746390",
+    "minutes_platforms_in_service": "13047402",
+    "availability": "0.949151159",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-11-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1123200",
+    "minutes_platforms_in_service": "1050485",
+    "availability": "0.935260862",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-11-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3363930",
+    "minutes_platforms_in_service": "3209049",
+    "availability": "0.953958317",
+    "platform_count": "78"
+  },
+  {
+    "month": "2019-11-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6652800",
+    "minutes_platforms_in_service": "6326227",
+    "availability": "0.950911947",
+    "platform_count": "154"
+  },
+  {
+    "month": "2019-11-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2195890",
+    "minutes_platforms_in_service": "2107498",
+    "availability": "0.959746618",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-11-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13335820",
+    "minutes_platforms_in_service": "12693259",
+    "availability": "0.951816911",
+    "platform_count": "4"
+  },
+  {
+    "month": "2019-12-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1066505",
+    "availability": "0.918893886",
+    "platform_count": "26"
+  },
+  {
+    "month": "2019-12-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3481920",
+    "minutes_platforms_in_service": "3345923",
+    "availability": "0.960941952",
+    "platform_count": "78"
+  },
+  {
+    "month": "2019-12-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6874560",
+    "minutes_platforms_in_service": "6570665",
+    "availability": "0.955794262",
+    "platform_count": "154"
+  },
+  {
+    "month": "2019-12-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2186389",
+    "availability": "0.960357808",
+    "platform_count": "51"
+  },
+  {
+    "month": "2019-12-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13793760",
+    "minutes_platforms_in_service": "13169482",
+    "availability": "0.954741999",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-01-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1071405",
+    "availability": "0.923115695",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-01-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3480205",
+    "minutes_platforms_in_service": "3332664",
+    "availability": "0.957605658",
+    "platform_count": "78"
+  },
+  {
+    "month": "2020-01-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6750795",
+    "minutes_platforms_in_service": "6460868",
+    "availability": "0.95705291",
+    "platform_count": "152"
+  },
+  {
+    "month": "2020-01-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276100",
+    "minutes_platforms_in_service": "2090543",
+    "availability": "0.918475902",
+    "platform_count": "51"
+  },
+  {
+    "month": "2020-01-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13667740",
+    "minutes_platforms_in_service": "12955480",
+    "availability": "0.947887507",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-02-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1085760",
+    "minutes_platforms_in_service": "1007690",
+    "availability": "0.928096449",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-02-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3255440",
+    "minutes_platforms_in_service": "3091120",
+    "availability": "0.949524488",
+    "platform_count": "78"
+  },
+  {
+    "month": "2020-02-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6430920",
+    "minutes_platforms_in_service": "6115530",
+    "availability": "0.95095725",
+    "platform_count": "154"
+  },
+  {
+    "month": "2020-02-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2126040",
+    "minutes_platforms_in_service": "2010065",
+    "availability": "0.945450227",
+    "platform_count": "51"
+  },
+  {
+    "month": "2020-02-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "12898160",
+    "minutes_platforms_in_service": "12224405",
+    "availability": "0.947763479",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-03-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1118599",
+    "availability": "0.963777743",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-03-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3479310",
+    "minutes_platforms_in_service": "3355297",
+    "availability": "0.964357013",
+    "platform_count": "78"
+  },
+  {
+    "month": "2020-03-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6873835",
+    "minutes_platforms_in_service": "6597938",
+    "availability": "0.959862726",
+    "platform_count": "154"
+  },
+  {
+    "month": "2020-03-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2158888",
+    "availability": "0.948278164",
+    "platform_count": "51"
+  },
+  {
+    "month": "2020-03-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13790425",
+    "minutes_platforms_in_service": "13230722",
+    "availability": "0.959413651",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-04-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1123200",
+    "minutes_platforms_in_service": "1103510",
+    "availability": "0.982469729",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-04-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3369600",
+    "minutes_platforms_in_service": "3340153",
+    "availability": "0.991260981",
+    "platform_count": "78"
+  },
+  {
+    "month": "2020-04-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6558840",
+    "minutes_platforms_in_service": "6248376",
+    "availability": "0.9526648",
+    "platform_count": "152"
+  },
+  {
+    "month": "2020-04-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2203200",
+    "minutes_platforms_in_service": "2157387",
+    "availability": "0.979206155",
+    "platform_count": "51"
+  },
+  {
+    "month": "2020-04-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13254840",
+    "minutes_platforms_in_service": "12849426",
+    "availability": "0.96941389",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-05-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160640",
+    "minutes_platforms_in_service": "1084716",
+    "availability": "0.934584367",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-05-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3481920",
+    "minutes_platforms_in_service": "3384048",
+    "availability": "0.97189137",
+    "platform_count": "78"
+  },
+  {
+    "month": "2020-05-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6823760",
+    "minutes_platforms_in_service": "6408219",
+    "availability": "0.939103808",
+    "platform_count": "154"
+  },
+  {
+    "month": "2020-05-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2276640",
+    "minutes_platforms_in_service": "2164599",
+    "availability": "0.950786686",
+    "platform_count": "51"
+  },
+  {
+    "month": "2020-05-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13742960",
+    "minutes_platforms_in_service": "13041582",
+    "availability": "0.948964561",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-06-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1123200",
+    "minutes_platforms_in_service": "1003853",
+    "availability": "0.893743768",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-06-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3369600",
+    "minutes_platforms_in_service": "3231925",
+    "availability": "0.959142035",
+    "platform_count": "78"
+  },
+  {
+    "month": "2020-06-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6638750",
+    "minutes_platforms_in_service": "6355330",
+    "availability": "0.957308228",
+    "platform_count": "154"
+  },
+  {
+    "month": "2020-06-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2203200",
+    "minutes_platforms_in_service": "2121312",
+    "availability": "0.962832244",
+    "platform_count": "51"
+  },
+  {
+    "month": "2020-06-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13334750",
+    "minutes_platforms_in_service": "12712420",
+    "availability": "0.953330209",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-07-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1159070",
+    "minutes_platforms_in_service": "1106418",
+    "availability": "0.954573926",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-07-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3490560",
+    "minutes_platforms_in_service": "3337962",
+    "availability": "0.95628266",
+    "platform_count": "80"
+  },
+  {
+    "month": "2020-07-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6748540",
+    "minutes_platforms_in_service": "6326295",
+    "availability": "0.937431652",
+    "platform_count": "154"
+  },
+  {
+    "month": "2020-07-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2299680",
+    "minutes_platforms_in_service": "2163947",
+    "availability": "0.94097744",
+    "platform_count": "53"
+  },
+  {
+    "month": "2020-07-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13697850",
+    "minutes_platforms_in_service": "12934622",
+    "availability": "0.944281183",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-08-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1160630",
+    "minutes_platforms_in_service": "1060670",
+    "availability": "0.913874361",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-08-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3645130",
+    "minutes_platforms_in_service": "3534329",
+    "availability": "0.969603005",
+    "platform_count": "82"
+  },
+  {
+    "month": "2020-08-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6949440",
+    "minutes_platforms_in_service": "6529300",
+    "availability": "0.93954333",
+    "platform_count": "156"
+  },
+  {
+    "month": "2020-08-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2364960",
+    "minutes_platforms_in_service": "2248906",
+    "availability": "0.950927711",
+    "platform_count": "53"
+  },
+  {
+    "month": "2020-08-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14120160",
+    "minutes_platforms_in_service": "13373205",
+    "availability": "0.947100104",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-09-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1123200",
+    "minutes_platforms_in_service": "1024508",
+    "availability": "0.912133191",
+    "platform_count": "26"
+  },
+  {
+    "month": "2020-09-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3542400",
+    "minutes_platforms_in_service": "3430029",
+    "availability": "0.968278286",
+    "platform_count": "82"
+  },
+  {
+    "month": "2020-09-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6822100",
+    "minutes_platforms_in_service": "6523793",
+    "availability": "0.956273435",
+    "platform_count": "158"
+  },
+  {
+    "month": "2020-09-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2289600",
+    "minutes_platforms_in_service": "2178375",
+    "availability": "0.951421646",
+    "platform_count": "53"
+  },
+  {
+    "month": "2020-09-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13777300",
+    "minutes_platforms_in_service": "13156705",
+    "availability": "0.954955252",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-10-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1218240",
+    "minutes_platforms_in_service": "1144097",
+    "availability": "0.93913925",
+    "platform_count": "28"
+  },
+  {
+    "month": "2020-10-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3663360",
+    "minutes_platforms_in_service": "3511670",
+    "availability": "0.958592658",
+    "platform_count": "84"
+  },
+  {
+    "month": "2020-10-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7053120",
+    "minutes_platforms_in_service": "6792667",
+    "availability": "0.963072654",
+    "platform_count": "158"
+  },
+  {
+    "month": "2020-10-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2365920",
+    "minutes_platforms_in_service": "2243220",
+    "availability": "0.948138568",
+    "platform_count": "53"
+  },
+  {
+    "month": "2020-10-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14300640",
+    "minutes_platforms_in_service": "13691654",
+    "availability": "0.957415472",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-11-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1209600",
+    "minutes_platforms_in_service": "1123384",
+    "availability": "0.928723545",
+    "platform_count": "28"
+  },
+  {
+    "month": "2020-11-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3646080",
+    "minutes_platforms_in_service": "3556410",
+    "availability": "0.975406464",
+    "platform_count": "86"
+  },
+  {
+    "month": "2020-11-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6825600",
+    "minutes_platforms_in_service": "6583745",
+    "availability": "0.964566485",
+    "platform_count": "158"
+  },
+  {
+    "month": "2020-11-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2289600",
+    "minutes_platforms_in_service": "2221045",
+    "availability": "0.970058089",
+    "platform_count": "53"
+  },
+  {
+    "month": "2020-11-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13970880",
+    "minutes_platforms_in_service": "13484584",
+    "availability": "0.965192171",
+    "platform_count": "4"
+  },
+  {
+    "month": "2020-12-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1252800",
+    "minutes_platforms_in_service": "1147191",
+    "availability": "0.915701628",
+    "platform_count": "30"
+  },
+  {
+    "month": "2020-12-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3899520",
+    "minutes_platforms_in_service": "3772319",
+    "availability": "0.967380344",
+    "platform_count": "88"
+  },
+  {
+    "month": "2020-12-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7053120",
+    "minutes_platforms_in_service": "6658283",
+    "availability": "0.944019526",
+    "platform_count": "158"
+  },
+  {
+    "month": "2020-12-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2365920",
+    "minutes_platforms_in_service": "2260100",
+    "availability": "0.955273213",
+    "platform_count": "53"
+  },
+  {
+    "month": "2020-12-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14571360",
+    "minutes_platforms_in_service": "13837893",
+    "availability": "0.949663793",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-01-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1339200",
+    "minutes_platforms_in_service": "1272355",
+    "availability": "0.950085872",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-01-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3794400",
+    "minutes_platforms_in_service": "3702195",
+    "availability": "0.975699715",
+    "platform_count": "85"
+  },
+  {
+    "month": "2021-01-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7053120",
+    "minutes_platforms_in_service": "6791359",
+    "availability": "0.962887205",
+    "platform_count": "158"
+  },
+  {
+    "month": "2021-01-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2365920",
+    "minutes_platforms_in_service": "2272099",
+    "availability": "0.960344813",
+    "platform_count": "53"
+  },
+  {
+    "month": "2021-01-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14552640",
+    "minutes_platforms_in_service": "14038008",
+    "availability": "0.96463652",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-02-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1209600",
+    "minutes_platforms_in_service": "1107836",
+    "availability": "0.915869709",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-02-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3427200",
+    "minutes_platforms_in_service": "3255024",
+    "availability": "0.949761905",
+    "platform_count": "85"
+  },
+  {
+    "month": "2021-02-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6370560",
+    "minutes_platforms_in_service": "5939296",
+    "availability": "0.932303597",
+    "platform_count": "158"
+  },
+  {
+    "month": "2021-02-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2088120",
+    "minutes_platforms_in_service": "1952726",
+    "availability": "0.935159857",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-02-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13095480",
+    "minutes_platforms_in_service": "12254882",
+    "availability": "0.935810066",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-03-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1339200",
+    "minutes_platforms_in_service": "1281007",
+    "availability": "0.956546446",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-03-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3873930",
+    "minutes_platforms_in_service": "3792770",
+    "availability": "0.979049699",
+    "platform_count": "88"
+  },
+  {
+    "month": "2021-03-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7053120",
+    "minutes_platforms_in_service": "6640962",
+    "availability": "0.941563733",
+    "platform_count": "158"
+  },
+  {
+    "month": "2021-03-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2272971",
+    "availability": "0.942922391",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-03-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14676810",
+    "minutes_platforms_in_service": "13987710",
+    "availability": "0.95304838",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-04-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1296000",
+    "minutes_platforms_in_service": "1292840",
+    "availability": "0.997561728",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-04-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3628800",
+    "minutes_platforms_in_service": "3626326",
+    "availability": "0.999318232",
+    "platform_count": "84"
+  },
+  {
+    "month": "2021-04-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6825600",
+    "minutes_platforms_in_service": "6815709",
+    "availability": "0.998550897",
+    "platform_count": "158"
+  },
+  {
+    "month": "2021-04-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2332800",
+    "minutes_platforms_in_service": "2312785",
+    "availability": "0.991420182",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-04-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14083200",
+    "minutes_platforms_in_service": "14047660",
+    "availability": "0.997476426",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-05-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1339200",
+    "minutes_platforms_in_service": "1243964",
+    "availability": "0.928885902",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-05-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3937975",
+    "minutes_platforms_in_service": "3822059",
+    "availability": "0.970564567",
+    "platform_count": "90"
+  },
+  {
+    "month": "2021-05-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7116480",
+    "minutes_platforms_in_service": "6772291",
+    "availability": "0.951634937",
+    "platform_count": "162"
+  },
+  {
+    "month": "2021-05-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2320910",
+    "availability": "0.962809472",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-05-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14804215",
+    "minutes_platforms_in_service": "14159224",
+    "availability": "0.956431935",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-06-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1296000",
+    "minutes_platforms_in_service": "1187162",
+    "availability": "0.916020062",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-06-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3892320",
+    "minutes_platforms_in_service": "3702040",
+    "availability": "0.951113989",
+    "platform_count": "91"
+  },
+  {
+    "month": "2021-06-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6998400",
+    "minutes_platforms_in_service": "6602828",
+    "availability": "0.943476795",
+    "platform_count": "162"
+  },
+  {
+    "month": "2021-06-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2332800",
+    "minutes_platforms_in_service": "2193029",
+    "availability": "0.940084448",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-06-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14519520",
+    "minutes_platforms_in_service": "13685059",
+    "availability": "0.942528334",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-07-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1339200",
+    "minutes_platforms_in_service": "1293909",
+    "availability": "0.966180556",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-07-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4062240",
+    "minutes_platforms_in_service": "3807131",
+    "availability": "0.937199919",
+    "platform_count": "91"
+  },
+  {
+    "month": "2021-07-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7231680",
+    "minutes_platforms_in_service": "6849967",
+    "availability": "0.947216553",
+    "platform_count": "162"
+  },
+  {
+    "month": "2021-07-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2315105",
+    "availability": "0.960401318",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-07-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15043680",
+    "minutes_platforms_in_service": "14266112",
+    "availability": "0.948312647",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-08-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1339200",
+    "minutes_platforms_in_service": "1244190",
+    "availability": "0.929054659",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-08-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4062240",
+    "minutes_platforms_in_service": "3865954",
+    "availability": "0.951680354",
+    "platform_count": "91"
+  },
+  {
+    "month": "2021-08-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7231680",
+    "minutes_platforms_in_service": "6656972",
+    "availability": "0.920529116",
+    "platform_count": "162"
+  },
+  {
+    "month": "2021-08-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2290248",
+    "availability": "0.950089606",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-08-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15043680",
+    "minutes_platforms_in_service": "14057364",
+    "availability": "0.934436521",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-09-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1296000",
+    "minutes_platforms_in_service": "1221839",
+    "availability": "0.942777006",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-09-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3931200",
+    "minutes_platforms_in_service": "3752931",
+    "availability": "0.954652778",
+    "platform_count": "91"
+  },
+  {
+    "month": "2021-09-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6955760",
+    "minutes_platforms_in_service": "6413170",
+    "availability": "0.921994146",
+    "platform_count": "164"
+  },
+  {
+    "month": "2021-09-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2332800",
+    "minutes_platforms_in_service": "2187560",
+    "availability": "0.937740055",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-09-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14515760",
+    "minutes_platforms_in_service": "13575500",
+    "availability": "0.935224887",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-10-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1339200",
+    "minutes_platforms_in_service": "1275186",
+    "availability": "0.952199821",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-10-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4058130",
+    "minutes_platforms_in_service": "3946698",
+    "availability": "0.972541047",
+    "platform_count": "91"
+  },
+  {
+    "month": "2021-10-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7135050",
+    "minutes_platforms_in_service": "6856110",
+    "availability": "0.96090567",
+    "platform_count": "164"
+  },
+  {
+    "month": "2021-10-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2259943",
+    "availability": "0.937517838",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-10-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14942940",
+    "minutes_platforms_in_service": "14337937",
+    "availability": "0.959512452",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-11-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1296000",
+    "minutes_platforms_in_service": "1246119",
+    "availability": "0.961511574",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-11-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3931200",
+    "minutes_platforms_in_service": "3815318",
+    "availability": "0.970522487",
+    "platform_count": "91"
+  },
+  {
+    "month": "2021-11-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7078090",
+    "minutes_platforms_in_service": "6846086",
+    "availability": "0.967222231",
+    "platform_count": "164"
+  },
+  {
+    "month": "2021-11-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2160000",
+    "minutes_platforms_in_service": "2052583",
+    "availability": "0.950269907",
+    "platform_count": "50"
+  },
+  {
+    "month": "2021-11-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14465290",
+    "minutes_platforms_in_service": "13960106",
+    "availability": "0.965076124",
+    "platform_count": "4"
+  },
+  {
+    "month": "2021-12-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1339200",
+    "minutes_platforms_in_service": "1279243",
+    "availability": "0.955229241",
+    "platform_count": "30"
+  },
+  {
+    "month": "2021-12-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4000290",
+    "minutes_platforms_in_service": "3875858",
+    "availability": "0.968894255",
+    "platform_count": "91"
+  },
+  {
+    "month": "2021-12-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7320960",
+    "minutes_platforms_in_service": "6969852",
+    "availability": "0.952040716",
+    "platform_count": "164"
+  },
+  {
+    "month": "2021-12-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2354740",
+    "minutes_platforms_in_service": "2200221",
+    "availability": "0.934379592",
+    "platform_count": "54"
+  },
+  {
+    "month": "2021-12-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15015190",
+    "minutes_platforms_in_service": "14325174",
+    "availability": "0.95404547",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-01-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1411200",
+    "minutes_platforms_in_service": "1292847",
+    "availability": "0.916133078",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-01-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4017600",
+    "minutes_platforms_in_service": "3696119",
+    "availability": "0.91998183",
+    "platform_count": "90"
+  },
+  {
+    "month": "2022-01-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6827190",
+    "minutes_platforms_in_service": "6377392",
+    "availability": "0.934116672",
+    "platform_count": "153"
+  },
+  {
+    "month": "2022-01-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2232000",
+    "minutes_platforms_in_service": "2115201",
+    "availability": "0.947670699",
+    "platform_count": "50"
+  },
+  {
+    "month": "2022-01-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14487990",
+    "minutes_platforms_in_service": "13481559",
+    "availability": "0.930533428",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-02-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1290240",
+    "minutes_platforms_in_service": "1213157",
+    "availability": "0.940256851",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-02-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3628800",
+    "minutes_platforms_in_service": "3432094",
+    "availability": "0.9457931",
+    "platform_count": "90"
+  },
+  {
+    "month": "2022-02-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6164760",
+    "minutes_platforms_in_service": "5479172",
+    "availability": "0.888789182",
+    "platform_count": "153"
+  },
+  {
+    "month": "2022-02-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2016000",
+    "minutes_platforms_in_service": "1921020",
+    "availability": "0.952886905",
+    "platform_count": "50"
+  },
+  {
+    "month": "2022-02-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13099800",
+    "minutes_platforms_in_service": "12045443",
+    "availability": "0.919513504",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-03-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428480",
+    "minutes_platforms_in_service": "1363969",
+    "availability": "0.95483941",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-03-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4017600",
+    "minutes_platforms_in_service": "3886877",
+    "availability": "0.967462415",
+    "platform_count": "90"
+  },
+  {
+    "month": "2022-03-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6816800",
+    "minutes_platforms_in_service": "6346672",
+    "availability": "0.931033916",
+    "platform_count": "153"
+  },
+  {
+    "month": "2022-03-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2232000",
+    "minutes_platforms_in_service": "2132790",
+    "availability": "0.955551075",
+    "platform_count": "50"
+  },
+  {
+    "month": "2022-03-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14494880",
+    "minutes_platforms_in_service": "13730308",
+    "availability": "0.947252271",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-04-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1382230",
+    "minutes_platforms_in_service": "1323309",
+    "availability": "0.957372507",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-04-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3888000",
+    "minutes_platforms_in_service": "3676371",
+    "availability": "0.945568673",
+    "platform_count": "90"
+  },
+  {
+    "month": "2022-04-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6692070",
+    "minutes_platforms_in_service": "6225097",
+    "availability": "0.930219947",
+    "platform_count": "159"
+  },
+  {
+    "month": "2022-04-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2159970",
+    "minutes_platforms_in_service": "2053116",
+    "availability": "0.950529868",
+    "platform_count": "50"
+  },
+  {
+    "month": "2022-04-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14122270",
+    "minutes_platforms_in_service": "13277893",
+    "availability": "0.940209541",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-05-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1420005",
+    "minutes_platforms_in_service": "1344029",
+    "availability": "0.946495963",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-05-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4064820",
+    "minutes_platforms_in_service": "3905416",
+    "availability": "0.960784487",
+    "platform_count": "93"
+  },
+  {
+    "month": "2022-05-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6969390",
+    "minutes_platforms_in_service": "6679724",
+    "availability": "0.958437396",
+    "platform_count": "161"
+  },
+  {
+    "month": "2022-05-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2352080",
+    "minutes_platforms_in_service": "2246063",
+    "availability": "0.954926278",
+    "platform_count": "54"
+  },
+  {
+    "month": "2022-05-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14806295",
+    "minutes_platforms_in_service": "14175232",
+    "availability": "0.957378737",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-06-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1380530",
+    "minutes_platforms_in_service": "1311089",
+    "availability": "0.949699753",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-06-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4006800",
+    "minutes_platforms_in_service": "3809631",
+    "availability": "0.950791405",
+    "platform_count": "93"
+  },
+  {
+    "month": "2022-06-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6817290",
+    "minutes_platforms_in_service": "6567152",
+    "availability": "0.963308294",
+    "platform_count": "162"
+  },
+  {
+    "month": "2022-06-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2323850",
+    "minutes_platforms_in_service": "2239879",
+    "availability": "0.963865568",
+    "platform_count": "54"
+  },
+  {
+    "month": "2022-06-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14528470",
+    "minutes_platforms_in_service": "13927751",
+    "availability": "0.958652288",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-07-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428355",
+    "minutes_platforms_in_service": "1374083",
+    "availability": "0.962003844",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-07-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4151260",
+    "minutes_platforms_in_service": "3947520",
+    "availability": "0.950920925",
+    "platform_count": "93"
+  },
+  {
+    "month": "2022-07-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7118920",
+    "minutes_platforms_in_service": "6667867",
+    "availability": "0.936640249",
+    "platform_count": "160"
+  },
+  {
+    "month": "2022-07-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2315029",
+    "availability": "0.96036979",
+    "platform_count": "54"
+  },
+  {
+    "month": "2022-07-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15109095",
+    "minutes_platforms_in_service": "14304499",
+    "availability": "0.946747572",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-08-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428410",
+    "minutes_platforms_in_service": "1335604",
+    "availability": "0.935028458",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-08-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4150440",
+    "minutes_platforms_in_service": "3951560",
+    "availability": "0.952082189",
+    "platform_count": "93"
+  },
+  {
+    "month": "2022-08-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7130165",
+    "minutes_platforms_in_service": "6660597",
+    "availability": "0.93414346",
+    "platform_count": "160"
+  },
+  {
+    "month": "2022-08-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2407680",
+    "minutes_platforms_in_service": "2274484",
+    "availability": "0.944678695",
+    "platform_count": "54"
+  },
+  {
+    "month": "2022-08-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15116695",
+    "minutes_platforms_in_service": "14222245",
+    "availability": "0.94083032",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-09-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1382055",
+    "minutes_platforms_in_service": "1312339",
+    "availability": "0.949556277",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-09-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4007495",
+    "minutes_platforms_in_service": "3818083",
+    "availability": "0.952735562",
+    "platform_count": "93"
+  },
+  {
+    "month": "2022-09-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6951770",
+    "minutes_platforms_in_service": "6624287",
+    "availability": "0.952892141",
+    "platform_count": "162"
+  },
+  {
+    "month": "2022-09-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2332800",
+    "minutes_platforms_in_service": "2243415",
+    "availability": "0.961683385",
+    "platform_count": "54"
+  },
+  {
+    "month": "2022-09-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14674120",
+    "minutes_platforms_in_service": "13998124",
+    "availability": "0.953932774",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-10-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428010",
+    "minutes_platforms_in_service": "1356730",
+    "availability": "0.950084383",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-10-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4140615",
+    "minutes_platforms_in_service": "4013614",
+    "availability": "0.969327986",
+    "platform_count": "93"
+  },
+  {
+    "month": "2022-10-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7228940",
+    "minutes_platforms_in_service": "6978431",
+    "availability": "0.965346372",
+    "platform_count": "163"
+  },
+  {
+    "month": "2022-10-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2409995",
+    "minutes_platforms_in_service": "2306272",
+    "availability": "0.956961321",
+    "platform_count": "54"
+  },
+  {
+    "month": "2022-10-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15207560",
+    "minutes_platforms_in_service": "14655047",
+    "availability": "0.963668531",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-11-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1382185",
+    "minutes_platforms_in_service": "1322967",
+    "availability": "0.957156242",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-11-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4015950",
+    "minutes_platforms_in_service": "3894654",
+    "availability": "0.969796437",
+    "platform_count": "93"
+  },
+  {
+    "month": "2022-11-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7033740",
+    "minutes_platforms_in_service": "6758117",
+    "availability": "0.960814161",
+    "platform_count": "163"
+  },
+  {
+    "month": "2022-11-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2326495",
+    "minutes_platforms_in_service": "2255748",
+    "availability": "0.969590736",
+    "platform_count": "54"
+  },
+  {
+    "month": "2022-11-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14758370",
+    "minutes_platforms_in_service": "14231486",
+    "availability": "0.964299309",
+    "platform_count": "4"
+  },
+  {
+    "month": "2022-12-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1422905",
+    "minutes_platforms_in_service": "1343630",
+    "availability": "0.944286512",
+    "platform_count": "32"
+  },
+  {
+    "month": "2022-12-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4150565",
+    "minutes_platforms_in_service": "4025022",
+    "availability": "0.969752793",
+    "platform_count": "93"
+  },
+  {
+    "month": "2022-12-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7249305",
+    "minutes_platforms_in_service": "6956948",
+    "availability": "0.959671031",
+    "platform_count": "163"
+  },
+  {
+    "month": "2022-12-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2407860",
+    "minutes_platforms_in_service": "2282451",
+    "availability": "0.947916822",
+    "platform_count": "54"
+  },
+  {
+    "month": "2022-12-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15230635",
+    "minutes_platforms_in_service": "14608051",
+    "availability": "0.959122912",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-01-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1427960",
+    "minutes_platforms_in_service": "1376829",
+    "availability": "0.964192975",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-01-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4148515",
+    "minutes_platforms_in_service": "4024347",
+    "availability": "0.97006929",
+    "platform_count": "93"
+  },
+  {
+    "month": "2023-01-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7287380",
+    "minutes_platforms_in_service": "6979353",
+    "availability": "0.957731448",
+    "platform_count": "164"
+  },
+  {
+    "month": "2023-01-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410375",
+    "minutes_platforms_in_service": "2236328",
+    "availability": "0.927792563",
+    "platform_count": "54"
+  },
+  {
+    "month": "2023-01-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15274230",
+    "minutes_platforms_in_service": "14616857",
+    "availability": "0.956961955",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-02-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1284330",
+    "minutes_platforms_in_service": "1207929",
+    "availability": "0.940512952",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-02-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3740220",
+    "minutes_platforms_in_service": "3635107",
+    "availability": "0.971896573",
+    "platform_count": "93"
+  },
+  {
+    "month": "2023-02-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6570405",
+    "minutes_platforms_in_service": "6320113",
+    "availability": "0.961906153",
+    "platform_count": "163"
+  },
+  {
+    "month": "2023-02-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2177280",
+    "minutes_platforms_in_service": "2023301",
+    "availability": "0.929279192",
+    "platform_count": "54"
+  },
+  {
+    "month": "2023-02-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "13772235",
+    "minutes_platforms_in_service": "13186450",
+    "availability": "0.957466236",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-03-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428205",
+    "minutes_platforms_in_service": "1357229",
+    "availability": "0.950304053",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-03-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4148005",
+    "minutes_platforms_in_service": "4061703",
+    "availability": "0.979194336",
+    "platform_count": "93"
+  },
+  {
+    "month": "2023-03-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7288780",
+    "minutes_platforms_in_service": "6977474",
+    "availability": "0.957289697",
+    "platform_count": "164"
+  },
+  {
+    "month": "2023-03-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2408045",
+    "minutes_platforms_in_service": "2291042",
+    "availability": "0.951411622",
+    "platform_count": "54"
+  },
+  {
+    "month": "2023-03-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15273035",
+    "minutes_platforms_in_service": "14687448",
+    "availability": "0.961658767",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-04-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1381230",
+    "minutes_platforms_in_service": "1336142",
+    "availability": "0.967356631",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-04-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4009465",
+    "minutes_platforms_in_service": "3910955",
+    "availability": "0.975430637",
+    "platform_count": "93"
+  },
+  {
+    "month": "2023-04-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7038790",
+    "minutes_platforms_in_service": "6705927",
+    "availability": "0.952710196",
+    "platform_count": "164"
+  },
+  {
+    "month": "2023-04-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2328245",
+    "minutes_platforms_in_service": "2266120",
+    "availability": "0.973316812",
+    "platform_count": "54"
+  },
+  {
+    "month": "2023-04-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14757730",
+    "minutes_platforms_in_service": "14219144",
+    "availability": "0.963504821",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-05-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428340",
+    "minutes_platforms_in_service": "1360605",
+    "availability": "0.952577818",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-05-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4150405",
+    "minutes_platforms_in_service": "4059565",
+    "availability": "0.978112979",
+    "platform_count": "93"
+  },
+  {
+    "month": "2023-05-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7318710",
+    "minutes_platforms_in_service": "6998093",
+    "availability": "0.956192143",
+    "platform_count": "164"
+  },
+  {
+    "month": "2023-05-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2317424",
+    "availability": "0.961363335",
+    "platform_count": "54"
+  },
+  {
+    "month": "2023-05-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15308015",
+    "minutes_platforms_in_service": "14735687",
+    "availability": "0.962612527",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-06-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1382230",
+    "minutes_platforms_in_service": "1336757",
+    "availability": "0.967101712",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-06-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4017115",
+    "minutes_platforms_in_service": "3930957",
+    "availability": "0.978552269",
+    "platform_count": "93"
+  },
+  {
+    "month": "2023-06-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7065540",
+    "minutes_platforms_in_service": "6776588",
+    "availability": "0.959104046",
+    "platform_count": "164"
+  },
+  {
+    "month": "2023-06-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2332800",
+    "minutes_platforms_in_service": "2233351",
+    "availability": "0.957369256",
+    "platform_count": "54"
+  },
+  {
+    "month": "2023-06-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14797685",
+    "minutes_platforms_in_service": "14277653",
+    "availability": "0.964857206",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-07-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428030",
+    "minutes_platforms_in_service": "1377775",
+    "availability": "0.964808162",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-07-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4168520",
+    "minutes_platforms_in_service": "4086314",
+    "availability": "0.980279332",
+    "platform_count": "94"
+  },
+  {
+    "month": "2023-07-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7329650",
+    "minutes_platforms_in_service": "7151847",
+    "availability": "0.975741952",
+    "platform_count": "165"
+  },
+  {
+    "month": "2023-07-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2434180",
+    "minutes_platforms_in_service": "2352012",
+    "availability": "0.966244074",
+    "platform_count": "55"
+  },
+  {
+    "month": "2023-07-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15360380",
+    "minutes_platforms_in_service": "14967948",
+    "availability": "0.974451674",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-08-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428070",
+    "minutes_platforms_in_service": "1374080",
+    "availability": "0.96219373",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-08-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4193680",
+    "minutes_platforms_in_service": "4089296",
+    "availability": "0.975109212",
+    "platform_count": "94"
+  },
+  {
+    "month": "2023-08-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7364875",
+    "minutes_platforms_in_service": "7102083",
+    "availability": "0.9643182",
+    "platform_count": "165"
+  },
+  {
+    "month": "2023-08-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2455060",
+    "minutes_platforms_in_service": "2377472",
+    "availability": "0.968396699",
+    "platform_count": "55"
+  },
+  {
+    "month": "2023-08-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15441685",
+    "minutes_platforms_in_service": "14942931",
+    "availability": "0.967700805",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-09-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1382265",
+    "minutes_platforms_in_service": "1323843",
+    "availability": "0.957734588",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-09-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4060135",
+    "minutes_platforms_in_service": "3982122",
+    "availability": "0.980785614",
+    "platform_count": "94"
+  },
+  {
+    "month": "2023-09-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7119600",
+    "minutes_platforms_in_service": "6861637",
+    "availability": "0.963767206",
+    "platform_count": "165"
+  },
+  {
+    "month": "2023-09-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2375380",
+    "minutes_platforms_in_service": "2244662",
+    "availability": "0.944969647",
+    "platform_count": "55"
+  },
+  {
+    "month": "2023-09-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14937380",
+    "minutes_platforms_in_service": "14412264",
+    "availability": "0.964845508",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-10-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428480",
+    "minutes_platforms_in_service": "1372581",
+    "availability": "0.960868196",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-10-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4118565",
+    "minutes_platforms_in_service": "4023917",
+    "availability": "0.97701918",
+    "platform_count": "94"
+  },
+  {
+    "month": "2023-10-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7364300",
+    "minutes_platforms_in_service": "7140764",
+    "availability": "0.969645995",
+    "platform_count": "165"
+  },
+  {
+    "month": "2023-10-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2455150",
+    "minutes_platforms_in_service": "2347814",
+    "availability": "0.956281286",
+    "platform_count": "55"
+  },
+  {
+    "month": "2023-10-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15366495",
+    "minutes_platforms_in_service": "14885076",
+    "availability": "0.968670865",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-11-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1382400",
+    "minutes_platforms_in_service": "1333540",
+    "availability": "0.964655671",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-11-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4059915",
+    "minutes_platforms_in_service": "3957191",
+    "availability": "0.974697992",
+    "platform_count": "94"
+  },
+  {
+    "month": "2023-11-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7127745",
+    "minutes_platforms_in_service": "6905157",
+    "availability": "0.96877161",
+    "platform_count": "165"
+  },
+  {
+    "month": "2023-11-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2375680",
+    "minutes_platforms_in_service": "2284835",
+    "availability": "0.961760422",
+    "platform_count": "55"
+  },
+  {
+    "month": "2023-11-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14945740",
+    "minutes_platforms_in_service": "14480723",
+    "availability": "0.968886318",
+    "platform_count": "4"
+  },
+  {
+    "month": "2023-12-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428080",
+    "minutes_platforms_in_service": "1382127",
+    "availability": "0.967821831",
+    "platform_count": "32"
+  },
+  {
+    "month": "2023-12-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4195340",
+    "minutes_platforms_in_service": "4095222",
+    "availability": "0.976135903",
+    "platform_count": "94"
+  },
+  {
+    "month": "2023-12-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7316850",
+    "minutes_platforms_in_service": "7111767",
+    "availability": "0.971971135",
+    "platform_count": "164"
+  },
+  {
+    "month": "2023-12-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2329944",
+    "availability": "0.966557149",
+    "platform_count": "54"
+  },
+  {
+    "month": "2023-12-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15350830",
+    "minutes_platforms_in_service": "14919060",
+    "availability": "0.971873182",
+    "platform_count": "4"
+  },
+  {
+    "month": "2024-01-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1427720",
+    "minutes_platforms_in_service": "1372624",
+    "availability": "0.9614098",
+    "platform_count": "32"
+  },
+  {
+    "month": "2024-01-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4194580",
+    "minutes_platforms_in_service": "4064788",
+    "availability": "0.969057212",
+    "platform_count": "94"
+  },
+  {
+    "month": "2024-01-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7352085",
+    "minutes_platforms_in_service": "7157803",
+    "availability": "0.973574571",
+    "platform_count": "165"
+  },
+  {
+    "month": "2024-01-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2444320",
+    "minutes_platforms_in_service": "2310067",
+    "availability": "0.945075522",
+    "platform_count": "55"
+  },
+  {
+    "month": "2024-01-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15418705",
+    "minutes_platforms_in_service": "14905282",
+    "availability": "0.966701289",
+    "platform_count": "4"
+  },
+  {
+    "month": "2024-02-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1335810",
+    "minutes_platforms_in_service": "1298909",
+    "availability": "0.972375562",
+    "platform_count": "32"
+  },
+  {
+    "month": "2024-02-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "3924395",
+    "minutes_platforms_in_service": "3819557",
+    "availability": "0.973285564",
+    "platform_count": "94"
+  },
+  {
+    "month": "2024-02-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "6889885",
+    "minutes_platforms_in_service": "6717593",
+    "availability": "0.974993487",
+    "platform_count": "165"
+  },
+  {
+    "month": "2024-02-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2295420",
+    "minutes_platforms_in_service": "2207165",
+    "availability": "0.961551699",
+    "platform_count": "55"
+  },
+  {
+    "month": "2024-02-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "14445510",
+    "minutes_platforms_in_service": "14043224",
+    "availability": "0.972151485",
+    "platform_count": "4"
+  },
+  {
+    "month": "2024-03-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1428210",
+    "minutes_platforms_in_service": "1370558",
+    "availability": "0.959633387",
+    "platform_count": "32"
+  },
+  {
+    "month": "2024-03-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4195485",
+    "minutes_platforms_in_service": "4088560",
+    "availability": "0.97451427",
+    "platform_count": "94"
+  },
+  {
+    "month": "2024-03-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7316145",
+    "minutes_platforms_in_service": "7111308",
+    "availability": "0.972002058",
+    "platform_count": "164"
+  },
+  {
+    "month": "2024-03-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2410560",
+    "minutes_platforms_in_service": "2344530",
+    "availability": "0.972608025",
+    "platform_count": "54"
+  },
+  {
+    "month": "2024-03-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15350400",
+    "minutes_platforms_in_service": "14914956",
+    "availability": "0.971633052",
+    "platform_count": "4"
+  },
+  {
+    "month": "2024-04-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1468775",
+    "minutes_platforms_in_service": "1420538",
+    "availability": "0.967158346",
+    "platform_count": "34"
+  },
+  {
+    "month": "2024-04-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4060340",
+    "minutes_platforms_in_service": "3980243",
+    "availability": "0.980273327",
+    "platform_count": "94"
+  },
+  {
+    "month": "2024-04-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7125775",
+    "minutes_platforms_in_service": "6930748",
+    "availability": "0.972630766",
+    "platform_count": "165"
+  },
+  {
+    "month": "2024-04-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2374965",
+    "minutes_platforms_in_service": "2266298",
+    "availability": "0.954244799",
+    "platform_count": "55"
+  },
+  {
+    "month": "2024-04-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15029855",
+    "minutes_platforms_in_service": "14597827",
+    "availability": "0.971255345",
+    "platform_count": "4"
+  },
+  {
+    "month": "2024-05-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1517565",
+    "minutes_platforms_in_service": "1451699",
+    "availability": "0.956597576",
+    "platform_count": "34"
+  },
+  {
+    "month": "2024-05-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4369650",
+    "minutes_platforms_in_service": "4277022",
+    "availability": "0.978801964",
+    "platform_count": "98"
+  },
+  {
+    "month": "2024-05-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7452430",
+    "minutes_platforms_in_service": "7258406",
+    "availability": "0.973965002",
+    "platform_count": "167"
+  },
+  {
+    "month": "2024-05-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2633230",
+    "minutes_platforms_in_service": "2512040",
+    "availability": "0.953976675",
+    "platform_count": "59"
+  },
+  {
+    "month": "2024-05-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15972875",
+    "minutes_platforms_in_service": "15499167",
+    "availability": "0.970342972",
+    "platform_count": "4"
+  },
+  {
+    "month": "2024-06-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1468470",
+    "minutes_platforms_in_service": "1409045",
+    "availability": "0.959532711",
+    "platform_count": "34"
+  },
+  {
+    "month": "2024-06-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4228855",
+    "minutes_platforms_in_service": "4114093",
+    "availability": "0.972862158",
+    "platform_count": "98"
+  },
+  {
+    "month": "2024-06-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7213220",
+    "minutes_platforms_in_service": "6954108",
+    "availability": "0.964078179",
+    "platform_count": "167"
+  },
+  {
+    "month": "2024-06-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2547690",
+    "minutes_platforms_in_service": "2448763",
+    "availability": "0.961169923",
+    "platform_count": "59"
+  },
+  {
+    "month": "2024-06-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15458235",
+    "minutes_platforms_in_service": "14926009",
+    "availability": "0.965570067",
+    "platform_count": "4"
+  },
+  {
+    "month": "2024-07-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1517760",
+    "minutes_platforms_in_service": "1464142",
+    "availability": "0.964672939",
+    "platform_count": "34"
+  },
+  {
+    "month": "2024-07-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4372615",
+    "minutes_platforms_in_service": "4276917",
+    "availability": "0.978114241",
+    "platform_count": "98"
+  },
+  {
+    "month": "2024-07-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7454055",
+    "minutes_platforms_in_service": "7277852",
+    "availability": "0.976361457",
+    "platform_count": "167"
+  },
+  {
+    "month": "2024-07-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2633060",
+    "minutes_platforms_in_service": "2542868",
+    "availability": "0.965746318",
+    "platform_count": "59"
+  },
+  {
+    "month": "2024-07-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15977490",
+    "minutes_platforms_in_service": "15561779",
+    "availability": "0.973981458",
+    "platform_count": "4"
+  },
+  {
+    "month": "2024-08-01T00:00:00.000",
+    "borough": "Bronx",
+    "minutes_platforms_available": "1517615",
+    "minutes_platforms_in_service": "1465395",
+    "availability": "0.965590746",
+    "platform_count": "34"
+  },
+  {
+    "month": "2024-08-01T00:00:00.000",
+    "borough": "Brooklyn",
+    "minutes_platforms_available": "4252665",
+    "minutes_platforms_in_service": "4158799",
+    "availability": "0.977927723",
+    "platform_count": "96"
+  },
+  {
+    "month": "2024-08-01T00:00:00.000",
+    "borough": "Manhattan",
+    "minutes_platforms_available": "7453370",
+    "minutes_platforms_in_service": "7283564",
+    "availability": "0.977217554",
+    "platform_count": "167"
+  },
+  {
+    "month": "2024-08-01T00:00:00.000",
+    "borough": "Queens",
+    "minutes_platforms_available": "2582665",
+    "minutes_platforms_in_service": "2499405",
+    "availability": "0.967761982",
+    "platform_count": "59"
+  },
+  {
+    "month": "2024-08-01T00:00:00.000",
+    "borough": "Systemwide",
+    "minutes_platforms_available": "15806315",
+    "minutes_platforms_in_service": "15407163",
+    "availability": "0.974747308",
+    "platform_count": "4"
+  }
+]

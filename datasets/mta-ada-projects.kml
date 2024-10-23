@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>MTA ADA Projects</name>
+    <description/>
+    <Style id="icon-1590-A52714-nodesc-normal">
+      <IconStyle>
+        <color>ff1427a5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1590-A52714-nodesc-highlight">
+      <IconStyle>
+        <color>ff1427a5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1590-A52714-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1590-A52714-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1590-A52714-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1769-0288D1-nodesc-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1769-0288D1-nodesc-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1769-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1769-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1769-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Recently Completed ADA Projects</name>
+      <Placemark>
+        <name>Tremont Av</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9052912,40.8503537,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>E 149 St</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.904099,40.812119,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bedford Park Blvd</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8864688,40.8740355,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gun Hill Rd</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8459327,40.8700664,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>170 Street</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9179069,40.8400763,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>181 St</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9384252,40.8508747,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dyckman St (Northbound)</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9252991,40.8609685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>1 Av</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9824354,40.7313271,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>57 Street</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9803258,40.7655439,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Chambers St</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -74.0040466,40.7131034,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Times Sq - 42 St</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9864109,40.7558202,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Dorp</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -74.1166268,40.5739634,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Metropolitan Av</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9517724,40.7137509,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lorimer St</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9493118,40.7142374,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>7 Av</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9815816,40.6668935,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grand Street</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9404554,40.71191,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>8 Av (Southbound)</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -74.0108021,40.6345839,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bedford Av</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9569726,40.7173546,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>86 St</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -74.0285544,40.6226333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>59 St</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -74.0176646,40.6415585,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Greenpoint Av</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9540458,40.7301618,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eastern Parkway–Brooklyn Museum</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9643725,40.6719362,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Avenue H (Northbound)</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9616534,40.6297251,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Livonia Avenue</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9004534,40.6638213,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rockaway Pkwy</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9025641,40.645567,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Beach 67 St</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.7963224,40.5909619,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Astoria Blvd</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9175153,40.7704539,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Court Square-23 St (Manhattan-bound)</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9470103,40.7480488,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Court Square</name>
+        <styleUrl>#icon-1769-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9456197,40.7463277,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>ADA Upgrades in Progess</name>
+      <Placemark>
+        <name>Steinway St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9206966,40.7566848,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Court Sq-23 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9470478,40.7480508,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Parkchester</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8610088,40.8332116,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Woodhaven Blvd</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8513927,40.6939097,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>149 St - Grand Concourse</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9274121,40.8183248,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Westchester Sq-E Tremont Av</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8428258,40.8401247,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mosholu Pkwy</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8845616,40.8797547,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>68 St - Hunter College</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9638866,40.7678741,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>14 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9999361,40.7382176,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bay Ridge - 95 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -74.0312433,40.6161869,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kings Hwy</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.972359,40.603218,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sheepshead Bay</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9542423,40.5867923,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Church Av</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9632839,40.6495233,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Junius Street</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9029117,40.6634442,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Woodhaven Blvd</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8704231,40.7333681,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Queensboro Plaza</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.940201,40.750584,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>6 Av</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9970742,40.7373636,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>14 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9963544,40.7379522,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>137 St-City College</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9541862,40.8214063,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Van Cortlandt Park-242 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8982881,40.8899021,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Harlem-148 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9369385,40.8240504,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>96 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9650128,40.7916671,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>81 St-Museum of Natural History</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9718232,40.7820063,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>86 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.955589,40.779491,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Huguenot</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -74.1923101,40.5331819,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Borough Hall (Flatbush & Utica Av-Bound)]]></name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.99015,40.692406,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Classon Av</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9600007,40.6888909,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Lots Av</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8837618,40.6663158,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>36 St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -74.0042335,40.6545065,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Broadway Junction</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9040761,40.6783407,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Broadway Junction</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9033015,40.6786488,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Broadway Junction</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9040773,40.6792814,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rockaway Blvd</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.8438385,40.6803958,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Northern Blvd</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9071111,40.7531164,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Broadway</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9255186,40.7619657,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>33 St-Rawson St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9312333,40.7445586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>46 St-Bliss St</name>
+        <styleUrl>#icon-1590-A52714-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -73.9182376,40.7430692,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Replacements</name>
+    </Folder>
+  </Document>
+</kml>
