@@ -4,7 +4,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Map, {
   Layer,
   LayerProps,
-  MapMouseEvent,
   MapRef,
   Source,
 } from "react-map-gl";
@@ -95,7 +94,7 @@ export default function Home() {
   const selectedNeighborhood = useMemo(() => {
     //@ts-ignore
     return Neighborhoods.features.find(
-      (feature: GeoJSON.Feature) => feature.id === focusedNeighborhoodId,
+      (feature: any) => feature.id === focusedNeighborhoodId,
     );
   }, [focusedNeighborhoodId]);
 
@@ -456,14 +455,14 @@ export default function Home() {
       setFocusedNeighborhoodId(null);
       setFocusedStationId(id);
 
-      //@ts-ignore
+      //@ts-expect-error - handled is not a standard property
       e.handled = true;
     });
 
     // Click handler to select neighborhood
     mapRef.current.on("click", "neighborhood-fill", (e) => {
       console.log("neighborhood-fill click", e);
-      //@ts-ignore
+      //@ts-expect-error - handled is not a standard property
       if (e.handled) {
         return;
       }
