@@ -1,6 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Switch } from "./ui/switch";
-import { Label } from "./ui/label";
 import { allRoutes, NycSubwayIcon } from "./nyc-subway-icon";
 
 import Image from "next/image";

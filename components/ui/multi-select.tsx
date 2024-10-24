@@ -72,6 +72,9 @@ interface MultiSelectProps
     icon?: React.ComponentType<{ className?: string }>;
   }[];
 
+  /**
+   * The values currently selected in the multi-select component.
+   */
   selectedValues: string[];
 
   /**
@@ -79,9 +82,6 @@ interface MultiSelectProps
    * Receives an array of the new selected values.
    */
   onValueChange: (value: string[]) => void;
-
-  /** The default selected values when the component mounts. */
-  defaultValue?: string[];
 
   /**
    * Placeholder text to be displayed when no values are selected.
@@ -110,7 +110,7 @@ interface MultiSelectProps
 
   /**
    * If true, renders the multi-select component as a child of another component.
-   * Optional, defaults to false.
+   * Optional, defaults to true.
    */
   asChild?: boolean;
 
@@ -131,12 +131,11 @@ export const MultiSelect = React.forwardRef<
       onValueChange,
       selectedValues,
       variant,
-      defaultValue = [],
       placeholder = "Select options",
       animation = 0,
       maxCount = 3,
       modalPopover = false,
-      asChild = false,
+      asChild = true,
       className,
       ...props
     },
@@ -192,7 +191,7 @@ export const MultiSelect = React.forwardRef<
         onOpenChange={setIsPopoverOpen}
         modal={modalPopover}
       >
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild={asChild}>
           <Button
             ref={ref}
             {...props}
