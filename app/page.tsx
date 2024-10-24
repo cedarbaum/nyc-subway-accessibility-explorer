@@ -7,7 +7,7 @@ import NycBoundary from "@/gis-data/borough-boundaries-geojson.json";
 import Stations from "@/gis-data/mta-subway-stations-geojson.json";
 import SubwayLines from "@/gis-data/subway-lines-geojson.json";
 import StationEntrancesExits from "@/gis-data/subway-entrances-exits.json";
-import ElevatorAndEscalatorInfo from "@/gis-data/elevator-and-escalator-info.json";
+import ElevatorAndEscalatorInfo from "@/gis-data/mta-elevators-and-escalators.json";
 import AdaProjects from "@/gis-data/mta-ada-projects.json";
 import Neighborhoods from "@/gis-data/nyc-neighborhoods.json";
 import { center, bbox } from "@turf/turf";
@@ -17,6 +17,7 @@ import {
   parseAsString,
   useQueryState,
 } from "next-usequerystate";
+import mapboxgl from "mapbox-gl";
 
 const imagesToLoad = [
   "stairs",
@@ -558,6 +559,8 @@ export default function Home() {
         mapRef.current!.addImage(imageName, image!);
       });
     });
+
+    mapRef.current.addControl(new mapboxgl.NavigationControl(), "bottom-right");
   }, [mapRef.current, mapLoaded]);
 
   const elevatorsAndEscalatorsForStation = useMemo(() => {
@@ -568,7 +571,7 @@ export default function Home() {
   }, [selectedStation]);
 
   return (
-    <div className="flex flex-col w-full h-full bg-blue-200">
+    <div className="flex flex-col w-full h-full bg-[#EFE9E1]">
       <Map
         ref={mapRef}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
@@ -588,8 +591,8 @@ export default function Home() {
         {neighborhoodLabels}
         {neighborhoodBoundaries}
         {subwayLines}
-        {adaProjects}
         {stationsEntrancesExits}
+        {adaProjects}
         {stationsLayer}
       </Map>
       <MapOverlay

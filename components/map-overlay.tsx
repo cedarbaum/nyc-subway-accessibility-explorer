@@ -6,7 +6,12 @@ import { allRoutes, NycSubwayIcon } from "./nyc-subway-icon";
 import Image from "next/image";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { ScrollArea } from "./ui/scroll-area";
-import { AlertTriangle, CheckIcon, ConstructionIcon } from "lucide-react";
+import {
+  AlertTriangle,
+  CheckIcon,
+  ConstructionIcon,
+  InfoIcon,
+} from "lucide-react";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { ElevatorIcon } from "./icons/elevator-icon";
 import { EscalatorIcon } from "./icons/escalator-icon";
@@ -20,6 +25,7 @@ import ExternalLink from "./external-link";
 import RouteSelector from "./route-selector";
 import { Station } from "@/lib/dataset-types";
 import StationSelector from "./station-selector";
+import EquipmentStatsTable from "./equipment-stats-table";
 
 export interface Layer {
   id: string;
@@ -34,7 +40,7 @@ interface MapOverlayProps {
   onLayerToggle: (layerId: string, enabled: boolean) => void;
   selectedRoute: string | null;
   onRouteSelect?: (route: string | null) => void;
-  selectedStationId?: string  | null;
+  selectedStationId?: string | null;
   onStationSelect?: (stationId: string | null) => void;
   stations?: Station[];
   station?: {
@@ -49,6 +55,8 @@ interface MapOverlayProps {
       ada_projects?: {
         name: string;
         status: string;
+        type: string;
+        details?: string;
       }[];
     };
   } | null;
@@ -80,6 +88,16 @@ interface MapOverlayProps {
     trainno: string;
     linesservedbyelevator: string;
     serving: string;
+    stats?: {
+      scheduled_outages: number;
+      unscheduled_outages: number;
+      total_outages: number;
+      entrapments: number;
+      am_peak_availability: number;
+      pm_peak_availability: number;
+      _24_hour_availability: number;
+      dataMissing?: boolean;
+    };
   }[];
 }
 
@@ -289,23 +307,41 @@ export function MapOverlay({
                                 />
                               ))}
                           </div>
+                          <EquipmentStatsTable
+                            stats={{
+                              outages: equipment.stats?.total_outages,
+                              peakAmAvailability:
+                                equipment.stats?.am_peak_availability,
+                              peakPmAvailability:
+                                equipment.stats?.pm_peak_availability,
+                              dataMissing: equipment.stats?.dataMissing,
+                            }}
+                          />
                         </div>
                       </div>
                     </div>
                   ))}
               </div>
             </ScrollArea>
-            <Alert className="mt-4 bg-blue-200 border-none">
+            <Alert className="mt-4 bg-blue-200 border-none flex flex-row">
               <InfoCircledIcon className="h-5 w-5" />
               <AlertDescription>
-                For status of elevators/escalators, visit the{" "}
-                <ExternalLink
-                  href="https://new.mta.info/elevator-escalator-status"
-                  target="_blank"
-                >
-                  MTA website
-                </ExternalLink>
-                .
+                <ul className="list-disc list-inside">
+                  <li>
+                    Availability data based on past 6 months from September,
+                    2024
+                  </li>
+                  <li>
+                    For status of elevators/escalators, visit the{" "}
+                    <ExternalLink
+                      href="https://new.mta.info/elevator-escalator-status"
+                      target="_blank"
+                    >
+                      MTA website
+                    </ExternalLink>
+                    .
+                  </li>
+                </ul>
               </AlertDescription>
             </Alert>
           </div>

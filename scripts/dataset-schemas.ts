@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+const parseNumberFromString = (str?: string) =>
+  !str ? undefined : parseInt(str.replace(/,/g, ""), 10);
+const parseFloatFromString = (str?: string) =>
+  !str ? undefined : parseFloat(str);
+
+
 export const SubwayStationSchema = z.object({
   gtfs_stop_id: z.string(),
   station_id: z.string(),
@@ -38,20 +44,20 @@ export const ElevatorAndEscalatorAvailabilitySchema = z.object({
   borough: z.string(),
   equipment_type: z.string(),
   equipment_code: z.string(),
-  total_outages: z.number(),
-  scheduled_outages: z.number(),
-  unscheduled_outages: z.number(),
-  entrapments: z.number(),
-  time_since_major_improvement: z.number(),
-  am_peak_availability: z.number(),
-  am_peak_hours_available: z.number(),
-  am_peak_total_hours: z.number(),
-  pm_peak_availability: z.number(),
-  pm_peak_hours_available: z.number(),
-  pm_peak_total_hours: z.number(),
-  _24_hour_availability: z.number(),
-  _24_hour_hours_available: z.number(),
-  _24_hour_total_hours: z.number(),
+  total_outages: z.string().transform(parseNumberFromString),
+  scheduled_outages: z.string().transform(parseNumberFromString),
+  unscheduled_outages: z.string().transform(parseNumberFromString),
+  entrapments: z.string().transform(parseNumberFromString),
+  time_since_major_improvement: z.string().transform(parseNumberFromString),
+  am_peak_availability: z.string().transform(parseFloatFromString),
+  am_peak_hours_available: z.string().transform(parseNumberFromString),
+  am_peak_total_hours: z.string().transform(parseNumberFromString),
+  pm_peak_availability: z.string().transform(parseFloatFromString),
+  pm_peak_hours_available: z.string().transform(parseNumberFromString),
+  pm_peak_total_hours: z.string().transform(parseNumberFromString),
+  _24_hour_availability: z.string().transform(parseFloatFromString),
+  _24_hour_hours_available: z.string().transform(parseNumberFromString),
+  _24_hour_total_hours: z.string().transform(parseNumberFromString),
   station_name: z.string(),
   station_mrn: z.string(),
   station_complex_name: z.string(),
@@ -79,11 +85,6 @@ export const ElevatorOrEscalatorInfoSchema = z.object({
   busconnections: z.string().optional(), // May not always be present
   alternativeroute: z.string(),
 });
-
-const parseNumberFromString = (str?: string) =>
-  !str ? undefined : parseInt(str.replace(/,/g, ""), 10);
-const parseFloatFromString = (str?: string) =>
-  !str ? undefined : parseFloat(str);
 
 export const CensusDataSchema = z.object({
   Year: z.literal("2020"),

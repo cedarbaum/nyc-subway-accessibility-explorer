@@ -7,6 +7,7 @@ import {
   CensusData,
   writeModifiedDatasetJsonToOutput,
   getDatasetPathById,
+  ElevatorAndEscalatorAvailability,
 } from "./datasets";
 import {
   enforceRightHandRule,
@@ -15,6 +16,7 @@ import {
 import { mapRouteIdToColor } from "./mta-utils";
 import { convertMtaAdaProjectsKmlToGeoJson } from "./kml-utils";
 import { convertLinePointsFileToGeoJSON } from "./route-geojson-utils";
+import { getAggregateStatsForAllEquipment } from "./equipment-utils";
 
 dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
@@ -26,8 +28,12 @@ async function main(): Promise<void> {
 
     // ETL of MTA accessibility projects
     const kmlPath = getDatasetPathById("mta-ada-projects");
+    const suppplmentalDataPath = getDatasetPathById(
+      "mta-ada-projects-supplement",
+    );
     const adaProjectsGeoJSON = convertMtaAdaProjectsKmlToGeoJson(
       kmlPath,
+      suppplmentalDataPath,
     ) as GeoJSON.FeatureCollection<GeoJSON.Point>;
     writeModifiedDatasetJsonToOutput("mta-ada-projects", adaProjectsGeoJSON);
 
@@ -112,6 +118,8 @@ async function main(): Promise<void> {
           nearestStation.properties!.ada_projects.push({
             name: project.properties?.name,
             status: projectStatus,
+            type: project.properties?.type,
+            details: project.properties?.details,
           });
         } else {
           console.warn(
@@ -207,25 +215,42 @@ async function main(): Promise<void> {
 
     writeModifiedDatasetJsonToOutput("subway-lines-geojson", subwayLines);
 
-    // Load elevator and escalator availability data
-    //const elevatorAndEscalatorAvailability = await loadDatasetById<ElevatorAndEscalatorAvailability[]>("elevator-and-escalator-availability");
+    //Load elevator and escalator availability data
+    const elevatorAndEscalatorAvailability = await loadDatasetById<
+      ElevatorAndEscalatorAvailability[]
+    >("elevator-and-escalator-availability");
+    const startTime = "2024-09-01T00:00:00.000";
+    const months = 6;
+    const equipmentStats = getAggregateStatsForAllEquipment(
+      elevatorAndEscalatorAvailability,
+      startTime,
+      months,
+    );
 
     const elevatorAndEscalatorInfo = await loadDatasetById<
       ElevatorOrEscalatorInfo[]
     >("mta-elevators-and-escalators");
     const minimaElevatorAndEscalatorInfo = elevatorAndEscalatorInfo.map(
-      (elevator) => ({
-        station: elevator.station,
-        stationcomplexid: elevator.stationcomplexid,
-        equipmentno: elevator.equipmentno,
-        equipmenttype: elevator.equipmenttype,
-        ADA: elevator.ADA,
-        isactive: elevator.isactive,
-        shortdescription: elevator.shortdescription,
-        trainno: elevator.trainno,
-        linesservedbyelevator: elevator.linesservedbyelevator,
-        serving: elevator.serving,
-      }),
+      (elevator) => {
+        const statsForEquipment = equipmentStats.get(elevator.equipmentno);
+        if (!statsForEquipment) {
+          console.warn(`No equipment stats found for ${elevator.equipmentno}`);
+        }
+
+        return {
+          station: elevator.station,
+          stationcomplexid: elevator.stationcomplexid,
+          equipmentno: elevator.equipmentno,
+          equipmenttype: elevator.equipmenttype,
+          ADA: elevator.ADA,
+          isactive: elevator.isactive,
+          shortdescription: elevator.shortdescription,
+          trainno: elevator.trainno,
+          linesservedbyelevator: elevator.linesservedbyelevator,
+          serving: elevator.serving,
+          stats: statsForEquipment,
+        };
+      },
     );
 
     writeModifiedDatasetJsonToOutput(

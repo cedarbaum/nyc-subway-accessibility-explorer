@@ -51,7 +51,8 @@ export type DatasetId =
   | "subway-lines-geojson"
   | "2020-census-data"
   | "sir-line-points"
-  | "mta-ada-projects";
+  | "mta-ada-projects"
+  | "mta-ada-projects-supplement";
 
 export interface Dataset {
   id: DatasetId;
@@ -146,6 +147,14 @@ export const datasets: Dataset[] = [
     url: "https://www.google.com/maps/d/viewer?mid=1KyAOi9J92POQ7c_v-471XlbLvrOmIDQ&femb=1&ll=40.711780885201954%2C-73.99431625&z=12",
     source: DatasetSource.Other,
     type: DatasetType.KML,
+    schema: z.any(),
+    skipDownload: true,
+  },
+  {
+    id: "mta-ada-projects-supplement",
+    url: "https://new.mta.info/project/station-accessibility-upgrades",
+    source: DatasetSource.Other,
+    type: DatasetType.JSON,
     schema: z.any(),
     skipDownload: true,
   },

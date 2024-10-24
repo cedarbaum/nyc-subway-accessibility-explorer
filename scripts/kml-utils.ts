@@ -2,11 +2,24 @@ import fs from "fs";
 import { DOMParser } from "xmldom";
 import * as toGeoJSON from "@tmcw/togeojson";
 
+type SupplementalData = {
+  type: string;
+  name: string;
+  details?: string;
+};
+
 // Function to read KML and convert to GeoJSON
-export function convertMtaAdaProjectsKmlToGeoJson(kmlFilePath: string) {
+export function convertMtaAdaProjectsKmlToGeoJson(
+  kmlFilePath: string,
+  supplmentalDataPath: string,
+) {
   // Check if the file exists
   if (!fs.existsSync(kmlFilePath)) {
-    throw new Error(`File not found: ${kmlFilePath}`);
+    throw new Error(`KML File not found: ${kmlFilePath}`);
+  }
+
+  if (!fs.existsSync(supplmentalDataPath)) {
+    throw new Error(`Supplemental data not found: ${supplmentalDataPath}`);
   }
 
   // Read the KML file
@@ -16,6 +29,10 @@ export function convertMtaAdaProjectsKmlToGeoJson(kmlFilePath: string) {
 
   // Convert KML to GeoJSON
   const converted = toGeoJSON.kml(kml);
+
+  const supplementalData = JSON.parse(
+    fs.readFileSync(supplmentalDataPath, "utf-8"),
+  ) as SupplementalData[];
 
   // Modify feature properties based on styleUrl to mark project status
   converted.features.forEach((feature) => {
@@ -28,6 +45,22 @@ export function convertMtaAdaProjectsKmlToGeoJson(kmlFilePath: string) {
       ) {
         feature.properties.status = "Ongoing";
       }
+    }
+
+    const featureName = feature.properties?.name;
+    const supplemental = supplementalData.find(
+      (data) => data.name === featureName,
+    );
+    if (supplemental) {
+      feature.properties = {
+        ...feature.properties,
+        ...supplemental,
+      };
+    } else {
+      feature.properties = {
+        ...feature.properties,
+        type: "Elevator addition or replacement",
+      };
     }
   });
 
