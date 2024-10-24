@@ -38,12 +38,12 @@ async function main(): Promise<void> {
     const transformedFeatures = [];
     const mergedStationIndex = new Set<number>();
     for (let i = 0; i < stationsGeoJSON.features.length; i++) {
-      const station = stationsGeoJSON.features[i];
-      transformedFeatures.push(station);
-
       if (mergedStationIndex.has(i)) {
         continue;
       }
+
+      const station = stationsGeoJSON.features[i];
+      transformedFeatures.push(station);
 
       const coords = station.geometry.coordinates;
       for (let j = i + 1; j < stationsGeoJSON.features.length; j++) {

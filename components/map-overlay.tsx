@@ -18,20 +18,25 @@ import {
 import InfoButton from "./info-button";
 import ExternalLink from "./external-link";
 import RouteSelector from "./route-selector";
+import { Station } from "@/lib/dataset-types";
+import StationSelector from "./station-selector";
 
 export interface Layer {
   id: string;
   name: string;
-  active: boolean;
   info?: JSX.Element;
   dependendLayers?: string[];
 }
 
 interface MapOverlayProps {
   layers: Layer[];
+  enabledLayers: string[] | null;
   onLayerToggle: (layerId: string, enabled: boolean) => void;
-  selectedRoute?: string | null;
-  onRouteSelect?: (route: string | null | undefined) => void;
+  selectedRoute: string | null;
+  onRouteSelect?: (route: string | null) => void;
+  selectedStationId?: string  | null;
+  onStationSelect?: (stationId: string | null) => void;
+  stations?: Station[];
   station?: {
     properties: {
       stop_name: string;
@@ -80,16 +85,19 @@ interface MapOverlayProps {
 
 export function MapOverlay({
   layers,
+  enabledLayers,
   onLayerToggle,
   selectedRoute,
   onRouteSelect,
   routeInfo,
   station,
+  stations,
+  selectedStationId,
+  onStationSelect,
   neighborhood,
   elevatorsAndEscalators,
 }: MapOverlayProps) {
   const routeIds = station?.properties.daytime_routes.split(/[\s,]+/);
-  console.log(routeIds);
 
   const accessible = station?.properties.ada === "1";
   let partialAccessible = false;
@@ -127,28 +135,36 @@ export function MapOverlay({
     </p>
   );
 
+  const enabledLayersSet = new Set(enabledLayers ?? []);
   const selectedRoutes = selectedRoute?.split(",");
 
   return (
-    <Card className="absolute top-4 left-4 w-[20%] bg-white shadow-lg max-h-[95%] overflow-auto">
+    <Card className="absolute top-4 left-4 min-w-[420px] max-w-[450px] w-[25%] bg-white shadow-lg max-h-[95%] overflow-auto">
       <CardHeader>
         <CardTitle className="text-lg font-bold">
           NYC Subway Accessibility Explorer
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <RouteSelector
-          value={selectedRoute}
-          onChange={onRouteSelect}
-          groupRoutes
-        />
+        <div className="flex flex-row items-center pb-2 gap-x-2 mb-2">
+          <RouteSelector
+            value={selectedRoute}
+            onChange={onRouteSelect}
+            groupRoutes
+          />
+          <StationSelector
+            value={selectedStationId}
+            values={stations}
+            onChange={onStationSelect}
+          />
+        </div>
         <div className="flex flex-col space-y-4 border-t">
           <h1 className="text-lg font-bold">Data layers</h1>
           {layers.map((layer) => (
             <div key={layer.id} className="flex items-center space-x-2">
               <Switch
                 id={layer.id}
-                checked={layer.active}
+                checked={enabledLayersSet.has(layer.id)}
                 onCheckedChange={(checked) => onLayerToggle(layer.id, checked)}
               />
               <Label htmlFor="airplane-mode">{layer.name}</Label>

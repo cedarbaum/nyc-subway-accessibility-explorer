@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/popover";
 import { NycSubwayIcon } from "./nyc-subway-icon";
 
-export const routes = [
+const routes = [
   "1",
   "2",
   "3",
@@ -65,8 +65,8 @@ const routeGroups = [
 const routeGroupsKey = routeGroups.map(createKeyFromRouteGroup);
 
 interface RouteSelectorProps {
-  value?: string | null;
-  onChange?: (value: string | null | undefined) => void;
+  value: string | null;
+  onChange?: (value: string | null) => void;
   groupRoutes?: boolean;
 }
 
@@ -117,8 +117,8 @@ export default function RouteSelector({
       </PopoverTrigger>
       <PopoverContent className="w-[150px] p-0">
         <Command>
-          <CommandInput placeholder="Search route..." />
-          <CommandEmpty>No theme found.</CommandEmpty>
+          <CommandInput placeholder="Search routes..." />
+          <CommandEmpty>No routes found.</CommandEmpty>
           <CommandGroup className="max-h-[200px] overflow-auto">
             {groupRoutes &&
               routeGroups.map((group) => (

@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Map, {
-  Layer,
-  LayerProps,
-  MapRef,
-  Source,
-} from "react-map-gl";
+import Map, { Layer, LayerProps, MapRef, Source } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import NycBoundary from "@/gis-data/borough-boundaries-geojson.json";
 import Stations from "@/gis-data/mta-subway-stations-geojson.json";
@@ -15,8 +10,13 @@ import StationEntrancesExits from "@/gis-data/subway-entrances-exits.json";
 import ElevatorAndEscalatorInfo from "@/gis-data/elevator-and-escalator-info.json";
 import AdaProjects from "@/gis-data/mta-ada-projects.json";
 import Neighborhoods from "@/gis-data/nyc-neighborhoods.json";
-import { center } from "@turf/turf";
+import { center, bbox } from "@turf/turf";
 import { MapOverlay, Layer as DataLayer } from "@/components/map-overlay";
+import {
+  parseAsArrayOf,
+  parseAsString,
+  useQueryState,
+} from "next-usequerystate";
 
 const imagesToLoad = [
   "stairs",
@@ -26,42 +26,66 @@ const imagesToLoad = [
   "escalator",
 ];
 
+const layers = [
+  { id: "city-boundary", name: "City boundary" },
+  { id: "neighborhoods", name: "Neighborhoods" },
+  {
+    id: "neighborhoods-accessibility-score",
+    name: "Neighborhood Accessibility Score",
+    active: false,
+    info: (
+      <p className="text-base">
+        The accessible stations score is calculated as the percentage of of the
+        5 nearest stations to the neighborhood that are accessible.
+      </p>
+    ),
+    dependendLayers: ["neighborhoods"],
+  },
+  { id: "stations", name: "Stations" },
+  {
+    id: "station-entrances-exits",
+    name: "Station Entrances/Exits",
+    active: false,
+  },
+  { id: "ada-projects", name: "Recent ADA projects" },
+  { id: "subway-lines", name: "Subway lines" },
+];
+
 export default function Home() {
   const mapRef = useRef<MapRef>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
-  const [layers, setLayers] = useState<DataLayer[]>([
-    { id: "city-boundary", name: "City boundary", active: false },
-    { id: "neighborhoods", name: "Neighborhoods", active: false },
-    {
-      id: "neighborhoods-accessibility-score",
-      name: "Neighborhood Accessibility Score",
-      active: false,
-      info: (
-        <p className="text-base">
-          The accessible stations score is calculated as the percentage of of
-          the 5 nearest stations to the neighborhood that are accessible.
-        </p>
-      ),
-      dependendLayers: ["neighborhoods"],
-    },
-    { id: "stations", name: "Stations", active: true },
-    {
-      id: "station-entrances-exits",
-      name: "Station Entrances/Exits",
-      active: false,
-    },
-    { id: "ada-projects", name: "Recent ADA projects", active: false },
-    { id: "subway-lines", name: "Subway lines", active: true },
-  ]);
-  const [focusedStationId, setFocusedStationId] = useState<
-    string | number | null
-  >(null);
+
+  const [enabledLayerIds, setEnabledLayerIds] = useQueryState(
+    "layers",
+    parseAsArrayOf(parseAsString).withDefault(["stations", "subway-lines"]),
+  );
+
+  const [focusedStationId, setFocusedStationId] = useQueryState("stationID");
+  const [selectedRoute, setSelectedRoute] = useQueryState("routes");
   const [focusedNeighborhoodId, setFocusedNeighborhoodId] = useState<
     string | number | null
   >(null);
-  const [selectedRoute, setSelectedRoute] = useState<string | null | undefined>(
-    null,
-  );
+
+  useEffect(() => {
+    if (!focusedStationId) {
+      return;
+    }
+    setFocusedNeighborhoodId(null);
+    setSelectedRoute(null);
+
+    const station = Stations.features.find(
+      (feature) => feature.properties.station_id === focusedStationId,
+    );
+    if (mapLoaded && mapRef.current && station) {
+      mapRef.current.flyTo({
+        center: [
+          station.geometry.coordinates[0],
+          station.geometry.coordinates[1],
+        ],
+        zoom: 15,
+      });
+    }
+  }, [focusedStationId, Stations, mapLoaded]);
 
   useEffect(() => {
     if (!selectedRoute) {
@@ -69,7 +93,28 @@ export default function Home() {
     }
     setFocusedStationId(null);
     setFocusedNeighborhoodId(null);
-  }, [selectedRoute]);
+
+    const routes = new Set(selectedRoute.split(",").map((r) => r.trim()));
+    const routesFeatures = SubwayLines.features.filter((feature) =>
+      routes.has(feature.properties?.rt_symbol?.toLowerCase()),
+    );
+    const routesFeatureCollection = {
+      type: "FeatureCollection",
+      features: routesFeatures,
+    } as GeoJSON.FeatureCollection;
+
+    if (mapLoaded && mapRef.current && routesFeatures.length > 0) {
+      const routeBounds = bbox(routesFeatureCollection) as [
+        number,
+        number,
+        number,
+        number,
+      ];
+      mapRef.current.fitBounds(routeBounds, {
+        padding: 50,
+      });
+    }
+  }, [selectedRoute, SubwayLines, mapLoaded]);
 
   useEffect(() => {
     if (!focusedNeighborhoodId) {
@@ -80,16 +125,22 @@ export default function Home() {
   }, [focusedNeighborhoodId]);
 
   const showingAccessibilityScore = useMemo(() => {
-    return layers.find(
-      (layer) => layer.id === "neighborhoods-accessibility-score",
-    )?.active;
-  }, [layers]);
+    return (
+      enabledLayerIds?.find(
+        (id) => id === "neighborhoods-accessibility-score",
+      ) !== undefined
+    );
+  }, [enabledLayerIds]);
 
   const selectedStation = useMemo(() => {
     return Stations.features.find(
       (feature) => feature.properties.station_id === focusedStationId,
     );
   }, [focusedStationId]);
+
+  const stations = useMemo(() => {
+    return Stations.features.map((feature) => feature.properties);
+  }, []);
 
   const selectedNeighborhood = useMemo(() => {
     //@ts-ignore
@@ -117,30 +168,33 @@ export default function Home() {
       dependentLayers.forEach((dependentLayer) => {
         layerIdsToToEnable.add(dependentLayer);
       });
+      layerIdsToToEnable.add(id);
     } else {
       layers.forEach((layer) => {
         if (layer.dependendLayers?.includes(id)) {
           layerIdsToToDisable.add(layer.id);
         }
       });
+      layerIdsToToDisable.add(id);
     }
 
-    setLayers((prevLayers) =>
-      prevLayers.map((layer) => {
-        if (layer.id === id) {
-          return { ...layer, active: enabled };
-        } else if (layerIdsToToEnable.has(layer.id)) {
-          return { ...layer, active: true };
-        } else if (layerIdsToToDisable.has(layer.id)) {
-          return { ...layer, active: false };
+    const allLayerIds = layers.map((layer) => layer.id);
+    setEnabledLayerIds((prevEnabledLayers) => {
+      const currentEnabledLayers = new Set(prevEnabledLayers ?? []);
+      return allLayerIds.filter((layerId) => {
+        if (layerIdsToToEnable.has(layerId)) {
+          return true;
         }
-        return layer;
-      }),
-    );
+        if (layerIdsToToDisable.has(layerId)) {
+          return false;
+        }
+        return currentEnabledLayers.has(layerId);
+      });
+    });
   };
 
   const layerIsEnabled = (id: string) => {
-    return layers.find((layer) => layer.id === id)?.active;
+    return enabledLayerIds?.includes(id) ?? false;
   };
 
   const stationsData = useMemo(() => {
@@ -221,7 +275,6 @@ export default function Home() {
   const cityBoundary = layerIsEnabled("city-boundary") ? (
     <Source id="city-boundary" type="geojson" data={NycBoundary}>
       <Layer
-        beforeId="subway-lines"
         id="city-boundary"
         type="fill"
         paint={{
@@ -239,7 +292,6 @@ export default function Home() {
   const neighborhoodBoundaries = layerIsEnabled("neighborhoods") ? (
     <Source id="neighborhood-bounds" type="geojson" data={neighborhoodData}>
       <Layer
-        beforeId="neighborhood-labels"
         id="neighborhood-bounds"
         type="line"
         paint={{
@@ -252,10 +304,9 @@ export default function Home() {
     createEmptyLayer("neighborhood-bounds", "line")
   );
 
-  const neighborhoodLabels = layerIsEnabled("neighborhoods") ? (
+  const neighborhoodLabels = (
     <Source id="neighborhood-labels" type="geojson" data={neighborhoodData}>
       <Layer
-        beforeId="subway-lines"
         id="neighborhood-labels"
         type="symbol"
         layout={{
@@ -265,17 +316,18 @@ export default function Home() {
           "text-radial-offset": 0.5,
           "text-justify": "auto",
           "text-anchor": "center",
+          "text-allow-overlap": false,
+        }}
+        paint={{
+          "text-opacity": layerIsEnabled("neighborhoods") ? 1 : 0,
         }}
       />
     </Source>
-  ) : (
-    createEmptyLayer("neighborhood-labels", "symbol")
   );
 
   const neighborhoodFill = layerIsEnabled("neighborhoods") ? (
     <Source id="neighborhood-fill" type="geojson" data={neighborhoodData}>
       <Layer
-        beforeId="neighborhood-labels"
         id="neighborhood-fill"
         type="fill"
         paint={{
@@ -341,7 +393,6 @@ export default function Home() {
   const subwayLines = layerIsEnabled("subway-lines") ? (
     <Source id="subway-lines" type="geojson" data={subwayLineData}>
       <Layer
-        beforeId="stations"
         id="subway-lines"
         type="line"
         paint={{
@@ -374,11 +425,10 @@ export default function Home() {
     createEmptyLayer("ada-projects", "symbol")
   );
 
-  const stations = layerIsEnabled("stations") ? (
+  const stationsLayer = layerIsEnabled("stations") ? (
     <Source id="stations" type="geojson" data={stationsData}>
       <Layer
         id="stations"
-        beforeId="ada-projects"
         type="circle"
         paint={{
           "circle-color": [
@@ -461,7 +511,6 @@ export default function Home() {
 
     // Click handler to select neighborhood
     mapRef.current.on("click", "neighborhood-fill", (e) => {
-      console.log("neighborhood-fill click", e);
       //@ts-expect-error - handled is not a standard property
       if (e.handled) {
         return;
@@ -534,20 +583,24 @@ export default function Home() {
           setMapLoaded(true);
         }}
       >
-        {adaProjects}
-        {stations}
-        {stationsEntrancesExits}
-        {subwayLines}
-        {neighborhoodLabels}
-        {neighborhoodFill}
-        {neighborhoodBoundaries}
         {cityBoundary}
+        {neighborhoodFill}
+        {neighborhoodLabels}
+        {neighborhoodBoundaries}
+        {subwayLines}
+        {adaProjects}
+        {stationsEntrancesExits}
+        {stationsLayer}
       </Map>
       <MapOverlay
         station={selectedStation}
+        stations={stations}
+        selectedStationId={focusedStationId}
+        onStationSelect={setFocusedStationId}
         neighborhood={selectedNeighborhood}
         elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
         layers={layers}
+        enabledLayers={enabledLayerIds}
         onLayerToggle={onLayerToggle}
         selectedRoute={selectedRoute}
         onRouteSelect={setSelectedRoute}
