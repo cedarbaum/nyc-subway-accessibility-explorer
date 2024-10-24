@@ -21,18 +21,18 @@ import RouteSelector from "./route-selector";
 import { Station } from "@/lib/dataset-types";
 import StationSelector from "./station-selector";
 import EquipmentStatsTable from "./equipment-stats-table";
+import { MultiSelect } from "./ui/multi-select";
 
 export interface Layer {
   id: string;
   name: string;
   info?: JSX.Element;
-  dependendLayers?: string[];
 }
 
 interface MapOverlayProps {
   layers: Layer[];
   enabledLayers: string[] | null;
-  onLayerToggle: (layerId: string, enabled: boolean) => void;
+  setEnabledLayers: (layers: string[]) => void;
   selectedRoute: string | null;
   onRouteSelect?: (route: string | null) => void;
   selectedStationId?: string | null;
@@ -99,7 +99,7 @@ interface MapOverlayProps {
 export function MapOverlay({
   layers,
   enabledLayers,
-  onLayerToggle,
+  setEnabledLayers,
   selectedRoute,
   onRouteSelect,
   routeInfo,
@@ -148,7 +148,6 @@ export function MapOverlay({
     </p>
   );
 
-  const enabledLayersSet = new Set(enabledLayers ?? []);
   const selectedRoutes = selectedRoute?.split(",");
 
   return (
@@ -173,17 +172,17 @@ export function MapOverlay({
         </div>
         <div className="flex flex-col space-y-4 border-t">
           <h1 className="text-lg font-bold">Data layers</h1>
-          {layers.map((layer) => (
-            <div key={layer.id} className="flex items-center space-x-2">
-              <Switch
-                id={layer.id}
-                checked={enabledLayersSet.has(layer.id)}
-                onCheckedChange={(checked) => onLayerToggle(layer.id, checked)}
-              />
-              <Label htmlFor="airplane-mode">{layer.name}</Label>
-              {layer.info ? <InfoButton tooltipContent={layer.info} /> : null}
-            </div>
-          ))}
+          <MultiSelect
+            options={layers.map((layer) => ({
+              label: layer.name,
+              value: layer.id,
+            }))}
+            onValueChange={setEnabledLayers}
+            selectedValues={enabledLayers ?? []}
+            placeholder="Select data layers"
+            variant="inverted"
+            maxCount={3}
+          />
         </div>
         {station && (
           <div className="mt-4 border-t">

@@ -40,7 +40,6 @@ const layers = [
         5 nearest stations to the neighborhood that are accessible.
       </p>
     ),
-    dependendLayers: ["neighborhoods"],
   },
   { id: "stations", name: "Stations" },
   {
@@ -87,6 +86,30 @@ export default function Home() {
       });
     }
   }, [focusedStationId, Stations, mapLoaded]);
+
+  useEffect(() => {
+    if (!focusedStationId) {
+      return;
+    }
+    if (!enabledLayerIds.includes("stations")) {
+      setEnabledLayerIds((prevEnabledLayers) => [
+        ...prevEnabledLayers,
+        "stations",
+      ]);
+    }
+  }, [focusedStationId, enabledLayerIds]);
+
+  useEffect(() => {
+    if (!selectedRoute) {
+      return;
+    }
+    if (!enabledLayerIds.includes("subway-lines")) {
+      setEnabledLayerIds((prevEnabledLayers) => [
+        ...prevEnabledLayers,
+        "subway-lines",
+      ]);
+    }
+  }, [selectedRoute, enabledLayerIds]);
 
   useEffect(() => {
     if (!selectedRoute) {
@@ -158,41 +181,6 @@ export default function Home() {
       latitude: centroid.geometry.coordinates[1],
     };
   }, []);
-
-  const onLayerToggle = (id: string, enabled: boolean) => {
-    const layerIdsToToEnable = new Set<string>();
-    const layerIdsToToDisable = new Set<string>();
-    const layer = layers.find((layer) => layer.id === id);
-    const dependentLayers = layer?.dependendLayers ?? [];
-
-    if (enabled) {
-      dependentLayers.forEach((dependentLayer) => {
-        layerIdsToToEnable.add(dependentLayer);
-      });
-      layerIdsToToEnable.add(id);
-    } else {
-      layers.forEach((layer) => {
-        if (layer.dependendLayers?.includes(id)) {
-          layerIdsToToDisable.add(layer.id);
-        }
-      });
-      layerIdsToToDisable.add(id);
-    }
-
-    const allLayerIds = layers.map((layer) => layer.id);
-    setEnabledLayerIds((prevEnabledLayers) => {
-      const currentEnabledLayers = new Set(prevEnabledLayers ?? []);
-      return allLayerIds.filter((layerId) => {
-        if (layerIdsToToEnable.has(layerId)) {
-          return true;
-        }
-        if (layerIdsToToDisable.has(layerId)) {
-          return false;
-        }
-        return currentEnabledLayers.has(layerId);
-      });
-    });
-  };
 
   const layerIsEnabled = (id: string) => {
     return enabledLayerIds?.includes(id) ?? false;
@@ -290,20 +278,22 @@ export default function Home() {
     createEmptyLayer("city-boundary", "fill")
   );
 
-  const neighborhoodBoundaries = layerIsEnabled("neighborhoods") ? (
-    <Source id="neighborhood-bounds" type="geojson" data={neighborhoodData}>
-      <Layer
-        id="neighborhood-bounds"
-        type="line"
-        paint={{
-          "line-color": "#088",
-          "line-width": 2,
-        }}
-      />
-    </Source>
-  ) : (
-    createEmptyLayer("neighborhood-bounds", "line")
-  );
+  const neighborhoodBoundaries =
+    layerIsEnabled("neighborhoods") ||
+    layerIsEnabled("neighborhoods-accessibility-score") ? (
+      <Source id="neighborhood-bounds" type="geojson" data={neighborhoodData}>
+        <Layer
+          id="neighborhood-bounds"
+          type="line"
+          paint={{
+            "line-color": "#088",
+            "line-width": 2,
+          }}
+        />
+      </Source>
+    ) : (
+      createEmptyLayer("neighborhood-bounds", "line")
+    );
 
   const neighborhoodLabels = (
     <Source id="neighborhood-labels" type="geojson" data={neighborhoodData}>
@@ -320,76 +310,82 @@ export default function Home() {
           "text-allow-overlap": false,
         }}
         paint={{
-          "text-opacity": layerIsEnabled("neighborhoods") ? 1 : 0,
+          "text-opacity":
+            layerIsEnabled("neighborhoods") ||
+            layerIsEnabled("neighborhoods-accessibility-score")
+              ? 1
+              : 0,
         }}
       />
     </Source>
   );
 
-  const neighborhoodFill = layerIsEnabled("neighborhoods") ? (
-    <Source id="neighborhood-fill" type="geojson" data={neighborhoodData}>
-      <Layer
-        id="neighborhood-fill"
-        type="fill"
-        paint={{
-          "fill-color": [
-            "case",
-            ["boolean", ["get", "showingAccessibilityScore"], false],
-            [
-              "interpolate",
-              ["linear"],
-              ["get", "accessible_station_score"],
-              0.1,
-              "#ff3030",
-              0.2,
-              "#d73027",
-              0.3,
-              "#f46d43",
-              0.4,
-              "#fdae61",
-              0.5,
-              "#fee08b",
-              0.6,
-              "#d9ef8b",
-              0.7,
-              "#a6d96a",
-              0.8,
-              "#66bd63",
+  const neighborhoodFill =
+    layerIsEnabled("neighborhoods") ||
+    layerIsEnabled("neighborhoods-accessibility-score") ? (
+      <Source id="neighborhood-fill" type="geojson" data={neighborhoodData}>
+        <Layer
+          id="neighborhood-fill"
+          type="fill"
+          paint={{
+            "fill-color": [
+              "case",
+              ["boolean", ["get", "showingAccessibilityScore"], false],
+              [
+                "interpolate",
+                ["linear"],
+                ["get", "accessible_station_score"],
+                0.1,
+                "#ff3030",
+                0.2,
+                "#d73027",
+                0.3,
+                "#f46d43",
+                0.4,
+                "#fdae61",
+                0.5,
+                "#fee08b",
+                0.6,
+                "#d9ef8b",
+                0.7,
+                "#a6d96a",
+                0.8,
+                "#66bd63",
+                0.9,
+                "#1a9850",
+              ],
+              "#088",
+            ],
+            "fill-opacity": [
+              "case",
+              [
+                "all",
+                ["boolean", ["get", "showingAccessibilityScore"], false],
+                ["boolean", ["feature-state", "hover"], false],
+              ],
               0.9,
-              "#1a9850",
-            ],
-            "#088",
-          ],
-          "fill-opacity": [
-            "case",
-            [
-              "all",
+              [
+                "all",
+                ["boolean", ["get", "showingAccessibilityScore"], false],
+                ["boolean", ["get", "focused"], false],
+              ],
+              0.9,
               ["boolean", ["get", "showingAccessibilityScore"], false],
+              0.7,
               ["boolean", ["feature-state", "hover"], false],
-            ],
-            0.9,
-            [
-              "all",
-              ["boolean", ["get", "showingAccessibilityScore"], false],
+              0.5,
               ["boolean", ["get", "focused"], false],
+              0.5,
+              0.0,
             ],
-            0.9,
-            ["boolean", ["get", "showingAccessibilityScore"], false],
-            0.7,
-            ["boolean", ["feature-state", "hover"], false],
-            0.5,
-            ["boolean", ["get", "focused"], false],
-            0.5,
-            0.0,
-          ],
-          "fill-color-transition": { duration: 0 },
-          "fill-opacity-transition": { duration: 0 },
-        }}
-      />
-    </Source>
-  ) : (
-    createEmptyLayer("neighborhood-fill", "fill")
-  );
+            "fill-color-transition": { duration: 0 },
+            "fill-opacity-transition": { duration: 0 },
+          }}
+        />
+      </Source>
+    ) : (
+      createEmptyLayer("neighborhood-fill", "fill")
+    );
 
   const subwayLines = layerIsEnabled("subway-lines") ? (
     <Source id="subway-lines" type="geojson" data={subwayLineData}>
@@ -604,7 +600,7 @@ export default function Home() {
         elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
         layers={layers}
         enabledLayers={enabledLayerIds}
-        onLayerToggle={onLayerToggle}
+        setEnabledLayers={setEnabledLayerIds}
         selectedRoute={selectedRoute}
         onRouteSelect={setSelectedRoute}
         routeInfo={routeInfo}
