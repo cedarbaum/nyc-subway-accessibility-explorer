@@ -46,6 +46,7 @@ interface MapOverlayProps {
       ada_northbound: string;
       ada_notes?: string | null;
       ada_projects?: {
+        id: string;
         name: string;
         status: string;
         type: string;
@@ -93,10 +94,12 @@ interface MapOverlayProps {
     };
   }[];
   adaProject?: {
-    name: string;
-    status: string;
-    type: string;
-    details?: string;
+    properties: {
+      name: string;
+      status: string;
+      type: string;
+      details?: string;
+    };
   };
 }
 
@@ -247,7 +250,7 @@ export function MapOverlay({
             <ScrollArea className="max-h-[250px] overflow-scroll mt-2">
               <div className="flex flex-col space-y-2">
                 {station.properties.ada_projects.map((project) => (
-                  <div key={project.name} className="flex flex-col">
+                  <div key={project.id} className="flex flex-col">
                     <div className="flex flex-row space-x-2">
                       <div
                         className="relative"
@@ -409,6 +412,35 @@ export function MapOverlay({
                 )}
               </div>
               <InfoButton tooltipContent={accessibilityScoreTooltipContent} />
+            </div>
+          </div>
+        )}
+        {adaProject && (
+          <div className="mt-4 border-t">
+            <h1 className="mt-2 text-lg font-bold">
+              {`ADA project: ${adaProject.properties.name}`}
+            </h1>
+            <ExternalLink
+              href="https://new.mta.info/project/station-accessibility-upgrades"
+              target="_blank"
+            >
+              Learn more
+            </ExternalLink>
+            <div className="flex flex-row space-x-2 mt-2">
+              <div className="relative" style={{ width: 25, height: 25 }}>
+                {adaProject.properties.status === "Completed" && (
+                  <CheckIcon className="h-5 w-5 text-green-500" />
+                )}
+                {adaProject.properties.status === "Ongoing" && (
+                  <ConstructionIcon className="h-5 w-5 text-yellow-500" />
+                )}
+              </div>
+              <div className="flex flex-col">
+                <p className="text-sm">{adaProject.properties.type}</p>
+                {adaProject.properties.details && (
+                  <p className="text-sm">{adaProject.properties.details}</p>
+                )}
+              </div>
             </div>
           </div>
         )}

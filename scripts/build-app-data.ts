@@ -123,6 +123,7 @@ async function main(): Promise<void> {
             nearestStation.properties!.ada_projects = [];
           }
           nearestStation.properties!.ada_projects.push({
+            id: project.id,
             name: project.properties?.name,
             status: projectStatus,
             type: project.properties?.type,

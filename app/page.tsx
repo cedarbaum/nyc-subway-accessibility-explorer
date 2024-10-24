@@ -661,6 +661,7 @@ export default function Home() {
         selectedRoute={selectedRoute}
         onRouteSelect={setSelectedRoute}
         routeInfo={routeInfo}
+        adaProject={selectedAdaProject}
       />
     </div>
   );
