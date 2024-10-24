@@ -6,12 +6,7 @@ import { allRoutes, NycSubwayIcon } from "./nyc-subway-icon";
 import Image from "next/image";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { ScrollArea } from "./ui/scroll-area";
-import {
-  AlertTriangle,
-  CheckIcon,
-  ConstructionIcon,
-  InfoIcon,
-} from "lucide-react";
+import { AlertTriangle, CheckIcon, ConstructionIcon } from "lucide-react";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { ElevatorIcon } from "./icons/elevator-icon";
 import { EscalatorIcon } from "./icons/escalator-icon";
