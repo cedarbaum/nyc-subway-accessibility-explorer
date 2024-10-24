@@ -3,14 +3,14 @@ import path from "path";
 import { parse } from "csv-parse";
 import StreamZip from "node-stream-zip";
 import { z } from "zod";
-import { GtfsSchema } from "./gtfs-schema";
 import {
+  GtfsSchema,
   CensusDataSchema,
   ElevatorAndEscalatorAvailabilitySchema,
   ElevatorOrEscalatorInfoSchema,
   PlatformAvailabilitySchema,
   SubwayStationSchema,
-} from "./ny-data-schemas";
+} from "./dataset-schemas";
 
 export type GtfsData = z.infer<typeof GtfsSchema>;
 export type SubwayStation = z.infer<typeof SubwayStationSchema>;
