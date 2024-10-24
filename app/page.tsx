@@ -11,7 +11,7 @@ import ElevatorAndEscalatorInfo from "@/gis-data/elevator-and-escalator-info.jso
 import AdaProjects from "@/gis-data/mta-ada-projects.json";
 import Neighborhoods from "@/gis-data/nyc-neighborhoods.json";
 import { center, bbox } from "@turf/turf";
-import { MapOverlay, Layer as DataLayer } from "@/components/map-overlay";
+import { MapOverlay } from "@/components/map-overlay";
 import {
   parseAsArrayOf,
   parseAsString,
