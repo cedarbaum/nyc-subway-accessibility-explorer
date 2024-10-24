@@ -52,6 +52,7 @@ export type DatasetId =
   | "2020-census-data"
   | "sir-line-points"
   | "mta-ada-projects"
+  | "mta-hourly-turnstile-data"
   | "mta-ada-projects-supplement";
 
 export interface Dataset {
@@ -163,6 +164,14 @@ export const datasets: Dataset[] = [
     url: "N/A",
     source: DatasetSource.Other,
     type: DatasetType.JSON,
+    schema: z.any(),
+    skipDownload: true,
+  },
+  {
+    id: "mta-hourly-turnstile-data",
+    url: "https://data.ny.gov/Transportation/MTA-Subway-Hourly-Ridership-Beginning-July-2020/wujg-7c2s/about_data",
+    source: DatasetSource.Other,
+    type: DatasetType.CSV,
     schema: z.any(),
     skipDownload: true,
   },

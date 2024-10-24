@@ -65,6 +65,9 @@ export default function Home() {
   const [focusedNeighborhoodId, setFocusedNeighborhoodId] = useState<
     string | number | null
   >(null);
+  const [focusedAdaProjectId, setFocusedAdaProjectId] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     if (!focusedStationId) {
@@ -110,6 +113,15 @@ export default function Home() {
       ]);
     }
   }, [selectedRoute, enabledLayerIds]);
+
+  useEffect(() => {
+    if (!focusedAdaProjectId) {
+      return;
+    }
+    setFocusedStationId(null);
+    setFocusedNeighborhoodId(null);
+    setSelectedRoute(null);
+  }, [focusedAdaProjectId]);
 
   useEffect(() => {
     if (!selectedRoute) {
@@ -172,6 +184,12 @@ export default function Home() {
       (feature: any) => feature.id === focusedNeighborhoodId,
     );
   }, [focusedNeighborhoodId]);
+
+  const selectedAdaProject = useMemo(() => {
+    return AdaProjects.features.find(
+      (feature) => feature.properties.id === focusedAdaProjectId,
+    );
+  }, [focusedAdaProjectId]);
 
   // Calculate the centroid of the GeoJSON for NYC boundaries
   const mapCenter = useMemo(() => {
@@ -260,6 +278,17 @@ export default function Home() {
     });
     return newSubwayLines;
   }, [selectedRoute]);
+
+  const adaProjectsData = useMemo(() => {
+    const newAdaProjects = JSON.parse(
+      JSON.stringify(AdaProjects),
+    ) as GeoJSON.FeatureCollection;
+    newAdaProjects.features.forEach((feature) => {
+      feature!.properties!.focused =
+        feature?.properties?.id === focusedAdaProjectId;
+    });
+    return newAdaProjects;
+  }, [focusedAdaProjectId]);
 
   const cityBoundary = layerIsEnabled("city-boundary") ? (
     <Source id="city-boundary" type="geojson" data={NycBoundary}>
@@ -403,7 +432,7 @@ export default function Home() {
   );
 
   const adaProjects = layerIsEnabled("ada-projects") ? (
-    <Source id="ada-projects" type="geojson" data={AdaProjects}>
+    <Source id="ada-projects" type="geojson" data={adaProjectsData}>
       <Layer
         id="ada-projects"
         type="symbol"
@@ -414,7 +443,8 @@ export default function Home() {
             "completed",
             "construction",
           ],
-          "icon-size": 1.2,
+          "icon-size": ["case", ["==", ["get", "focused"], true], 1.4, 1.0],
+          "icon-allow-overlap": true,
         }}
       />
     </Source>
@@ -499,7 +529,6 @@ export default function Home() {
         return;
       }
 
-      setFocusedNeighborhoodId(null);
       setFocusedStationId(id);
 
       //@ts-expect-error - handled is not a standard property
@@ -514,9 +543,37 @@ export default function Home() {
       }
 
       if (e.features && e.features.length > 0) {
-        setFocusedStationId(null);
         setFocusedNeighborhoodId(e.features[0]?.id ?? null);
       }
+    });
+
+    // Click handler for ADA projects
+    mapRef.current.on("click", "ada-projects", (e) => {
+      //@ts-expect-error - handled is not a standard property
+      if (e.handled) {
+        return;
+      }
+
+      const features = mapRef.current!.queryRenderedFeatures(e.point, {
+        layers: ["ada-projects"],
+      });
+
+      if (features.length === 0) {
+        setFocusedAdaProjectId(null);
+        return;
+      }
+
+      const id = features[0]?.properties?.id;
+      if (!id) {
+        console.error("No id found in properties", features[0]);
+        setFocusedAdaProjectId(null);
+        return;
+      }
+
+      setFocusedAdaProjectId(id);
+
+      //@ts-expect-error - handled is not a standard property
+      e.handled = true;
     });
 
     mapRef.current.on("mousemove", "neighborhood-fill", (e) => {
@@ -574,7 +631,7 @@ export default function Home() {
         initialViewState={{
           longitude: mapCenter.longitude,
           latitude: mapCenter.latitude,
-          zoom: 10,
+          zoom: 12,
         }}
         style={{ width: "100%", height: "100%" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"

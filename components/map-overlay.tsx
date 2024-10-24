@@ -92,6 +92,12 @@ interface MapOverlayProps {
       dataMissing?: boolean;
     };
   }[];
+  adaProject?: {
+    name: string;
+    status: string;
+    type: string;
+    details?: string;
+  };
 }
 
 export function MapOverlay({
@@ -107,6 +113,7 @@ export function MapOverlay({
   onStationSelect,
   neighborhood,
   elevatorsAndEscalators,
+  adaProject,
 }: MapOverlayProps) {
   const routeIds = station?.properties.daytime_routes.split(/[\s,]+/);
 
@@ -255,6 +262,10 @@ export function MapOverlay({
                       </div>
                       <div className="flex flex-col">
                         <p className="font-bold">{project.name}</p>
+                        <p className="text-sm">{project.type}</p>
+                        {project.details && (
+                          <p className="text-sm">{project.details}</p>
+                        )}
                       </div>
                     </div>
                   </div>

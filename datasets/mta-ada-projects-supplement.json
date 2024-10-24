@@ -1,7 +1,7 @@
 [
   {
     "type": "Elevator recently opened",
-    "name": "Tremont"
+    "name": "Tremont Av"
   },
   {
     "type": "Elevator recently opened",
@@ -13,11 +13,11 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "Gun Hill Rd\u200b"
+    "name": "Gun Hill Rd"
   },
   {
     "type": "Elevator recently opened",
-    "name": "170 St \u200b"
+    "name": "170 Street"
   },
   {
     "type": "Elevator recently opened",
@@ -25,8 +25,9 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "14 St \u200b\u200b",
-    "details": "Uptown"
+    "name": "14 St",
+    "details": "Uptown",
+    "coords": [-73.9963544, 40.7379522, 0]
   },
   {
     "type": "Elevator recently opened",
@@ -34,7 +35,7 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "Dyckman St",
+    "name": "Dyckman St (Northbound)",
     "details": "Uptown, station now fully accessible"
   },
   {
@@ -47,11 +48,11 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "57 St-7 Av"
+    "name": "57 Street"
   },
   {
     "type": "Elevator recently opened",
-    "name": "Times Sq-42 St"
+    "name": "Times Sq - 42 St"
   },
   {
     "type": "Elevator recently opened",
@@ -71,11 +72,11 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "Grand St"
+    "name": "Grand Street"
   },
   {
     "type": "Elevator recently opened",
-    "name": "8 Av",
+    "name": "8 Av (Southbound)",
     "details": "Coney Island-bound, station now fully accessible"
   },
   {
@@ -84,7 +85,8 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "86 St"
+    "name": "86 St",
+    "coords": [-74.0285544, 40.6226333, 0]
   },
   {
     "type": "Elevator recently opened",
@@ -96,20 +98,20 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "Eastern Pkwy-Brooklyn Museum"
+    "name": "Eastern Parkway–Brooklyn Museum"
   },
   {
     "type": "Elevator recently opened",
-    "name": "Avenue H",
+    "name": "Avenue H (Northbound)",
     "details": "Manhattan-bound, station now fully accessible"
   },
   {
     "type": "Elevator recently opened",
-    "name": "Livonia Av"
+    "name": "Livonia Avenue"
   },
   {
     "type": "Elevator recently opened",
-    "name": "Canarsie-Rockaway Pkwy"
+    "name": "Rockaway Pkwy"
   },
   {
     "type": "Elevator recently opened",
@@ -117,7 +119,7 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "Court Sq"
+    "name": "Court Square"
   },
   {
     "type": "Elevator recently opened",
@@ -125,7 +127,7 @@
   },
   {
     "type": "Elevator recently opened",
-    "name": "Court Sq-23 St",
+    "name": "Court Square-23 St (Manhattan-bound)",
     "details": "Manhattan-bound"
   }
 ]

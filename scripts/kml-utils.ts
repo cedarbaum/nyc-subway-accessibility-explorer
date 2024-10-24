@@ -6,7 +6,27 @@ type SupplementalData = {
   type: string;
   name: string;
   details?: string;
+  coords?: number[];
 };
+
+function supplmentalDataCoordsEqualFeatureCoords(
+  supplementalData: SupplementalData,
+  feature: GeoJSON.Feature<GeoJSON.Point>,
+) {
+  if (!supplementalData.coords) {
+    return false;
+  }
+
+  const coords = feature.geometry?.coordinates;
+  if (!coords) {
+    return false;
+  }
+
+  return (
+    coords[0] === supplementalData.coords[0] &&
+    coords[1] === supplementalData.coords[1]
+  );
+}
 
 // Function to read KML and convert to GeoJSON
 export function convertMtaAdaProjectsKmlToGeoJson(
@@ -28,7 +48,9 @@ export function convertMtaAdaProjectsKmlToGeoJson(
   const kml = parser.parseFromString(kmlText, "text/xml");
 
   // Convert KML to GeoJSON
-  const converted = toGeoJSON.kml(kml);
+  const converted = toGeoJSON.kml(
+    kml,
+  ) as GeoJSON.FeatureCollection<GeoJSON.Point>;
 
   const supplementalData = JSON.parse(
     fs.readFileSync(supplmentalDataPath, "utf-8"),
@@ -47,9 +69,17 @@ export function convertMtaAdaProjectsKmlToGeoJson(
       }
     }
 
+    // Asign each project a unique ID
+    feature.id = crypto.randomUUID();
+    feature.properties!.id = feature.id;
+
+    // Associate supplemental data with the project
     const featureName = feature.properties?.name;
     const supplemental = supplementalData.find(
-      (data) => data.name === featureName,
+      (data) =>
+        data.name === featureName &&
+        (!data.coords ||
+          supplmentalDataCoordsEqualFeatureCoords(data, feature)),
     );
     if (supplemental) {
       feature.properties = {

@@ -20,11 +20,18 @@ import { getAggregateStatsForAllEquipment } from "./equipment-utils";
 
 dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
+const datasetsToSkip = process.env.SKIP_DATASETS?.split(",") || [];
+
 async function main(): Promise<void> {
   try {
+    console.log("Will skip datasets:", datasetsToSkip);
+
     // Copy these datasets unchanged to the output directory
     copyDatasetToOutput("borough-boundaries-geojson");
     copyDatasetToOutput("subway-entrances-exits");
+
+    // const turnstileData = await loadDatasetById("mta-hourly-turnstile-data") as any;
+    // console.log("Loaded turnstile data with", turnstileData.length, "entries");
 
     // ETL of MTA accessibility projects
     const kmlPath = getDatasetPathById("mta-ada-projects");
@@ -167,12 +174,12 @@ async function main(): Promise<void> {
         }) as GeoJSON.MultiPolygon;
       }
 
-      const n = 10;
+      const n = 5;
       const nearestStations = findNearestNPointFeaturesToGeometry(
         n,
         mergedStationsGeoJSON,
         neighborhood.geometry as GeoJSON.MultiPolygon | GeoJSON.Polygon,
-        1600,
+        3200,
       );
 
       const accessibleStations = nearestStations.filter(
@@ -216,47 +223,51 @@ async function main(): Promise<void> {
     writeModifiedDatasetJsonToOutput("subway-lines-geojson", subwayLines);
 
     //Load elevator and escalator availability data
-    const elevatorAndEscalatorAvailability = await loadDatasetById<
-      ElevatorAndEscalatorAvailability[]
-    >("elevator-and-escalator-availability");
-    const startTime = "2024-09-01T00:00:00.000";
-    const months = 6;
-    const equipmentStats = getAggregateStatsForAllEquipment(
-      elevatorAndEscalatorAvailability,
-      startTime,
-      months,
-    );
+    if (!datasetsToSkip.includes("mta-elevators-and-escalators")) {
+      const elevatorAndEscalatorAvailability = await loadDatasetById<
+        ElevatorAndEscalatorAvailability[]
+      >("elevator-and-escalator-availability");
+      const startTime = "2024-09-01T00:00:00.000";
+      const months = 6;
+      const equipmentStats = getAggregateStatsForAllEquipment(
+        elevatorAndEscalatorAvailability,
+        startTime,
+        months,
+      );
 
-    const elevatorAndEscalatorInfo = await loadDatasetById<
-      ElevatorOrEscalatorInfo[]
-    >("mta-elevators-and-escalators");
-    const minimaElevatorAndEscalatorInfo = elevatorAndEscalatorInfo.map(
-      (elevator) => {
-        const statsForEquipment = equipmentStats.get(elevator.equipmentno);
-        if (!statsForEquipment) {
-          console.warn(`No equipment stats found for ${elevator.equipmentno}`);
-        }
+      const elevatorAndEscalatorInfo = await loadDatasetById<
+        ElevatorOrEscalatorInfo[]
+      >("mta-elevators-and-escalators");
+      const minimaElevatorAndEscalatorInfo = elevatorAndEscalatorInfo.map(
+        (elevator) => {
+          const statsForEquipment = equipmentStats.get(elevator.equipmentno);
+          if (!statsForEquipment) {
+            console.warn(
+              `No equipment stats found for ${elevator.equipmentno}`,
+            );
+          }
 
-        return {
-          station: elevator.station,
-          stationcomplexid: elevator.stationcomplexid,
-          equipmentno: elevator.equipmentno,
-          equipmenttype: elevator.equipmenttype,
-          ADA: elevator.ADA,
-          isactive: elevator.isactive,
-          shortdescription: elevator.shortdescription,
-          trainno: elevator.trainno,
-          linesservedbyelevator: elevator.linesservedbyelevator,
-          serving: elevator.serving,
-          stats: statsForEquipment,
-        };
-      },
-    );
+          return {
+            station: elevator.station,
+            stationcomplexid: elevator.stationcomplexid,
+            equipmentno: elevator.equipmentno,
+            equipmenttype: elevator.equipmenttype,
+            ADA: elevator.ADA,
+            isactive: elevator.isactive,
+            shortdescription: elevator.shortdescription,
+            trainno: elevator.trainno,
+            linesservedbyelevator: elevator.linesservedbyelevator,
+            serving: elevator.serving,
+            stats: statsForEquipment,
+          };
+        },
+      );
 
-    writeModifiedDatasetJsonToOutput(
-      "mta-elevators-and-escalators",
-      minimaElevatorAndEscalatorInfo,
-    );
+      writeModifiedDatasetJsonToOutput(
+        "mta-elevators-and-escalators",
+        minimaElevatorAndEscalatorInfo,
+      );
+    }
   } catch (error) {
     console.error("An error occurred:", error);
   }
