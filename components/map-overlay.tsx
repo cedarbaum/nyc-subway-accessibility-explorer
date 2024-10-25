@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { allRoutes, NycSubwayIcon } from "./nyc-subway-icon";
 
@@ -20,6 +22,8 @@ import { Station } from "@/lib/dataset-types";
 import StationSelector from "./station-selector";
 import EquipmentStatsTable from "./equipment-stats-table";
 import { MultiSelect } from "./ui/multi-select";
+import { cn } from "@/lib/utils";
+import DynamicScrollArea from "./ui/dynamic-scroll-area";
 
 export interface Layer {
   id: string;
@@ -28,6 +32,8 @@ export interface Layer {
 }
 
 interface MapOverlayProps {
+  className?: string;
+  scrollable?: boolean;
   layers: Layer[];
   clearAllSelections: () => void;
   enabledLayers: string[] | null;
@@ -107,7 +113,9 @@ interface MapOverlayProps {
 }
 
 export function MapOverlay({
+  className,
   layers,
+  scrollable = true,
   clearAllSelections,
   enabledLayers,
   setEnabledLayers,
@@ -165,7 +173,7 @@ export function MapOverlay({
     !station && !neighborhood && !adaProject && !selectedRoute;
 
   return (
-    <Card className="absolute top-4 left-4 min-w-[420px] max-w-[450px] w-[25%] bg-white shadow-lg max-h-[95%] overflow-auto">
+    <Card className={className}>
       <CardHeader>
         <CardTitle className="text-lg font-bold">
           NYC Subway Accessibility Explorer
@@ -289,7 +297,15 @@ export function MapOverlay({
             >
               Learn more
             </ExternalLink>
-            <ScrollArea className="max-h-[250px] overflow-scroll mt-2">
+            <DynamicScrollArea
+              scrollable={scrollable}
+              className={cn(
+                scrollable
+                  ? "max-h-[250px] overflow-scroll"
+                  : "overflow-visible",
+                "mt-2",
+              )}
+            >
               <div className="flex flex-col space-y-2">
                 {station.properties.ada_projects.map((project) => (
                   <div key={project.id} className="flex flex-col">
@@ -316,13 +332,19 @@ export function MapOverlay({
                   </div>
                 ))}
               </div>
-            </ScrollArea>
+            </DynamicScrollArea>
           </div>
         )}
         {elevatorsAndEscalators && elevatorsAndEscalators.length > 0 && (
           <div className="mt-4 border-t">
             <h1 className="mt-2 text-lg font-bold">Elevators and escalators</h1>
-            <ScrollArea className="max-h-[250px] overflow-scroll mt-2">
+            <DynamicScrollArea
+              scrollable={scrollable}
+              className={cn(
+                scrollable && "max-h-[250px] overflow-scroll",
+                "mt-2",
+              )}
+            >
               <div className="flex flex-col space-y-2">
                 {elevatorsAndEscalators
                   .filter((e) => e.isactive)
@@ -370,7 +392,7 @@ export function MapOverlay({
                     </div>
                   ))}
               </div>
-            </ScrollArea>
+            </DynamicScrollArea>
             <Alert className="mt-4 bg-blue-200 border-none flex flex-row">
               <InfoCircledIcon className="h-5 w-5" />
               <AlertDescription>

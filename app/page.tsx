@@ -18,6 +18,14 @@ import {
   useQueryState,
 } from "next-usequerystate";
 import mapboxgl from "mapbox-gl";
+import { useMediaQuery } from "usehooks-ts";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
 
 const imagesToLoad = [
   "stairs",
@@ -632,6 +640,35 @@ export default function Home() {
     );
   }, [selectedStation]);
 
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const [showOverLay, setShowOverlay] = useState(false);
+  useEffect(() => {
+    setShowOverlay(true);
+  }, []);
+
+  const snapPoints = ["100px", "300px", "500px"];
+  const [snap, setSnap] = useState<number | string | null>(snapPoints[1]);
+
+  useEffect(() => {
+    if (isDesktop || !snap) {
+      mapRef.current?.setPadding({ left: 0, top: 0, right: 0, bottom: 0 });
+      return;
+    }
+
+    let bottomPadding = 0;
+    if (typeof snap === "string") {
+      bottomPadding = parseInt(snap.split("px")[0]);
+    } else {
+      bottomPadding = snap;
+    }
+    mapRef.current?.setPadding({
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: bottomPadding,
+    });
+  }, [isDesktop, snap]);
+
   return (
     <div className="flex flex-col w-full h-full bg-[#EFE9E1]">
       <Map
@@ -657,22 +694,62 @@ export default function Home() {
         {adaProjects}
         {stationsLayer}
       </Map>
-      <MapOverlay
-        station={selectedStation}
-        stations={stations}
-        selectedStationId={focusedStationId}
-        onStationSelect={setFocusedStationId}
-        neighborhood={selectedNeighborhood}
-        elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
-        layers={layers}
-        enabledLayers={enabledLayerIds}
-        setEnabledLayers={setEnabledLayerIds}
-        selectedRoute={selectedRoute}
-        onRouteSelect={setSelectedRoute}
-        routeInfo={routeInfo}
-        adaProject={selectedAdaProject}
-        clearAllSelections={clearAllSelections}
-      />
+      {showOverLay && isDesktop && (
+        <MapOverlay
+          className="absolute top-4 left-4 min-w-[420px] max-w-[450px] w-[25%] bg-white shadow-lg max-h-[95%] overflow-auto"
+          station={selectedStation}
+          stations={stations}
+          selectedStationId={focusedStationId}
+          onStationSelect={setFocusedStationId}
+          neighborhood={selectedNeighborhood}
+          elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
+          layers={layers}
+          enabledLayers={enabledLayerIds}
+          setEnabledLayers={setEnabledLayerIds}
+          selectedRoute={selectedRoute}
+          onRouteSelect={setSelectedRoute}
+          routeInfo={routeInfo}
+          adaProject={selectedAdaProject}
+          clearAllSelections={clearAllSelections}
+        />
+      )}
+      {showOverLay && !isDesktop && (
+        <Drawer
+          open
+          defaultOpen
+          snapPoints={snapPoints}
+          activeSnapPoint={snap}
+          setActiveSnapPoint={setSnap}
+          modal={false}
+        >
+          <DrawerHeader>
+            <DrawerTitle></DrawerTitle>
+            <DrawerDescription></DrawerDescription>
+          </DrawerHeader>
+          <DrawerContent className="h-screen">
+            <div style={{ maxHeight: snap ?? 500 }}>
+              <MapOverlay
+                className="w-full max-h-full shadow-none rounded-none border-none overflow-auto"
+                scrollable={false}
+                station={selectedStation}
+                stations={stations}
+                selectedStationId={focusedStationId}
+                onStationSelect={setFocusedStationId}
+                neighborhood={selectedNeighborhood}
+                elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
+                layers={layers}
+                enabledLayers={enabledLayerIds}
+                setEnabledLayers={setEnabledLayerIds}
+                selectedRoute={selectedRoute}
+                onRouteSelect={setSelectedRoute}
+                routeInfo={routeInfo}
+                adaProject={selectedAdaProject}
+                clearAllSelections={clearAllSelections}
+              />
+            </div>
+          </DrawerContent>
+        </Drawer>
+      )}
     </div>
   );
 }
