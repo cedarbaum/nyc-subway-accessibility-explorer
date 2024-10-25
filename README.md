@@ -1,6 +1,8 @@
 # NYC Subway Accessibility Explorer
 
-This project is a map-based web application for visualizing accessibility data for the NYC subway. It include the followig information currently:
+This project is a map-based web application for visualizing accessibility data for the NYC subway. A live version of the website can be accessed [here](https://nyc-subway-accessibility-explorer.vercel.app/).
+
+It include the followig information currently:
 
 - Subway stations
   - Accessibility status (fully accessible, partially accessible, or inaccessible)
