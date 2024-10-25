@@ -29,6 +29,7 @@ export interface Layer {
 
 interface MapOverlayProps {
   layers: Layer[];
+  clearAllSelections: () => void;
   enabledLayers: string[] | null;
   setEnabledLayers: (layers: string[]) => void;
   selectedRoute: string | null;
@@ -41,6 +42,8 @@ interface MapOverlayProps {
       stop_name: string;
       station_id: string;
       daytime_routes: string;
+      ridership_month?: string;
+      ridership_last_full_month?: number;
       ada: string;
       ada_southbound: string;
       ada_northbound: string;
@@ -105,6 +108,7 @@ interface MapOverlayProps {
 
 export function MapOverlay({
   layers,
+  clearAllSelections,
   enabledLayers,
   setEnabledLayers,
   selectedRoute,
@@ -157,6 +161,8 @@ export function MapOverlay({
   );
 
   const selectedRoutes = selectedRoute?.split(",");
+  const nothingFocused =
+    !station && !neighborhood && !adaProject && !selectedRoute;
 
   return (
     <Card className="absolute top-4 left-4 min-w-[420px] max-w-[450px] w-[25%] bg-white shadow-lg max-h-[95%] overflow-auto">
@@ -166,20 +172,28 @@ export function MapOverlay({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-row items-center pb-2 gap-x-2 mb-2">
-          <RouteSelector
-            value={selectedRoute}
-            onChange={onRouteSelect}
-            groupRoutes
-          />
-          <StationSelector
-            value={selectedStationId}
-            values={stations}
-            onChange={onStationSelect}
-          />
+        <div className="flex flex-col">
+          <div className="flex flex-row items-center pb-2 gap-x-2 mb-2">
+            <RouteSelector
+              value={selectedRoute}
+              onChange={onRouteSelect}
+              groupRoutes
+            />
+            <StationSelector
+              value={selectedStationId}
+              values={stations}
+              onChange={onStationSelect}
+            />
+          </div>
+          <div
+            className="text-sm text-blue-500 cursor-pointer hover:underline"
+            onClick={clearAllSelections}
+          >
+            Clear all selections
+          </div>
         </div>
-        <div className="flex flex-col space-y-4 border-t">
-          <h1 className="text-lg font-bold">Data layers</h1>
+        <div className="flex flex-col space-y-4 border-t my-2">
+          <h1 className="text-lg font-bold mt-2">Data layers</h1>
           <MultiSelect
             options={layers.map((layer) => ({
               label: layer.name,
@@ -192,6 +206,19 @@ export function MapOverlay({
             maxCount={3}
           />
         </div>
+        {nothingFocused && (
+          <div className="mt-4 border-t">
+            <h1 className="mt-2 text-lg font-bold">Welcome!</h1>
+            <span className="mt-2">
+              This tool provides information about accessibility features of New
+              York City subway stations. To get started, you can:
+              <ul className="list-disc list-inside">
+                <li>Select a station/route above or by clicking on the map</li>
+                <li>Select different data layers to view additional info</li>
+              </ul>
+            </span>
+          </div>
+        )}
         {station && (
           <div className="mt-4 border-t">
             <div className="w-full flex flex-row justify-between items-center">
@@ -236,6 +263,21 @@ export function MapOverlay({
                 </AlertDescription>
               </Alert>
             )}
+          </div>
+        )}
+        {station?.properties.ridership_last_full_month !== undefined && (
+          <div className="mt-4 border-t">
+            <h1 className="mt-2 text-lg font-bold">
+              Station Complex Ridership
+            </h1>
+            <div className="flex flex-row items-center mt-2">
+              <div className="font-bold text-sm mr-2">{`Last full month (${station.properties.ridership_month}):`}</div>
+              <div className="text-sm">
+                {formatNumberWithCommas(
+                  station.properties.ridership_last_full_month,
+                )}
+              </div>
+            </div>
           </div>
         )}
         {station?.properties.ada_projects && (

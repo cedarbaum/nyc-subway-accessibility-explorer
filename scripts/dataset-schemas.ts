@@ -5,7 +5,6 @@ const parseNumberFromString = (str?: string) =>
 const parseFloatFromString = (str?: string) =>
   !str ? undefined : parseFloat(str);
 
-
 export const SubwayStationSchema = z.object({
   gtfs_stop_id: z.string(),
   station_id: z.string(),
@@ -143,6 +142,11 @@ export const CensusDataSchema = z.object({
   HUnits: z.string().optional().transform(parseNumberFromString),
   HUnitsP: z.string().optional().transform(parseFloatFromString),
   // Add all fields with similar transformations
+});
+
+export const StationComplexRidership = z.object({
+  station_complex_id: z.string(),
+  ridership: z.string().transform(Number),
 });
 
 // Schema for a GTFS route

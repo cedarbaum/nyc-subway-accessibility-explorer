@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -44,6 +44,11 @@ export default function StationSelector({
   const selected = values?.find((v) => v.station_id === value);
   const selectedRoutes = getRoutesFromStation(selected);
 
+  const handleClear = () => {
+    onChange?.(null);
+    setOpen(false);
+  };
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -80,6 +85,17 @@ export default function StationSelector({
           <CommandInput placeholder="Search stations..." />
           <CommandEmpty>No stations found.</CommandEmpty>
           <CommandGroup className="max-h-[200px] overflow-auto">
+            {selected && (
+              <>
+                <CommandItem
+                  onSelect={handleClear}
+                  className="flex flex-row cursor-pointer"
+                >
+                  <XIcon className="h-4 mr-2 cursor-pointer text-slate-700" />
+                  Clear
+                </CommandItem>
+              </>
+            )}
             {values?.map((station) => (
               <CommandItem
                 key={station.station_id}

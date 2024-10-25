@@ -10,6 +10,7 @@ import {
   ElevatorOrEscalatorInfoSchema,
   PlatformAvailabilitySchema,
   SubwayStationSchema,
+  StationComplexRidership,
 } from "./dataset-schemas";
 
 export type GtfsData = z.infer<typeof GtfsSchema>;
@@ -22,6 +23,7 @@ export type ElevatorOrEscalatorInfo = z.infer<
   typeof ElevatorOrEscalatorInfoSchema
 >;
 export type CensusData = z.infer<typeof CensusDataSchema>;
+export type RidershipData = z.infer<typeof StationComplexRidership>;
 
 export enum DatasetSource {
   NyOpenDataAPI = "NyOpenDataAPI",
@@ -52,7 +54,7 @@ export type DatasetId =
   | "2020-census-data"
   | "sir-line-points"
   | "mta-ada-projects"
-  | "mta-hourly-turnstile-data"
+  | "mta-last-full-month-ridership"
   | "mta-ada-projects-supplement";
 
 export interface Dataset {
@@ -168,11 +170,11 @@ export const datasets: Dataset[] = [
     skipDownload: true,
   },
   {
-    id: "mta-hourly-turnstile-data",
+    id: "mta-last-full-month-ridership",
     url: "https://data.ny.gov/Transportation/MTA-Subway-Hourly-Ridership-Beginning-July-2020/wujg-7c2s/about_data",
     source: DatasetSource.Other,
     type: DatasetType.CSV,
-    schema: z.any(),
+    schema: z.array(StationComplexRidership),
     skipDownload: true,
   },
 ];

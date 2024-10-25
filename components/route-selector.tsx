@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { NycSubwayIcon } from "./nyc-subway-icon";
+import { Separator } from "@radix-ui/react-separator";
 
 const routes = [
   "1",
@@ -83,6 +84,11 @@ export default function RouteSelector({
     selected = routes.find((route) => route === value?.toUpperCase());
   }
 
+  const handleClear = () => {
+    onChange?.(null);
+    setOpen(false);
+  };
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -120,6 +126,17 @@ export default function RouteSelector({
           <CommandInput placeholder="Search routes..." />
           <CommandEmpty>No routes found.</CommandEmpty>
           <CommandGroup className="max-h-[200px] overflow-auto">
+            {selected && (
+              <>
+                <CommandItem
+                  onSelect={handleClear}
+                  className="flex flex-row cursor-pointer"
+                >
+                  <XIcon className="h-4 mr-2 cursor-pointer text-slate-700" />
+                  Clear
+                </CommandItem>
+              </>
+            )}
             {groupRoutes &&
               routeGroups.map((group) => (
                 <CommandItem
@@ -131,7 +148,12 @@ export default function RouteSelector({
                   }}
                 >
                   {group.map((route) => (
-                    <NycSubwayIcon key={route} route={route} width={15} height={15} />
+                    <NycSubwayIcon
+                      key={route}
+                      route={route}
+                      width={15}
+                      height={15}
+                    />
                   ))}
                   <Check
                     className={cn(

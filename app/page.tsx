@@ -69,12 +69,20 @@ export default function Home() {
     null,
   );
 
+  const clearAllSelections = () => {
+    setFocusedStationId(null);
+    setFocusedNeighborhoodId(null);
+    setSelectedRoute(null);
+    setFocusedAdaProjectId(null);
+  };
+
   useEffect(() => {
     if (!focusedStationId) {
       return;
     }
     setFocusedNeighborhoodId(null);
     setSelectedRoute(null);
+    setFocusedAdaProjectId(null);
 
     const station = Stations.features.find(
       (feature) => feature.properties.station_id === focusedStationId,
@@ -129,6 +137,7 @@ export default function Home() {
     }
     setFocusedStationId(null);
     setFocusedNeighborhoodId(null);
+    setFocusedAdaProjectId(null);
 
     const routes = new Set(selectedRoute.split(",").map((r) => r.trim()));
     const routesFeatures = SubwayLines.features.filter((feature) =>
@@ -662,6 +671,7 @@ export default function Home() {
         onRouteSelect={setSelectedRoute}
         routeInfo={routeInfo}
         adaProject={selectedAdaProject}
+        clearAllSelections={clearAllSelections}
       />
     </div>
   );

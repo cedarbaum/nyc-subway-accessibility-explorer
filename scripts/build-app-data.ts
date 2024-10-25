@@ -8,6 +8,7 @@ import {
   writeModifiedDatasetJsonToOutput,
   getDatasetPathById,
   ElevatorAndEscalatorAvailability,
+  RidershipData,
 } from "./datasets";
 import {
   enforceRightHandRule,
@@ -133,6 +134,31 @@ async function main(): Promise<void> {
           console.warn(
             "No station found within 100 meters of project:",
             project.properties?.name,
+          );
+        }
+      }
+    });
+
+    // Load ridership data and assocaite with stations
+    const ridershipData = await loadDatasetById<RidershipData[]>(
+      "mta-last-full-month-ridership",
+    );
+    mergedStationsGeoJSON.features.forEach((station) => {
+      const stationComplexId = station.properties?.complex_id;
+      if (stationComplexId) {
+        const ridershipDataForStation = ridershipData.find(
+          (data) => data.station_complex_id === stationComplexId,
+        );
+        if (ridershipDataForStation) {
+          station.properties = {
+            ...station.properties,
+            ridership_month: "September, 2024",
+            ridership_last_full_month: ridershipDataForStation.ridership,
+          };
+        } else {
+          console.warn(
+            "No ridership data found for station:",
+            station.properties?.stop_name,
           );
         }
       }
