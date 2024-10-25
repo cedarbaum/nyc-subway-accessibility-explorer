@@ -19,13 +19,6 @@ import {
 } from "next-usequerystate";
 import mapboxgl from "mapbox-gl";
 import { useMediaQuery } from "usehooks-ts";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
 
 const imagesToLoad = [
   "stairs",
@@ -38,6 +31,7 @@ const imagesToLoad = [
 const layers = [
   { id: "city-boundary", name: "City boundary" },
   { id: "neighborhoods", name: "Neighborhoods" },
+  { id: "platform-availability", name: "Platform availability" },
   {
     id: "neighborhoods-accessibility-score",
     name: "Neighborhood Accessibility Score",
@@ -73,6 +67,7 @@ export default function Home() {
   const [focusedNeighborhoodId, setFocusedNeighborhoodId] = useState<
     string | number | null
   >(null);
+  const [focusedBoroughId, setFocusedBoroughId] = useState<string | null>(null);
   const [focusedAdaProjectId, setFocusedAdaProjectId] = useState<string | null>(
     null,
   );
@@ -326,6 +321,17 @@ export default function Home() {
     return newNeighborhoods;
   }, [focusedNeighborhoodId, showingAccessibilityScore]);
 
+  const boroughData = useMemo(() => {
+    const newBoroughs = JSON.parse(
+      JSON.stringify(NycBoundary),
+    ) as GeoJSON.FeatureCollection;
+    newBoroughs.features.forEach((feature) => {
+      feature!.properties!.focused =
+        feature?.properties?.boroname === focusedBoroughId;
+    });
+    return newBoroughs;
+  }, [focusedBoroughId]);
+
   const subwayLineData = useMemo(() => {
     const newSubwayLines = JSON.parse(
       JSON.stringify(SubwayLines),
@@ -368,6 +374,44 @@ export default function Home() {
     </Source>
   ) : (
     createEmptyLayer("city-boundary", "fill")
+  );
+
+  const boroughBoundaries = layerIsEnabled("platform-availability") ? (
+    <Source
+      id="borough-boundaries"
+      type="geojson"
+      data={boroughData}
+      generateId
+    >
+      <Layer
+        id="borough-boundaries"
+        type="line"
+        paint={{
+          "line-color": "#088",
+          "line-width": 2,
+        }}
+      />
+      <Layer
+        id="borough-boundaries-fill"
+        type="fill"
+        paint={{
+          "fill-color": "#088",
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            0.5,
+            ["boolean", ["get", "focused"], false],
+            0.5,
+            0.0,
+          ],
+        }}
+      />
+    </Source>
+  ) : (
+    createEmptySourceWithLayers("borough-boundaries", [
+      { id: "borough-boundaries", type: "line" },
+      { id: "borough-boundaries-fill", type: "fill" },
+    ])
   );
 
   const neighborhoodBoundaries =
@@ -570,6 +614,7 @@ export default function Home() {
   );
 
   const hoveredNeighborhoodId = useRef<string | number | undefined>(undefined);
+  const hoverBouroughId = useRef<string | number | undefined>(undefined);
   useEffect(() => {
     if (!mapRef.current?.loaded) {
       return;
@@ -665,6 +710,43 @@ export default function Home() {
       hoveredNeighborhoodId.current = undefined;
     });
 
+    mapRef.current.on("click", "borough-boundaries-fill", (e) => {
+      //@ts-expect-error - handled is not a standard property
+      if (e.handled) {
+        return;
+      }
+
+      if (e.features && e.features.length > 0) {
+        setFocusedBoroughId(e.features[0]?.properties?.boroname);
+      }
+    });
+
+    mapRef.current.on("mousemove", "borough-boundaries-fill", (e) => {
+      if (e.features && e.features.length > 0) {
+        if (hoverBouroughId.current !== undefined) {
+          mapRef.current!.setFeatureState(
+            { source: "borough-boundaries", id: hoverBouroughId.current },
+            { hover: false },
+          );
+        }
+        hoverBouroughId.current = e.features[0]?.id;
+        mapRef.current!.setFeatureState(
+          { source: "borough-boundaries", id: hoverBouroughId.current! },
+          { hover: true },
+        );
+      }
+    });
+
+    mapRef.current.on("mouseleave", "borough-boundaries-fill", () => {
+      if (hoverBouroughId.current !== undefined) {
+        mapRef.current!.setFeatureState(
+          { source: "borough-boundaries", id: hoverBouroughId.current! },
+          { hover: false },
+        );
+      }
+      hoverBouroughId.current = undefined;
+    });
+
     // Load images
     imagesToLoad.forEach((imageName) => {
       if (mapRef.current!.hasImage(imageName)) {
@@ -691,9 +773,6 @@ export default function Home() {
   useEffect(() => {
     setShowOverlay(true);
   }, []);
-
-  const snapPoints = ["100px", "300px", "400px", "500px"];
-  const [snap, setSnap] = useState<number | string | null>(snapPoints[2]);
 
   function animatePadding(targetPadding: number, duration = 200) {
     const initialPadding = mapRef.current?.getPadding().bottom || 0;
@@ -723,21 +802,21 @@ export default function Home() {
     requestAnimationFrame(frame);
   }
 
+  const [overlayHeight, setOverlayHeight] = useState<number | undefined>(
+    undefined,
+  );
+  const overlayRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (isDesktop || !snap) {
+    setOverlayHeight(overlayRef.current?.clientHeight);
+  }, [isDesktop, showOverLay]);
+
+  useEffect(() => {
+    if (isDesktop || overlayHeight === undefined || !mapLoaded) {
       mapRef.current?.setPadding({ left: 0, top: 0, right: 0, bottom: 0 });
       return;
     }
-
-    let bottomPadding = 0;
-    if (typeof snap === "string") {
-      bottomPadding = parseInt(snap.split("px")[0]);
-    } else {
-      bottomPadding = snap;
-    }
-
-    animatePadding(bottomPadding);
-  }, [isDesktop, snap, mapLoaded]);
+    animatePadding(overlayHeight);
+  }, [isDesktop, overlayHeight, mapLoaded]);
 
   return (
     <div className="flex flex-col w-full h-full bg-[#EFE9E1]">
@@ -756,6 +835,7 @@ export default function Home() {
         }}
       >
         {cityBoundary}
+        {boroughBoundaries}
         {neighborhoodFill}
         {neighborhoodLabels}
         {neighborhoodBoundaries}
@@ -784,43 +864,48 @@ export default function Home() {
         />
       )}
       {showOverLay && !isDesktop && (
-        <Drawer
-          open
-          defaultOpen
-          snapPoints={snapPoints}
-          activeSnapPoint={snap}
-          setActiveSnapPoint={setSnap}
-          modal={false}
+        <div
+          ref={overlayRef}
+          className="fixed bottom-0 left-0 right-0 h-[50%] z-50"
         >
-          <DrawerHeader>
-            <DrawerTitle></DrawerTitle>
-            <DrawerDescription></DrawerDescription>
-          </DrawerHeader>
-          <DrawerContent className="h-screen">
-            <div style={{ maxHeight: snap ?? 500 }}>
-              <MapOverlay
-                className="w-full max-h-full shadow-none rounded-none border-none overflow-auto pb-4"
-                scrollable={false}
-                station={selectedStation}
-                stations={stations}
-                selectedStationId={focusedStationId}
-                onStationSelect={setFocusedStationId}
-                neighborhood={selectedNeighborhood}
-                elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
-                layers={layers}
-                enabledLayers={enabledLayerIds}
-                setEnabledLayers={onLayerSelect}
-                selectedRoute={selectedRoute}
-                onRouteSelect={setSelectedRoute}
-                routeInfo={routeInfo}
-                adaProject={selectedAdaProject}
-                clearAllSelections={clearAllSelections}
-              />
-            </div>
-          </DrawerContent>
-        </Drawer>
+          <MapOverlay
+            className="w-full max-h-full shadow-none rounded-none border-none overflow-auto pb-4"
+            scrollable={false}
+            station={selectedStation}
+            stations={stations}
+            selectedStationId={focusedStationId}
+            onStationSelect={setFocusedStationId}
+            neighborhood={selectedNeighborhood}
+            elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
+            layers={layers}
+            enabledLayers={enabledLayerIds}
+            setEnabledLayers={onLayerSelect}
+            selectedRoute={selectedRoute}
+            onRouteSelect={setSelectedRoute}
+            routeInfo={routeInfo}
+            adaProject={selectedAdaProject}
+            clearAllSelections={clearAllSelections}
+          />
+        </div>
       )}
     </div>
+  );
+}
+
+function createEmptySourceWithLayers(
+  sourceId: string,
+  layers: { id: string; type: LayerProps["type"] }[],
+) {
+  return (
+    <Source
+      id={sourceId}
+      type="geojson"
+      data={{ type: "FeatureCollection", features: [] }}
+    >
+      {layers.map((layer) => (
+        <Layer key={layer.id} id={layer.id} type={layer.type} />
+      ))}
+    </Source>
   );
 }
 

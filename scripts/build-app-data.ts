@@ -29,8 +29,17 @@ async function main(): Promise<void> {
     console.log("Will skip datasets:", datasetsToSkip);
 
     // Copy these datasets unchanged to the output directory
-    copyDatasetToOutput("borough-boundaries-geojson");
     copyDatasetToOutput("subway-entrances-exits");
+
+
+    const boroughBoundaries = await loadDatasetById<GeoJSON.FeatureCollection>("borough-boundaries-geojson");
+
+    // Assign each borough a feature ID based on the borough name
+    boroughBoundaries.features.forEach((feature, index) => {
+      feature.id = index
+    });
+    writeModifiedDatasetJsonToOutput("borough-boundaries-geojson", boroughBoundaries);
+
 
     // const turnstileData = await loadDatasetById("mta-hourly-turnstile-data") as any;
     // console.log("Loaded turnstile data with", turnstileData.length, "entries");
@@ -309,6 +318,10 @@ async function main(): Promise<void> {
     subwayLines.features.push(sirLineFeature);
 
     writeModifiedDatasetJsonToOutput("subway-lines-geojson", subwayLines);
+
+    // Load platform availability data
+    //const platformAvailability = await loadDatasetById
+
 
     //Load elevator and escalator availability data
     if (!datasetsToSkip.includes("mta-elevators-and-escalators")) {
