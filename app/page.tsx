@@ -77,6 +77,22 @@ export default function Home() {
     null,
   );
 
+  const onLayerSelect = (layerIds: string[]) => {
+    if (focusedStationId && !layerIds.includes("stations")) {
+      setFocusedStationId(null);
+    }
+
+    if (selectedRoute && !layerIds.includes("subway-lines")) {
+      console.log("clearing route");
+      setSelectedRoute(null);
+    }
+
+    if (focusedNeighborhoodId && !layerIds.includes("neighborhoods")) {
+      setFocusedNeighborhoodId(null);
+    }
+    setEnabledLayerIds(layerIds);
+  };
+
   const clearAllSelections = () => {
     setFocusedStationId(null);
     setFocusedNeighborhoodId(null);
@@ -110,7 +126,13 @@ export default function Home() {
         clearTimeout(timeout);
       };
     }
-  }, [focusedStationId, Stations, mapLoaded]);
+  }, [
+    focusedStationId,
+    mapLoaded,
+    setFocusedNeighborhoodId,
+    setSelectedRoute,
+    setFocusedAdaProjectId,
+  ]);
 
   useEffect(() => {
     if (!focusedStationId) {
@@ -122,7 +144,7 @@ export default function Home() {
         "stations",
       ]);
     }
-  }, [focusedStationId, enabledLayerIds]);
+  }, [focusedStationId, enabledLayerIds, setEnabledLayerIds]);
 
   useEffect(() => {
     if (!selectedRoute) {
@@ -134,7 +156,7 @@ export default function Home() {
         "subway-lines",
       ]);
     }
-  }, [selectedRoute, enabledLayerIds]);
+  }, [selectedRoute, enabledLayerIds, setEnabledLayerIds]);
 
   useEffect(() => {
     if (!focusedAdaProjectId) {
@@ -143,7 +165,12 @@ export default function Home() {
     setFocusedStationId(null);
     setFocusedNeighborhoodId(null);
     setSelectedRoute(null);
-  }, [focusedAdaProjectId]);
+  }, [
+    focusedAdaProjectId,
+    setFocusedStationId,
+    setFocusedNeighborhoodId,
+    setSelectedRoute,
+  ]);
 
   useEffect(() => {
     if (!selectedRoute) {
@@ -180,7 +207,13 @@ export default function Home() {
         clearTimeout(timeout);
       };
     }
-  }, [selectedRoute, SubwayLines, mapLoaded]);
+  }, [
+    selectedRoute,
+    mapLoaded,
+    setFocusedStationId,
+    setFocusedNeighborhoodId,
+    setFocusedAdaProjectId,
+  ]);
 
   useEffect(() => {
     if (!focusedNeighborhoodId) {
@@ -188,7 +221,7 @@ export default function Home() {
     }
     setFocusedStationId(null);
     setSelectedRoute(null);
-  }, [focusedNeighborhoodId]);
+  }, [focusedNeighborhoodId, setFocusedStationId, setSelectedRoute]);
 
   const showingAccessibilityScore = useMemo(() => {
     return (
@@ -644,7 +677,7 @@ export default function Home() {
     });
 
     mapRef.current.addControl(new mapboxgl.NavigationControl(), "top-right");
-  }, [mapLoaded]);
+  }, [mapLoaded, setFocusedStationId, setFocusedNeighborhoodId]);
 
   const elevatorsAndEscalatorsForStation = useMemo(() => {
     return ElevatorAndEscalatorInfo.filter(
@@ -742,7 +775,7 @@ export default function Home() {
           elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
           layers={layers}
           enabledLayers={enabledLayerIds}
-          setEnabledLayers={setEnabledLayerIds}
+          setEnabledLayers={onLayerSelect}
           selectedRoute={selectedRoute}
           onRouteSelect={setSelectedRoute}
           routeInfo={routeInfo}
@@ -776,7 +809,7 @@ export default function Home() {
                 elevatorsAndEscalators={elevatorsAndEscalatorsForStation}
                 layers={layers}
                 enabledLayers={enabledLayerIds}
-                setEnabledLayers={setEnabledLayerIds}
+                setEnabledLayers={onLayerSelect}
                 selectedRoute={selectedRoute}
                 onRouteSelect={setSelectedRoute}
                 routeInfo={routeInfo}

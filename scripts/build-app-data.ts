@@ -18,6 +18,7 @@ import { mapRouteIdToColor } from "./mta-utils";
 import { convertMtaAdaProjectsKmlToGeoJson } from "./kml-utils";
 import { convertLinePointsFileToGeoJSON } from "./route-geojson-utils";
 import { getAggregateStatsForAllEquipment } from "./equipment-utils";
+import { booleanPointInPolygon } from "@turf/turf";
 
 dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
@@ -173,6 +174,7 @@ async function main(): Promise<void> {
     const censusData = await loadDatasetById<CensusData[]>("2020-census-data");
     const nycNeighborhoods =
       await loadDatasetById<GeoJSON.FeatureCollection>("nyc-neighborhoods");
+    const accessibilityStatsForNeighborhoods = new Map<string, number>();
     for (const neighborhood of nycNeighborhoods.features) {
       const neighborhoodData = censusData.find(
         (data) =>
@@ -201,27 +203,86 @@ async function main(): Promise<void> {
         }) as GeoJSON.MultiPolygon;
       }
 
-      const n = 5;
-      const nearestStations = findNearestNPointFeaturesToGeometry(
-        n,
-        mergedStationsGeoJSON,
-        neighborhood.geometry as GeoJSON.MultiPolygon | GeoJSON.Polygon,
-        3200,
+      // First get all stations within the neighborhood
+      const stationsToScore = mergedStationsGeoJSON.features.filter(
+        (station) => {
+          const stationLocation = station.geometry.coordinates;
+          return booleanPointInPolygon(
+            stationLocation,
+            neighborhood.geometry as GeoJSON.MultiPolygon,
+          );
+        },
       );
 
-      const accessibleStations = nearestStations.filter(
+      const n = 5;
+      const numStationsInNeighborhood = stationsToScore.length;
+      if (numStationsInNeighborhood < n) {
+        const stationsNotInNeighborhood = mergedStationsGeoJSON.features.filter(
+          (station) =>
+            !stationsToScore.find(
+              (s) =>
+                s.properties?.station_id === station.properties?.station_id,
+            ),
+        );
+        const stationsNotInNeighborhoodFeatureCollection = {
+          type: "FeatureCollection",
+          features: stationsNotInNeighborhood,
+        } as GeoJSON.FeatureCollection<GeoJSON.Point>;
+
+        const nearestStations = findNearestNPointFeaturesToGeometry(
+          n - numStationsInNeighborhood,
+          stationsNotInNeighborhoodFeatureCollection,
+          neighborhood.geometry as GeoJSON.MultiPolygon | GeoJSON.Polygon,
+          1600,
+        );
+        stationsToScore.push(...nearestStations);
+      }
+
+      const accessibleStations = stationsToScore.filter(
         (station) =>
           station.properties?.ada == "full" ||
           station.properties?.ada == "southbound" ||
           station.properties?.ada == "northbound",
       );
       const numAccessibleStations = accessibleStations.length;
-      const accessibleStationScore = numAccessibleStations / n;
+      const accessibleStationScore = stationsToScore.length
+        ? numAccessibleStations / stationsToScore.length
+        : 0;
+
+      const neighborhoodPopulation = neighborhood.properties?.Pop1;
+      const accessibleStationsPer10000 =
+        neighborhoodPopulation > 0
+          ? numAccessibleStations / (neighborhoodPopulation / 10000)
+          : 0;
+      const neighborhooId = neighborhood.properties?.NTA2020;
+      accessibilityStatsForNeighborhoods.set(
+        neighborhooId,
+        accessibleStationsPer10000,
+      );
+
       neighborhood.properties = {
         ...neighborhood.properties,
         num_nearest_stations: n,
         num_accessible_stations: numAccessibleStations,
         accessible_station_score: accessibleStationScore,
+      };
+    }
+
+    const maxAccessibility = Math.max(
+      ...Array.from(accessibilityStatsForNeighborhoods.values()),
+    );
+    const minAccessibility = Math.min(
+      ...Array.from(accessibilityStatsForNeighborhoods.values()),
+    );
+    const scale = maxAccessibility - minAccessibility;
+    for (const neighborhood of nycNeighborhoods.features) {
+      const neighborhoodId = neighborhood.properties?.NTA2020;
+      const accessibility =
+        accessibilityStatsForNeighborhoods.get(neighborhoodId)!;
+      const accessibilityScore = (accessibility - minAccessibility) / scale;
+      neighborhood.properties = {
+        ...neighborhood.properties,
+        accessible_station_score_by_pop: accessibilityScore,
       };
     }
 

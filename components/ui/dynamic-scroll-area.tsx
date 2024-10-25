@@ -1,25 +1,21 @@
-import React from 'react'
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { cn } from "@/lib/utils"
+import React from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 interface DynamicScrollAreaProps {
-  scrollable?: boolean
-  className?: string
-  children: React.ReactNode
+  scrollable?: boolean;
+  className?: string;
+  children: React.ReactNode;
 }
 
 export default function DynamicScrollArea({
   scrollable = false,
   className,
-  children
+  children,
 }: DynamicScrollAreaProps) {
   if (scrollable) {
-    return (
-      <ScrollArea className={cn("h-[300px]", className)}>
-        {children}
-      </ScrollArea>
-    )
+    return <ScrollArea className={cn(className)}>{children}</ScrollArea>;
   }
 
-  return <div className={className}>{children}</div>
+  return <div className={className}>{children}</div>;
 }
