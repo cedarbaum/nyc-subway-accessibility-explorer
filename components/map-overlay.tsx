@@ -33,6 +33,7 @@ export interface Layer {
 interface MapOverlayProps {
   className?: string;
   scrollable?: boolean;
+  stickyHeader?: boolean;
   layers: Layer[];
   clearAllSelections: () => void;
   enabledLayers: string[] | null;
@@ -115,6 +116,7 @@ export function MapOverlay({
   className,
   layers,
   scrollable = true,
+  stickyHeader = true,
   clearAllSelections,
   enabledLayers,
   setEnabledLayers,
@@ -165,12 +167,12 @@ export function MapOverlay({
 
   return (
     <Card className={className}>
-      <CardHeader>
+      <CardHeader
+        className={cn("p-4 pb-2", stickyHeader && "sticky top-0 bg-white z-20")}
+      >
         <CardTitle className="text-lg font-bold">
           NYC Subway Accessibility Explorer
         </CardTitle>
-      </CardHeader>
-      <CardContent>
         <div className="flex flex-col">
           <div className="flex flex-row items-center pb-2 gap-x-2 mb-2">
             <RouteSelector
@@ -205,8 +207,10 @@ export function MapOverlay({
             maxCount={3}
           />
         </div>
+      </CardHeader>
+      <CardContent>
         {nothingFocused && (
-          <div className="mt-4 border-t">
+          <div className="mt-2 border-t">
             <h1 className="mt-2 text-lg font-bold">Welcome!</h1>
             <span className="mt-2">
               This tool provides information about accessibility features of New

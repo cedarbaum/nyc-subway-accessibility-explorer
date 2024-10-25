@@ -63,7 +63,7 @@ export default function StationSelector({
               <span className="font-bold mr-2 max-w-[80px] text-ellipsis overflow-hidden  whitespace-nowrap">
                 {selected.stop_name}
               </span>
-              <div className="flex flex-row gap-x-1">
+              <div className="flex flex-row gap-x-1 max-w-[60px]">
                 {selectedRoutes?.map((route) => (
                   <NycSubwayIcon
                     key={route}

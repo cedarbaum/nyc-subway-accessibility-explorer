@@ -751,6 +751,7 @@ export default function Home() {
   }, [selectedStation]);
 
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isTallScreen = useMediaQuery("(min-height: 1024px)");
   const [showOverLay, setShowOverlay] = useState(false);
   useEffect(() => {
     setShowOverlay(true);
@@ -828,7 +829,9 @@ export default function Home() {
       </Map>
       {showOverLay && isDesktop && (
         <MapOverlay
-          className="absolute top-4 left-4 min-w-[420px] max-w-[450px] w-[25%] bg-white shadow-lg max-h-[95%] overflow-auto"
+          className="absolute top-4 left-4 min-w-[420px] max-w-[450px] w-[25%] bg-white shadow-lg max-h-[95%] z-50 overflow-scroll"
+          scrollable={isTallScreen}
+          stickyHeader={!isTallScreen}
           station={selectedStation}
           stations={stations}
           selectedStationId={focusedStationId}
@@ -853,6 +856,7 @@ export default function Home() {
           <MapOverlay
             className="w-full max-h-full shadow-none rounded-none border-none overflow-auto pb-4"
             scrollable={false}
+            stickyHeader={false}
             station={selectedStation}
             stations={stations}
             selectedStationId={focusedStationId}
