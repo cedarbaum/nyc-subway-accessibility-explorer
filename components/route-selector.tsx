@@ -18,7 +18,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { NycSubwayIcon } from "./nyc-subway-icon";
-import { Separator } from "@radix-ui/react-separator";
 
 const routes = [
   "1",
