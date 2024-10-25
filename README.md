@@ -11,6 +11,7 @@ It include the following information currently:
   - Any recent ADA projects associated with the station (either complete or in-progress)
 - Subway lines
   - Percent of stations that are accessible for a given line (e.g., A,C,E or 1,2,3)
+- Borough-level platform accessibility over the last 6 months of available data.
 - Neighborhood data
   - Population statistics from the 2020 Census, including number of residents over 65
   - An accessibility score, which is calculated by considering the percentage of nearest stations that are accessible
