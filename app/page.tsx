@@ -31,7 +31,7 @@ const imagesToLoad = [
 
 const layers = [
   { id: "neighborhoods", name: "Neighborhoods" },
-  { id: "platform-availability", name: "Borough platform availability" },
+  { id: "platform-availability", name: "Borough ADA platform availability" },
   {
     id: "neighborhoods-accessibility-score",
     name: "Neighborhood stations score",
@@ -406,10 +406,10 @@ export default function Home() {
           "text-field": [
             "case",
             ["==", ["get", "platform_availability"], -1],
-            "6 Month Platform Availability: N/A",
+            "6 Month (03/2024-08/2024) Platform Availability: N/A",
             [
               "concat",
-              "6 Month Platform Availability: ",
+              "6 Month (03/2024-08/2024) Platform Availability: ",
               [
                 "to-string",
                 ["round", ["*", ["get", "platform_availability"], 100]],

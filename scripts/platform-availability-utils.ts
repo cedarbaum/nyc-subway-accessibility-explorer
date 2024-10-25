@@ -8,7 +8,8 @@ function getLatestMonth(data: PlatformAvailability[]): Date {
 
 // Helper function to check if a date is within the past 6 months
 function isWithinLastSixMonths(date: Date, latestDate: Date): boolean {
-  const sixMonthsAgo = subMonths(latestDate, 6);
+  // One off because first month is included
+  const sixMonthsAgo = subMonths(latestDate, 5);
   return isWithinInterval(date, { start: sixMonthsAgo, end: latestDate });
 }
 
@@ -30,10 +31,13 @@ export function calculateSixMonthAvailability(
     { totalAvailable: number; totalInService: number }
   >();
 
+  const months = new Set<string>();
+
   sixMonthData.forEach((entry) => {
     const borough = entry.borough;
     const minutesAvailable = entry.minutes_platforms_available;
     const minutesInService = entry.minutes_platforms_in_service;
+    months.add(entry.month);
 
     if (!availabilityByBorough.has(borough)) {
       availabilityByBorough.set(borough, {
@@ -46,6 +50,9 @@ export function calculateSixMonthAvailability(
     boroughData.totalAvailable += minutesAvailable;
     boroughData.totalInService += minutesInService;
   });
+
+  const monthsAsList = Array.from(months).sort();
+  console.log("All months considered for equipment availability:", monthsAsList.join(", "));
 
   // Calculate availability percentage for each borough
   const result = Array.from(availabilityByBorough.entries()).map(
