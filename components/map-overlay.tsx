@@ -151,12 +151,10 @@ export function MapOverlay({
       neighborhood?.properties.Pop85pl
     : null;
 
-  const numStationsConsidered =
-    neighborhood?.properties.num_nearest_stations ?? 5;
   const accessibilityScoreTooltipContent = (
     <p className="text-base">
       The accessible stations score is calculated as the percentage of of the{" "}
-      {numStationsConsidered} nearest stations to the neighborhood that are
+      nearest (within a threshold) stations to the neighborhood that are
       accessible.
     </p>
   );

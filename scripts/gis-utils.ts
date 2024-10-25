@@ -96,3 +96,83 @@ export function findNearestNPointFeaturesToGeometry(
   // Return the first `n` features from the sorted and filtered array
   return filteredFeatures.slice(0, n);
 }
+
+export function findNearestNPointFeaturesToGeometryConsideringBoundaries(
+  n: number,
+  pointFeatures: GeoJSON.FeatureCollection<GeoJSON.Point>,
+  featureArg: GeoJSON.Feature<GeoJSON.MultiPolygon | GeoJSON.Polygon>,
+  maxDistanceMetersCenter: number = Infinity,
+  maxDistanceMetersBoundary: number = Infinity,
+) {
+  const centroid = turf.centroid(featureArg.geometry);
+  let boundaryLines: GeoJSON.FeatureCollection<GeoJSON.LineString>;
+
+  // Convert Polygon or MultiPolygon to LineString(s) representing boundaries
+  if (featureArg.geometry.type === "Polygon") {
+    boundaryLines = turf.polygonToLine(
+      featureArg,
+    ) as GeoJSON.FeatureCollection<GeoJSON.LineString>;
+  } else if (featureArg.geometry.type === "MultiPolygon") {
+    // Flatten MultiPolygon to multiple Polygons, then convert each to LineString
+    const polygons = turf.flatten(
+      featureArg,
+    ) as GeoJSON.FeatureCollection<GeoJSON.Polygon>;
+    boundaryLines = turf.featureCollection(
+      polygons.features.map(
+        (feature) =>
+          turf.polygonToLine(
+            feature.geometry,
+          ) as GeoJSON.Feature<GeoJSON.LineString>,
+      ),
+    ) as GeoJSON.FeatureCollection<GeoJSON.LineString>;
+  }
+
+  // Calculate the minimum distance from each point to the geometry
+  const filteredFeatures = pointFeatures.features
+    .map((feature) => {
+      const point = turf.point(feature.geometry.coordinates);
+
+      // Distance from the point to the centroid
+      const distanceToCentroid = turf.distance(centroid, point, {
+        units: "meters",
+      });
+
+      let minBoundaryDistance = Infinity;
+
+      // If geometry is Polygon or MultiPolygon, calculate the distance to the boundary
+      if (
+        featureArg.geometry.type === "Polygon" ||
+        featureArg.geometry.type === "MultiPolygon"
+      ) {
+        const distancesToBoundary = boundaryLines.features.map((line) =>
+          turf.pointToLineDistance(point, line, { units: "meters" }),
+        );
+        const distanceToBoundary = Math.min(...distancesToBoundary);
+        minBoundaryDistance = Math.min(minBoundaryDistance, distanceToBoundary);
+      }
+
+      return {
+        feature,
+        distanceCenter: distanceToCentroid,
+        distanceBoundary: minBoundaryDistance,
+      };
+    })
+    .filter(({ distanceCenter, distanceBoundary }) => {
+      return (
+        distanceCenter <= maxDistanceMetersCenter ||
+        distanceBoundary <= maxDistanceMetersBoundary
+      );
+    })
+    .map(({ feature, distanceCenter, distanceBoundary }) => {
+      return {
+        feature,
+        distance: Math.min(distanceCenter, distanceBoundary),
+      };
+    });
+
+  // Sort features by the calculated minimum distance
+  filteredFeatures.sort((a, b) => a.distance - b.distance);
+
+  // Return the first `n` features from the sorted array
+  return filteredFeatures.slice(0, n).map((item) => item.feature);
+}

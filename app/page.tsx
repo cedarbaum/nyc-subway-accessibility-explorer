@@ -34,7 +34,7 @@ const layers = [
   { id: "platform-availability", name: "Borough platform availability" },
   {
     id: "neighborhoods-accessibility-score",
-    name: "Neighborhood Accessibility Score",
+    name: "Neighborhood stations score",
     active: false,
     info: (
       <p className="text-base">

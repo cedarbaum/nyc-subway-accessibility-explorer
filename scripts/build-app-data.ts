@@ -15,6 +15,7 @@ import {
 import {
   enforceRightHandRule,
   findNearestNPointFeaturesToGeometry,
+  findNearestNPointFeaturesToGeometryConsideringBoundaries,
 } from "./gis-utils";
 import { mapRouteIdToColor } from "./mta-utils";
 import { convertMtaAdaProjectsKmlToGeoJson } from "./kml-utils";
@@ -286,7 +287,7 @@ async function main(): Promise<void> {
         },
       );
 
-      const n = 5;
+      const n = 7;
       const numStationsInNeighborhood = stationsToScore.length;
       if (numStationsInNeighborhood < n) {
         const stationsNotInNeighborhood = mergedStationsGeoJSON.features.filter(
@@ -301,22 +302,31 @@ async function main(): Promise<void> {
           features: stationsNotInNeighborhood,
         } as GeoJSON.FeatureCollection<GeoJSON.Point>;
 
-        const nearestStations = findNearestNPointFeaturesToGeometry(
-          n - numStationsInNeighborhood,
-          stationsNotInNeighborhoodFeatureCollection,
-          neighborhood.geometry as GeoJSON.MultiPolygon | GeoJSON.Polygon,
-          1600,
-        );
+        const nearestStations =
+          findNearestNPointFeaturesToGeometryConsideringBoundaries(
+            n - numStationsInNeighborhood,
+            stationsNotInNeighborhoodFeatureCollection,
+            neighborhood as GeoJSON.Feature<GeoJSON.MultiPolygon>,
+            800,
+            200,
+          );
         stationsToScore.push(...nearestStations);
       }
 
-      const accessibleStations = stationsToScore.filter(
-        (station) =>
-          station.properties?.ada == "full" ||
-          station.properties?.ada == "southbound" ||
-          station.properties?.ada == "northbound",
-      );
-      const numAccessibleStations = accessibleStations.length;
+      const numAccessibleStations = stationsToScore
+        .map((station) => {
+          if (station.properties?.ada === "full") {
+            return 1 as number;
+          }
+          if (
+            station.properties?.ada === "southbound" ||
+            station.properties?.ada === "northbound"
+          ) {
+            return 0.5 as number;
+          }
+          return 0 as number;
+        })
+        .reduce((acc, val) => acc + val, 0);
       const accessibleStationScore = stationsToScore.length
         ? numAccessibleStations / stationsToScore.length
         : 0;
