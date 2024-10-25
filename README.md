@@ -1,4 +1,4 @@
-# NYC Subway Explorer
+# NYC Subway Accessibility Explorer
 
 This project is a map-based web application for visualizing accessibility data for the NYC subway. It include the followig information currently:
 
