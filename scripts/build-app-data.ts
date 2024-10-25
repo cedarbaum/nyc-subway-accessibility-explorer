@@ -9,6 +9,8 @@ import {
   getDatasetPathById,
   ElevatorAndEscalatorAvailability,
   RidershipData,
+  PlatformAvailability,
+  writeDatasetJsonToOutput,
 } from "./datasets";
 import {
   enforceRightHandRule,
@@ -18,7 +20,8 @@ import { mapRouteIdToColor } from "./mta-utils";
 import { convertMtaAdaProjectsKmlToGeoJson } from "./kml-utils";
 import { convertLinePointsFileToGeoJSON } from "./route-geojson-utils";
 import { getAggregateStatsForAllEquipment } from "./equipment-utils";
-import { booleanPointInPolygon } from "@turf/turf";
+import { booleanPointInPolygon, centroid } from "@turf/turf";
+import { calculateSixMonthAvailability } from "./platform-availability-utils";
 
 dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
@@ -31,18 +34,78 @@ async function main(): Promise<void> {
     // Copy these datasets unchanged to the output directory
     copyDatasetToOutput("subway-entrances-exits");
 
-
-    const boroughBoundaries = await loadDatasetById<GeoJSON.FeatureCollection>("borough-boundaries-geojson");
+    const boroughBoundaries = await loadDatasetById<GeoJSON.FeatureCollection>(
+      "borough-boundaries-geojson",
+    );
 
     // Assign each borough a feature ID based on the borough name
     boroughBoundaries.features.forEach((feature, index) => {
-      feature.id = index
+      feature.id = index;
     });
-    writeModifiedDatasetJsonToOutput("borough-boundaries-geojson", boroughBoundaries);
 
+    // Load platform availability data
+    const platformAvailability = await loadDatasetById<PlatformAvailability[]>(
+      "station-platform-availability",
+    );
+    const latestMonthWithData = platformAvailability.sort((a, b) => {
+      return a.month.localeCompare(b.month);
+    })[platformAvailability.length - 1].month;
+    console.log(
+      "Latest month with platform availability data:",
+      latestMonthWithData,
+    );
 
-    // const turnstileData = await loadDatasetById("mta-hourly-turnstile-data") as any;
-    // console.log("Loaded turnstile data with", turnstileData.length, "entries");
+    const availabilityByBorough =
+      calculateSixMonthAvailability(platformAvailability);
+    console.log("Platform availability by borough:", availabilityByBorough);
+
+    boroughBoundaries.features.forEach((feature) => {
+      const boroughName = feature.properties?.boroname;
+      const availabilityForBorough = availabilityByBorough.find(
+        (entry) => entry.borough === boroughName,
+      );
+      if (availabilityForBorough) {
+        feature.properties = {
+          ...feature.properties,
+          platform_availability: availabilityForBorough.availability,
+        };
+      } else {
+        console.warn(
+          "No platform availability data found for borough:",
+          boroughName,
+        );
+        // Set to -1 to indicate missing data
+        feature.properties = {
+          ...feature.properties,
+          platform_availability: -1,
+        };
+      }
+    });
+
+    const boroughCenters = boroughBoundaries.features.map((feature) => {
+      const boroughCenter = centroid(
+        feature as GeoJSON.Feature<GeoJSON.MultiPolygon>,
+      );
+
+      return {
+        type: "Feature",
+        properties: {
+          name: feature.properties?.boroname,
+          platform_availability: feature.properties?.platform_availability,
+        },
+        geometry: boroughCenter.geometry,
+      } as GeoJSON.Feature<GeoJSON.Point>;
+    });
+
+    writeDatasetJsonToOutput("borough-centers-geojson", {
+      type: "FeatureCollection",
+      features: boroughCenters,
+    });
+
+    writeModifiedDatasetJsonToOutput(
+      "borough-boundaries-geojson",
+      boroughBoundaries,
+    );
 
     // ETL of MTA accessibility projects
     const kmlPath = getDatasetPathById("mta-ada-projects");
@@ -318,10 +381,6 @@ async function main(): Promise<void> {
     subwayLines.features.push(sirLineFeature);
 
     writeModifiedDatasetJsonToOutput("subway-lines-geojson", subwayLines);
-
-    // Load platform availability data
-    //const platformAvailability = await loadDatasetById
-
 
     //Load elevator and escalator availability data
     if (!datasetsToSkip.includes("mta-elevators-and-escalators")) {

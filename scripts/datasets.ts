@@ -302,6 +302,18 @@ export function writeModifiedDatasetJsonToOutput(
   writeFileSync(outputFilePath, jsonData);
 }
 
+export function writeDatasetJsonToOutput(
+  datasetName: string,
+  data: any,
+  outDir: string = "gis-data",
+): void {
+  const fileName = `${datasetName}.json`;
+  const outputFilePath = path.join(__dirname, "..", outDir, fileName);
+  console.log(`Writing new dataset $${datasetName} to ${outputFilePath}`);
+  const jsonData = JSON.stringify(data);
+  writeFileSync(outputFilePath, jsonData);
+}
+
 export function getDatasetExtension(dataset: Dataset): string {
   switch (dataset.type) {
     case DatasetType.CSV:

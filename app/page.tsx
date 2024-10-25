@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Map, { Layer, LayerProps, MapRef, Source } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import NycBoundary from "@/gis-data/borough-boundaries-geojson.json";
+import BoroughCenters from "@/gis-data/borough-centers-geojson.json";
 import Stations from "@/gis-data/mta-subway-stations-geojson.json";
 import SubwayLines from "@/gis-data/subway-lines-geojson.json";
 import StationEntrancesExits from "@/gis-data/subway-entrances-exits.json";
@@ -29,9 +30,8 @@ const imagesToLoad = [
 ];
 
 const layers = [
-  { id: "city-boundary", name: "City boundary" },
   { id: "neighborhoods", name: "Neighborhoods" },
-  { id: "platform-availability", name: "Platform availability" },
+  { id: "platform-availability", name: "Borough platform availability" },
   {
     id: "neighborhoods-accessibility-score",
     name: "Neighborhood Accessibility Score",
@@ -67,7 +67,6 @@ export default function Home() {
   const [focusedNeighborhoodId, setFocusedNeighborhoodId] = useState<
     string | number | null
   >(null);
-  const [focusedBoroughId, setFocusedBoroughId] = useState<string | null>(null);
   const [focusedAdaProjectId, setFocusedAdaProjectId] = useState<string | null>(
     null,
   );
@@ -78,13 +77,13 @@ export default function Home() {
     }
 
     if (selectedRoute && !layerIds.includes("subway-lines")) {
-      console.log("clearing route");
       setSelectedRoute(null);
     }
 
     if (focusedNeighborhoodId && !layerIds.includes("neighborhoods")) {
       setFocusedNeighborhoodId(null);
     }
+
     setEnabledLayerIds(layerIds);
   };
 
@@ -321,17 +320,6 @@ export default function Home() {
     return newNeighborhoods;
   }, [focusedNeighborhoodId, showingAccessibilityScore]);
 
-  const boroughData = useMemo(() => {
-    const newBoroughs = JSON.parse(
-      JSON.stringify(NycBoundary),
-    ) as GeoJSON.FeatureCollection;
-    newBoroughs.features.forEach((feature) => {
-      feature!.properties!.focused =
-        feature?.properties?.boroname === focusedBoroughId;
-    });
-    return newBoroughs;
-  }, [focusedBoroughId]);
-
   const subwayLineData = useMemo(() => {
     const newSubwayLines = JSON.parse(
       JSON.stringify(SubwayLines),
@@ -359,32 +347,11 @@ export default function Home() {
     return newAdaProjects;
   }, [focusedAdaProjectId]);
 
-  const cityBoundary = layerIsEnabled("city-boundary") ? (
-    <Source id="city-boundary" type="geojson" data={NycBoundary}>
-      <Layer
-        id="city-boundary"
-        type="fill"
-        paint={{
-          "fill-color": "#088",
-          "fill-opacity": 0.2,
-          "fill-color-transition": { duration: 0 },
-          "fill-opacity-transition": { duration: 0 },
-        }}
-      />
-    </Source>
-  ) : (
-    createEmptyLayer("city-boundary", "fill")
-  );
-
   const boroughBoundaries = layerIsEnabled("platform-availability") ? (
-    <Source
-      id="borough-boundaries"
-      type="geojson"
-      data={boroughData}
-      generateId
-    >
+    <Source id="borough-boundaries" type="geojson" data={NycBoundary}>
       <Layer
         id="borough-boundaries"
+        beforeId="borough-availability-labels"
         type="line"
         paint={{
           "line-color": "#088",
@@ -393,17 +360,28 @@ export default function Home() {
       />
       <Layer
         id="borough-boundaries-fill"
+        beforeId="borough-availability-labels"
         type="fill"
         paint={{
-          "fill-color": "#088",
-          "fill-opacity": [
+          "fill-color": [
             "case",
-            ["boolean", ["feature-state", "hover"], false],
-            0.5,
-            ["boolean", ["get", "focused"], false],
-            0.5,
-            0.0,
+            // If availability is -1 (missing data), set color to light gray
+            ["==", ["get", "platform_availability"], -1],
+            "#d3d3d3", // Light gray for missing data
+            // Use an interpolation to color from red to green based on availability (0 to 1)
+            [
+              "interpolate",
+              ["linear"],
+              ["get", "platform_availability"],
+              0,
+              "#ff3030", // Red for 0 availability
+              0.5,
+              "#fee08b", // Yellow for mid-range availability
+              1,
+              "#1a9850", // Green for 1 availability
+            ],
           ],
+          "fill-opacity": 0.7,
         }}
       />
     </Source>
@@ -412,6 +390,48 @@ export default function Home() {
       { id: "borough-boundaries", type: "line" },
       { id: "borough-boundaries-fill", type: "fill" },
     ])
+  );
+
+  const boroughAvailabilityLabels = layerIsEnabled("platform-availability") ? (
+    <Source
+      id="borough-availability-labels"
+      type="geojson"
+      data={BoroughCenters}
+    >
+      <Layer
+        id="borough-availability-labels"
+        beforeId="stations"
+        type="symbol"
+        layout={{
+          "text-field": [
+            "case",
+            ["==", ["get", "platform_availability"], -1],
+            "6 Month Platform Availability: N/A",
+            [
+              "concat",
+              "6 Month Platform Availability: ",
+              [
+                "to-string",
+                ["round", ["*", ["get", "platform_availability"], 100]],
+              ],
+              "%",
+            ],
+          ],
+          "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
+          "text-size": 14,
+          "text-anchor": "center",
+          "symbol-placement": "point", // Places one label per polygon
+          "text-allow-overlap": true, // Ensures labels appear even if they overlap slightly
+        }}
+        paint={{
+          "text-color": "#333333", // Dark color for readability
+          "text-halo-color": "#ffffff", // White halo for better visibility
+          "text-halo-width": 1,
+        }}
+      />
+    </Source>
+  ) : (
+    createEmptyLayer("borough-availability-labels", "symbol")
   );
 
   const neighborhoodBoundaries =
@@ -614,7 +634,6 @@ export default function Home() {
   );
 
   const hoveredNeighborhoodId = useRef<string | number | undefined>(undefined);
-  const hoverBouroughId = useRef<string | number | undefined>(undefined);
   useEffect(() => {
     if (!mapRef.current?.loaded) {
       return;
@@ -710,43 +729,6 @@ export default function Home() {
       hoveredNeighborhoodId.current = undefined;
     });
 
-    mapRef.current.on("click", "borough-boundaries-fill", (e) => {
-      //@ts-expect-error - handled is not a standard property
-      if (e.handled) {
-        return;
-      }
-
-      if (e.features && e.features.length > 0) {
-        setFocusedBoroughId(e.features[0]?.properties?.boroname);
-      }
-    });
-
-    mapRef.current.on("mousemove", "borough-boundaries-fill", (e) => {
-      if (e.features && e.features.length > 0) {
-        if (hoverBouroughId.current !== undefined) {
-          mapRef.current!.setFeatureState(
-            { source: "borough-boundaries", id: hoverBouroughId.current },
-            { hover: false },
-          );
-        }
-        hoverBouroughId.current = e.features[0]?.id;
-        mapRef.current!.setFeatureState(
-          { source: "borough-boundaries", id: hoverBouroughId.current! },
-          { hover: true },
-        );
-      }
-    });
-
-    mapRef.current.on("mouseleave", "borough-boundaries-fill", () => {
-      if (hoverBouroughId.current !== undefined) {
-        mapRef.current!.setFeatureState(
-          { source: "borough-boundaries", id: hoverBouroughId.current! },
-          { hover: false },
-        );
-      }
-      hoverBouroughId.current = undefined;
-    });
-
     // Load images
     imagesToLoad.forEach((imageName) => {
       if (mapRef.current!.hasImage(imageName)) {
@@ -834,7 +816,6 @@ export default function Home() {
           setMapLoaded(true);
         }}
       >
-        {cityBoundary}
         {boroughBoundaries}
         {neighborhoodFill}
         {neighborhoodLabels}
@@ -843,6 +824,7 @@ export default function Home() {
         {stationsEntrancesExits}
         {adaProjects}
         {stationsLayer}
+        {boroughAvailabilityLabels}
       </Map>
       {showOverLay && isDesktop && (
         <MapOverlay

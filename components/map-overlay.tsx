@@ -131,20 +131,14 @@ export function MapOverlay({
 }: MapOverlayProps) {
   const routeIds = station?.properties.daytime_routes.split(/[\s,]+/);
 
-  const accessible = station?.properties.ada === "1";
+  const accessible = station?.properties.ada === "full";
   let partialAccessible = false;
   let accessibleDirection = "";
-  if (
-    station?.properties.ada_southbound === "1" &&
-    station?.properties.ada_northbound === "0"
-  ) {
+  if (station?.properties.ada === "southbound") {
     partialAccessible = true;
     accessibleDirection = "Southbound";
   }
-  if (
-    station?.properties.ada_southbound === "0" &&
-    station?.properties.ada_northbound === "1"
-  ) {
+  if (station?.properties.ada === "northbound") {
     partialAccessible = true;
     accessibleDirection = "Northbound";
   }
@@ -252,6 +246,23 @@ export function MapOverlay({
                 />
               ))}
             </div>
+            {!(partialAccessible || accessible) && (
+              <Alert className="mt-4 bg-red-200 border-none">
+                <AlertTriangle className="h-5 w-5" />
+                <AlertTitle className="font-bold">Not accessible</AlertTitle>
+                <AlertDescription>
+                  This station is not accessible! If you want to get involved,
+                  you can{" "}
+                  <ExternalLink
+                    href="https://a816-dohbesp.nyc.gov/IndicatorPublic/take-action/email-electeds/"
+                    target="_blank"
+                  >
+                    contact your local representatives
+                  </ExternalLink>{" "}
+                  and advocate for more accessible public transportation.
+                </AlertDescription>
+              </Alert>
+            )}
             {partialAccessible && (
               <Alert className="mt-4 bg-yellow-200 border-none">
                 <AlertTriangle className="h-5 w-5" />
@@ -337,6 +348,15 @@ export function MapOverlay({
         {elevatorsAndEscalators && elevatorsAndEscalators.length > 0 && (
           <div className="mt-4 border-t">
             <h1 className="mt-2 text-lg font-bold">Elevators and escalators</h1>
+
+            <Alert className="mt-4 bg-blue-200 border-none flex flex-row">
+              <InfoCircledIcon className="h-5 w-5" />
+              <AlertDescription>
+                <span className="text-sm">
+                  Availability data based on past 6 months from September, 2024
+                </span>
+              </AlertDescription>
+            </Alert>
             <DynamicScrollArea
               scrollable={scrollable}
               className={cn(
@@ -392,27 +412,6 @@ export function MapOverlay({
                   ))}
               </div>
             </DynamicScrollArea>
-            <Alert className="mt-4 bg-blue-200 border-none flex flex-row">
-              <InfoCircledIcon className="h-5 w-5" />
-              <AlertDescription>
-                <ul className="list-disc list-inside">
-                  <li>
-                    Availability data based on past 6 months from September,
-                    2024
-                  </li>
-                  <li>
-                    For status of elevators/escalators, visit the{" "}
-                    <ExternalLink
-                      href="https://new.mta.info/elevator-escalator-status"
-                      target="_blank"
-                    >
-                      MTA website
-                    </ExternalLink>
-                    .
-                  </li>
-                </ul>
-              </AlertDescription>
-            </Alert>
           </div>
         )}
         {selectedRoute && !station && !neighborhood && (
