@@ -20,7 +20,7 @@ function getAggregateStatsForEquipment(
   months: number,
 ): AggregateStats {
   const startDate = parseISO(startTime);
-  const endDate = subMonths(startDate, months);
+  const endDate = subMonths(startDate, months - 1);
 
   // Filter the dataset by the given equipment code and time period
   const filteredData = dataset.filter((entry) => {
