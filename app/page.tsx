@@ -70,6 +70,7 @@ export default function Home() {
   const [focusedAdaProjectId, setFocusedAdaProjectId] = useState<string | null>(
     null,
   );
+  const [mapBottomPadding, setMapBottomPadding] = useState(0);
 
   const onLayerSelect = (layerIds: string[]) => {
     if (focusedStationId && !layerIds.includes("stations")) {
@@ -113,6 +114,7 @@ export default function Home() {
             station.geometry.coordinates[1],
           ],
           zoom: 15,
+          padding: { top: 0, bottom: mapBottomPadding, left: 0, right: 0 },
         });
       }, 50);
 
@@ -126,6 +128,7 @@ export default function Home() {
     setFocusedNeighborhoodId,
     setSelectedRoute,
     setFocusedAdaProjectId,
+    mapBottomPadding,
   ]);
 
   useEffect(() => {
@@ -193,7 +196,12 @@ export default function Home() {
 
       const timeout = setTimeout(() => {
         mapRef.current?.fitBounds(routeBounds, {
-          padding: 50,
+          padding: {
+            top: 50,
+            bottom: mapBottomPadding + 50,
+            left: 50,
+            right: 50,
+          },
         });
       }, 50);
 
@@ -202,6 +210,7 @@ export default function Home() {
       };
     }
   }, [
+    mapBottomPadding,
     selectedRoute,
     mapLoaded,
     setFocusedStationId,
@@ -776,7 +785,8 @@ export default function Home() {
       right: 0,
       bottom: overlayHeight,
     });
-  }, [isDesktop, overlayHeight, mapLoaded]);
+    setMapBottomPadding(overlayHeight);
+  }, [isDesktop, overlayHeight, mapLoaded, setMapBottomPadding]);
 
   return (
     <div className="flex flex-col w-full h-full bg-[#EFE9E1]">
