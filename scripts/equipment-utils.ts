@@ -1,5 +1,5 @@
 import { ElevatorAndEscalatorAvailability } from "./datasets";
-import { subMonths, parseISO, isAfter } from "date-fns";
+import { subMonths, parseISO, isAfter, isWithinInterval } from "date-fns";
 
 interface AggregateStats {
   total_outages: number;
@@ -20,15 +20,18 @@ function getAggregateStatsForEquipment(
   months: number,
 ): AggregateStats {
   const startDate = parseISO(startTime);
+  // Interval is inclusive of the start date, so we need to subtract 1 less month
   const endDate = subMonths(startDate, months - 1);
 
   // Filter the dataset by the given equipment code and time period
   const filteredData = dataset.filter((entry) => {
     const entryDate = parseISO(entry.month);
     return (
-      entry.equipment_code === equipmentCode && isAfter(entryDate, endDate)
+      entry.equipment_code === equipmentCode && isWithinInterval(entryDate, { start: endDate, end: startDate })
     );
   });
+
+  const monthsConsidered = new Set(filteredData.map((entry) => entry.month));
 
   const dataMissing = filteredData.find((entry) => {
     return (
@@ -71,6 +74,11 @@ function getAggregateStatsForEquipment(
       _24_hour_total_hours: 0,
     },
   );
+
+  if (equipmentCode === "EL292") {
+    console.log("Aggregate stats for EL292:", aggregateStats);
+    console.log("Months considered:", Array.from(monthsConsidered).join(", "));
+  }
 
   // Calculate availability percentages
   const am_peak_availability =
