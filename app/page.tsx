@@ -630,8 +630,8 @@ export default function Home() {
       });
     });
 
-    mapRef.current.addControl(new mapboxgl.NavigationControl(), "bottom-right");
-  }, [mapRef.current, mapLoaded]);
+    mapRef.current.addControl(new mapboxgl.NavigationControl(), "top-right");
+  }, [mapLoaded]);
 
   const elevatorsAndEscalatorsForStation = useMemo(() => {
     return ElevatorAndEscalatorInfo.filter(
@@ -646,8 +646,36 @@ export default function Home() {
     setShowOverlay(true);
   }, []);
 
-  const snapPoints = ["100px", "300px", "500px"];
-  const [snap, setSnap] = useState<number | string | null>(snapPoints[1]);
+  const snapPoints = ["100px", "300px", "400px", "500px"];
+  const [snap, setSnap] = useState<number | string | null>(snapPoints[2]);
+
+  function animatePadding(targetPadding: number, duration = 200) {
+    const initialPadding = mapRef.current?.getPadding().bottom || 0;
+    const paddingChange = targetPadding - initialPadding;
+    const startTime = performance.now();
+
+    function frame(currentTime: number) {
+      const elapsedTime = currentTime - startTime;
+      const progress = Math.min(elapsedTime / duration, 1); // Keep progress <= 1
+
+      // Calculate the new padding value using linear interpolation
+      const currentPadding = initialPadding + progress * paddingChange;
+      mapRef.current?.setPadding({
+        top: 20,
+        bottom: currentPadding,
+        left: 20,
+        right: 20,
+      });
+
+      if (progress < 1) {
+        // Continue the animation
+        requestAnimationFrame(frame);
+      }
+    }
+
+    // Start the animation
+    requestAnimationFrame(frame);
+  }
 
   useEffect(() => {
     if (isDesktop || !snap) {
@@ -661,13 +689,9 @@ export default function Home() {
     } else {
       bottomPadding = snap;
     }
-    mapRef.current?.setPadding({
-      left: 0,
-      top: 0,
-      right: 0,
-      bottom: bottomPadding,
-    });
-  }, [isDesktop, snap]);
+
+    animatePadding(bottomPadding);
+  }, [isDesktop, snap, mapLoaded]);
 
   return (
     <div className="flex flex-col w-full h-full bg-[#EFE9E1]">
@@ -729,7 +753,7 @@ export default function Home() {
           <DrawerContent className="h-screen">
             <div style={{ maxHeight: snap ?? 500 }}>
               <MapOverlay
-                className="w-full max-h-full shadow-none rounded-none border-none overflow-auto"
+                className="w-full max-h-full shadow-none rounded-none border-none overflow-auto pb-4"
                 scrollable={false}
                 station={selectedStation}
                 stations={stations}
