@@ -2,22 +2,24 @@
 
 This project is a map-based web application for visualizing accessibility data for the NYC subway. A live version of the website can be accessed [here](https://nyc-subway-accessibility-explorer.vercel.app/).
 
-It include the followig information currently:
+It include the following information currently:
 
 - Subway stations
   - Accessibility status (fully accessible, partially accessible, or inaccessible)
   - Station complex ridership for last full month
-  - Eleavtor and Escalators, including uptime stats for the last 6 months
-  - Any recent ADA projects associated with the station (either completet or in-progress)
+  - Elevator and Escalators, including uptime stats for the last 6 months
+  - Any recent ADA projects associated with the station (either complete or in-progress)
 - Subway lines
   - Percent of stations that are accessible for a given line (e.g., A,C,E or 1,2,3)
 - Neighborhood data
-  - Populaiton statistics from the 2020 Census, including number of residents over 65
-  - An accessibility score, which is calculated by considering the percentage of nearest stations that are accessbible
+  - Population statistics from the 2020 Census, including number of residents over 65
+  - An accessibility score, which is calculated by considering the percentage of nearest stations that are accessible
 - ADA projects
   - Current and ongoing ADA projects
 
 ## Datasets
+
+This application utilizes the below datasets:
 
 ### [MTA Subway Stations](https://data.ny.gov/Transportation/MTA-Subway-Stations/39hk-dx4f/about_data)
 
@@ -29,7 +31,7 @@ Contains Elevator/Escalator uptime data.
 
 ### [MTA Subway Entrances and Exits](https://data.ny.gov/Transportation/MTA-Subway-Entrances-and-Exits-2024/i9wp-a4ja/about_data)
 
-Contains location of Subway entrances/exits, as well as their type (e.g., stairs, escalator, elevator).
+Contains locations of Subway entrances/exits, as well as their type (e.g., stairs, escalator, elevator).
 
 ### [MTA Subway Turnstile Usage Data](https://data.ny.gov/Transportation/MTA-Subway-Hourly-Ridership-Beginning-July-2020/wujg-7c2s/about_data)
 
@@ -41,7 +43,7 @@ This is a custom Google Maps dataset which contains information about recent ADA
 
 ### [Subway Lines](https://data.cityofnewyork.us/Transportation/Subway-Lines/3qz8-muuu)
 
-Contains GeoJSON definitions of NYC Subway lines. Note that this is currently missing the SIR, which I add in manually during the ETL process.
+Contains GeoJSON definitions of NYC Subway lines. Note that this is currently missing the SIR, which is added in manually during the ETL process.
 
 ### [2020 Census Data](https://www.nyc.gov/site/planning/planning-level/nyc-population/2020-census.page)
 
@@ -71,15 +73,15 @@ You can now view the website on [http://localhost:3000](http://localhost:3000).
 
 ## Downloading datasets and ETL
 
-Source datasets are checked in under the `datasets` directory and processed datasets are checked in under the `gis-data` directory (this is what is actually used by the applicaiton). There is no need to download/process data again unless you want to update it. 
+Source datasets are checked in under the `datasets` directory and processed datasets are checked in under the `gis-data` directory (this is what is actually used by the application). There is no need to download/process data before running the application unless you want to update the source data.
 
 ### Updating source datasets
 
 The full manifest of datasets used can be found in `scripts/datasets.ts`. Most datasets can be automatically downloaded, but some are marked as `skipDownload` and require manual retrieval and, in some cases, transformation. For example, the turnstile dataset currently needs to be manually downloaded and processed, since it is very large.
 
-Some datasets from [data.ny.gov](https://data.ny.gov/) also require an App Token for retrieval, since their API requires this for larger datasets. For more information about retreieving an access token, see this [page](https://dev.socrata.com/foundry/data.ny.gov/39hk-dx4f).
+Some datasets from [data.ny.gov](https://data.ny.gov/) also require an App Token for retrieval, since their API requires this for larger datasets. For more information about retrieving an App Token, see this [page](https://dev.socrata.com/foundry/data.ny.gov/39hk-dx4f).
 
-Once you created an App Token, add it to your `.env.local` file:
+Once you have created an App Token, add it to your `.env.local` file:
 
 ```
 NY_OPEN_DATA_APP_TOKEN=<app token>
@@ -98,4 +100,3 @@ Most source datasets will require some transformation to be usable by the app. F
 ```bash
 npm run build-app-data
 ```
-
