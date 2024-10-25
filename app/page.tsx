@@ -96,13 +96,19 @@ export default function Home() {
       (feature) => feature.properties.station_id === focusedStationId,
     );
     if (mapLoaded && mapRef.current && station) {
-      mapRef.current.flyTo({
-        center: [
-          station.geometry.coordinates[0],
-          station.geometry.coordinates[1],
-        ],
-        zoom: 15,
-      });
+      const timeout = setTimeout(() => {
+        mapRef.current?.flyTo({
+          center: [
+            station.geometry.coordinates[0],
+            station.geometry.coordinates[1],
+          ],
+          zoom: 15,
+        });
+      }, 50);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   }, [focusedStationId, Stations, mapLoaded]);
 
@@ -163,9 +169,16 @@ export default function Home() {
         number,
         number,
       ];
-      mapRef.current.fitBounds(routeBounds, {
-        padding: 50,
-      });
+
+      const timeout = setTimeout(() => {
+        mapRef.current?.fitBounds(routeBounds, {
+          padding: 50,
+        });
+      }, 50);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   }, [selectedRoute, SubwayLines, mapLoaded]);
 
