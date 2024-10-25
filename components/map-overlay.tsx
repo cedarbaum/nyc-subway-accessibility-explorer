@@ -162,8 +162,15 @@ export function MapOverlay({
   );
 
   const selectedRoutes = selectedRoute?.split(",");
+  const isShowingStationScores = enabledLayers?.includes(
+    "neighborhoods-accessibility-score",
+  );
   const nothingFocused =
-    !station && !neighborhood && !adaProject && !selectedRoute;
+    !station &&
+    !neighborhood &&
+    !adaProject &&
+    !selectedRoute &&
+    !isShowingStationScores;
 
   return (
     <Card className={className}>
@@ -209,6 +216,17 @@ export function MapOverlay({
         </div>
       </CardHeader>
       <CardContent>
+        {isShowingStationScores && (
+          <Alert className="mt-4 bg-blue-200 border-none flex flex-row">
+            <InfoCircledIcon className="h-5 w-5" />
+            <AlertDescription>
+              <span className="text-sm">
+                Station scores are calculated based on the percentage of close
+                by stations that are accessible.
+              </span>
+            </AlertDescription>
+          </Alert>
+        )}
         {nothingFocused && (
           <div className="mt-2 border-t">
             <h1 className="mt-2 text-lg font-bold">Welcome!</h1>
