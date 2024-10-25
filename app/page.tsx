@@ -777,6 +777,7 @@ export default function Home() {
   useEffect(() => {
     if (isDesktop || overlayHeight === undefined || !mapLoaded) {
       mapRef.current?.setPadding({ left: 0, top: 0, right: 0, bottom: 0 });
+      setMapBottomPadding(0);
       return;
     }
     mapRef.current?.setPadding({
