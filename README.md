@@ -37,6 +37,10 @@ Contains locations of Subway entrances/exits, as well as their type (e.g., stair
 
 This dataset contains hourly turnstile data. It is very large, so it is first preprocessed to only include the last month of full data (currently September, 2024).
 
+### [MTA Subway Accessible Station Platform Availability](https://data.ny.gov/Transportation/MTA-Subway-Accessible-Station-Platform-Availabilit/thh2-syn7/about_data)
+
+This dataset contains monthly accessible platform availability by borough.
+
 ### [MTA ADA Projects](https://www.google.com/maps/d/viewer?mid=1KyAOi9J92POQ7c_v-471XlbLvrOmIDQ&femb=1&ll=40.71178088520193%2C-73.99431625&z=11)
 
 This is a custom Google Maps dataset which contains information about recent ADA projects. It can be downloaded as KML data.
