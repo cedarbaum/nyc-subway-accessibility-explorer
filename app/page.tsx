@@ -757,34 +757,6 @@ export default function Home() {
     setShowOverlay(true);
   }, []);
 
-  function animatePadding(targetPadding: number, duration = 200) {
-    const initialPadding = mapRef.current?.getPadding().bottom || 0;
-    const paddingChange = targetPadding - initialPadding;
-    const startTime = performance.now();
-
-    function frame(currentTime: number) {
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / duration, 1); // Keep progress <= 1
-
-      // Calculate the new padding value using linear interpolation
-      const currentPadding = initialPadding + progress * paddingChange;
-      mapRef.current?.setPadding({
-        top: 20,
-        bottom: currentPadding,
-        left: 20,
-        right: 20,
-      });
-
-      if (progress < 1) {
-        // Continue the animation
-        requestAnimationFrame(frame);
-      }
-    }
-
-    // Start the animation
-    requestAnimationFrame(frame);
-  }
-
   const [overlayHeight, setOverlayHeight] = useState<number | undefined>(
     undefined,
   );
@@ -798,7 +770,12 @@ export default function Home() {
       mapRef.current?.setPadding({ left: 0, top: 0, right: 0, bottom: 0 });
       return;
     }
-    animatePadding(overlayHeight);
+    mapRef.current?.setPadding({
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: overlayHeight,
+    });
   }, [isDesktop, overlayHeight, mapLoaded]);
 
   return (
@@ -851,7 +828,7 @@ export default function Home() {
       {showOverLay && !isDesktop && (
         <div
           ref={overlayRef}
-          className="fixed bottom-0 left-0 right-0 h-[50%] z-50"
+          className="fixed bottom-0 left-0 right-0 h-[50%] z-50 bg-white"
         >
           <MapOverlay
             className="w-full max-h-full shadow-none rounded-none border-none overflow-auto pb-4"
